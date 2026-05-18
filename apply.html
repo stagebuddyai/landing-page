@@ -56,8 +56,6 @@
       z-index: 0;
     }
 
-    /* ── Shell ────────────────────────────────────────────────── */
-
     .apply-wrap {
       position: relative;
       z-index: 1;
@@ -79,8 +77,6 @@
       transition: color 0.2s;
     }
     .site-back:hover { color: var(--gold-soft); }
-
-    /* ── Progress ─────────────────────────────────────────────── */
 
     .progress {
       display: flex;
@@ -133,8 +129,6 @@
     .prog-step.done   .prog-label { color: var(--gold-dim); }
     .prog-line.done               { background: var(--gold-dim); }
 
-    /* ── Form steps ───────────────────────────────────────────── */
-
     .form-step {
       display: none;
       animation: stepIn 0.4s ease forwards;
@@ -173,8 +167,6 @@
       margin-bottom: 44px;
       line-height: 1.6;
     }
-
-    /* ── Tier cards ───────────────────────────────────────────── */
 
     .tier-grid {
       display: grid;
@@ -237,8 +229,6 @@
       font-style: italic;
       line-height: 1.5;
     }
-
-    /* ── Fields ───────────────────────────────────────────────── */
 
     .fields {
       max-width: 520px;
@@ -336,17 +326,8 @@
       transition: border-color 0.2s;
     }
     .field-file-label:hover { border-color: var(--gold-dim); }
-
-    .field-file-label span {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .field-file-label .file-icon {
-      font-size: 16px;
-      color: var(--gold-dim);
-      flex-shrink: 0;
-    }
+    .field-file-label span { font-size: 12px; color: var(--muted); }
+    .field-file-label .file-icon { font-size: 16px; color: var(--gold-dim); flex-shrink: 0; }
 
     input[type="file"] { display: none; }
 
@@ -356,8 +337,6 @@
       margin-top: 8px;
       min-height: 18px;
     }
-
-    /* ── Navigation ───────────────────────────────────────────── */
 
     .step-nav {
       display: flex;
@@ -408,8 +387,6 @@
     }
     .back-btn:hover { color: var(--gold-soft); }
 
-    /* ── Confirmation ─────────────────────────────────────────── */
-
     .confirmation {
       text-align: center;
       padding: 48px 0 24px;
@@ -433,11 +410,7 @@
       color: var(--gold);
     }
 
-    .confirm-divider {
-      width: 36px;
-      height: 1px;
-      background: var(--gold-dim);
-    }
+    .confirm-divider { width: 36px; height: 1px; background: var(--gold-dim); }
 
     .confirm-body {
       font-size: 16px;
@@ -450,8 +423,6 @@
       color: var(--gold-dim);
       letter-spacing: 0.07em;
     }
-
-    /* ── Responsive ───────────────────────────────────────────── */
 
     @media (max-width: 660px) {
       .tier-grid { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
@@ -473,7 +444,6 @@
 
     <a href="/" class="site-back">← Stage Buddy</a>
 
-    <!-- Progress indicator -->
     <div class="progress" id="progress">
       <div class="prog-step active" data-step="1">
         <div class="prog-num">1</div>
@@ -491,14 +461,13 @@
       </div>
     </div>
 
-    <!-- ── Step 1: Tier Selection ── -->
+    <!-- Step 1: Tier Selection -->
     <div class="form-step active" id="step-1">
       <p class="step-eyebrow">S.T.A.R.R. Analysis</p>
       <h1 class="form-heading">Choose your <em>tier</em></h1>
       <p class="form-sub">Each tier builds on the last.</p>
 
       <div class="tier-grid">
-
         <div class="tier-card" data-tier="Performance Audit — $95" tabindex="0" role="radio" aria-checked="false">
           <div class="tc-num">Tier 1</div>
           <div class="tc-name">Performance Audit</div>
@@ -506,7 +475,6 @@
           <div class="tc-divider"></div>
           <div class="tc-outcome">Diagnosis. Know exactly where you stand.</div>
         </div>
-
         <div class="tier-card" data-tier="Performance Breakdown — $195" tabindex="0" role="radio" aria-checked="false">
           <div class="tc-num">Tier 2</div>
           <div class="tc-name">Performance Breakdown</div>
@@ -514,7 +482,6 @@
           <div class="tc-divider"></div>
           <div class="tc-outcome">Targeted improvement. Fix what's costing you the room.</div>
         </div>
-
         <div class="tier-card" data-tier="Performance Transformation — $450" tabindex="0" role="radio" aria-checked="false">
           <div class="tc-num">Tier 3</div>
           <div class="tc-name">Performance Transformation</div>
@@ -522,7 +489,6 @@
           <div class="tc-divider"></div>
           <div class="tc-outcome">Execution. Walk on stage different.</div>
         </div>
-
       </div>
 
       <div class="step-nav center-nav">
@@ -530,31 +496,27 @@
       </div>
     </div>
 
-    <!-- ── Step 2: Contact Info ── -->
+    <!-- Step 2: Contact Info -->
     <div class="form-step" id="step-2">
       <p class="step-eyebrow">Step 2 of 3</p>
       <h2 class="form-heading">Your <em>details</em></h2>
       <p class="form-sub">We'll send your report here.</p>
 
       <div class="fields">
-
         <div class="field-group">
           <label class="field-label" for="f-name">Full Name *</label>
           <input class="field-input" type="text" id="f-name" name="name" autocomplete="name" placeholder="Your full name" />
           <div class="field-error" id="err-name">Please enter your name.</div>
         </div>
-
         <div class="field-group">
           <label class="field-label" for="f-email">Email Address *</label>
           <input class="field-input" type="email" id="f-email" name="email" autocomplete="email" placeholder="you@example.com" />
           <div class="field-error" id="err-email">Please enter a valid email address.</div>
         </div>
-
         <div class="field-group">
           <label class="field-label" for="f-ig">Instagram Handle <span class="optional">(optional)</span></label>
           <input class="field-input" type="text" id="f-ig" name="instagram" placeholder="@handle" />
         </div>
-
       </div>
 
       <div class="step-nav">
@@ -563,28 +525,24 @@
       </div>
     </div>
 
-    <!-- ── Step 3: Performance Submission ── -->
+    <!-- Step 3: Performance Submission -->
     <div class="form-step" id="step-3">
       <p class="step-eyebrow">Step 3 of 3</p>
       <h2 class="form-heading">Your <em>performance</em></h2>
       <p class="form-sub">Submit the piece you want scored.</p>
 
       <div class="fields">
-
         <div class="field-group">
           <label class="field-label" for="f-title">Performance Title *</label>
           <input class="field-input" type="text" id="f-title" name="title" placeholder="Name of your piece" />
           <div class="field-error" id="err-title">Please enter your performance title.</div>
         </div>
-
         <div class="field-group">
           <label class="field-label" for="f-link">Video Link</label>
           <p class="field-helper">YouTube, Google Drive, or Dropbox. Set sharing to "Anyone with the link can view."</p>
           <input class="field-input" type="url" id="f-link" name="video_link" placeholder="https://..." />
         </div>
-
         <div class="or-row"><span>or</span></div>
-
         <div class="field-group">
           <label class="field-label">Upload Video <span class="optional">(max 100 MB)</span></label>
           <label class="field-file-label" for="f-file">
@@ -595,16 +553,12 @@
           <div class="file-name" id="file-name-display"></div>
           <div class="field-error" id="err-media">Please provide a video link or upload a file.</div>
         </div>
-
         <div class="field-group">
           <label class="field-label" for="f-context">Anything the coach should know <span class="optional">(optional)</span></label>
           <p class="field-helper">Goals, context, specific areas you want focused on.</p>
           <textarea class="field-textarea" id="f-context" name="context" placeholder="e.g. I freeze up in the second verse and tend to drop eye contact..."></textarea>
         </div>
-
-        <!-- Hidden field carries selected tier into the submission -->
         <input type="hidden" id="f-tier" name="tier" />
-
       </div>
 
       <div class="step-nav">
@@ -617,7 +571,7 @@
       </div>
     </div>
 
-    <!-- ── Step 4: Confirmation ── -->
+    <!-- Step 4: Confirmation -->
     <div class="form-step" id="step-4">
       <div class="confirmation">
         <div class="confirm-star">★</div>
@@ -632,36 +586,30 @@
       </div>
     </div>
 
-  </div><!-- /.apply-wrap -->
+  </div>
 
   <script>
-    /* ─── State ─────────────────────────────────────────────── */
     let currentStep = 1;
     let selectedTier = '';
 
-    /* ─── Progress bar ──────────────────────────────────────── */
     function setProgress(active) {
       document.querySelectorAll('.prog-step').forEach((el, i) => {
         el.classList.toggle('active', i + 1 === active);
         el.classList.toggle('done',   i + 1 < active);
-        el.querySelector('.prog-num').setAttribute('aria-current', i + 1 === active ? 'step' : '');
       });
       document.querySelectorAll('.prog-line').forEach((el, i) => {
         el.classList.toggle('done', i < active - 1);
       });
     }
 
-    /* ─── Step transitions ──────────────────────────────────── */
     function goTo(step) {
       document.getElementById('step-' + currentStep).classList.remove('active');
       currentStep = step;
-      const target = document.getElementById('step-' + step);
-      target.classList.add('active');
+      document.getElementById('step-' + step).classList.add('active');
       if (step <= 3) setProgress(step);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    /* ─── Tier card selection ───────────────────────────────── */
     document.querySelectorAll('.tier-card').forEach(card => {
       function select() {
         document.querySelectorAll('.tier-card').forEach(c => {
@@ -677,14 +625,10 @@
       card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(); } });
     });
 
-    document.getElementById('btn-1-next').addEventListener('click', () => {
-      if (selectedTier) goTo(2);
-    });
+    document.getElementById('btn-1-next').addEventListener('click', () => { if (selectedTier) goTo(2); });
 
-    /* ─── Step 2 validation ─────────────────────────────────── */
     function validateStep2() {
       let ok = true;
-
       const name = document.getElementById('f-name').value.trim();
       const errName = document.getElementById('err-name');
       if (!name) {
@@ -695,11 +639,9 @@
         document.getElementById('f-name').classList.remove('invalid');
         errName.classList.remove('visible');
       }
-
       const email = document.getElementById('f-email').value.trim();
       const errEmail = document.getElementById('err-email');
-      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      if (!emailOk) {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         document.getElementById('f-email').classList.add('invalid');
         errEmail.classList.add('visible');
         ok = false;
@@ -707,17 +649,12 @@
         document.getElementById('f-email').classList.remove('invalid');
         errEmail.classList.remove('visible');
       }
-
       return ok;
     }
 
-    document.getElementById('btn-2-next').addEventListener('click', () => {
-      if (validateStep2()) goTo(3);
-    });
-
+    document.getElementById('btn-2-next').addEventListener('click', () => { if (validateStep2()) goTo(3); });
     document.getElementById('btn-2-back').addEventListener('click', () => goTo(1));
 
-    /* ─── File picker display ───────────────────────────────── */
     document.getElementById('f-file').addEventListener('change', function () {
       const name = this.files[0] ? this.files[0].name : '';
       document.getElementById('file-name-display').textContent = name;
@@ -725,7 +662,6 @@
       if (name) document.getElementById('err-media').classList.remove('visible');
     });
 
-    /* ─── Step 3 validation + submit ───────────────────────── */
     document.getElementById('btn-3-back').addEventListener('click', () => goTo(2));
 
     document.getElementById('btn-submit').addEventListener('click', async () => {
@@ -754,42 +690,34 @@
 
       if (!ok) return;
 
-      /* Populate hidden tier field */
       document.getElementById('f-tier').value = selectedTier;
 
       const btn = document.getElementById('btn-submit');
       btn.disabled = true;
       btn.textContent = 'Submitting…';
 
-      const form = document.createElement('form');
       const data = new FormData();
-      data.append('tier',        selectedTier);
-      data.append('name',        document.getElementById('f-name').value.trim());
-      data.append('email',       document.getElementById('f-email').value.trim());
-      data.append('instagram',   document.getElementById('f-ig').value.trim());
-      data.append('title',       title);
-      data.append('video_link',  document.getElementById('f-link').value.trim());
-      data.append('context',     document.getElementById('f-context').value.trim());
+      data.append('tier',       selectedTier);
+      data.append('name',       document.getElementById('f-name').value.trim());
+      data.append('email',      document.getElementById('f-email').value.trim());
+      data.append('instagram',  document.getElementById('f-ig').value.trim());
+      data.append('title',      title);
+      data.append('video_link', document.getElementById('f-link').value.trim());
+      data.append('context',    document.getElementById('f-context').value.trim());
       const fileInput = document.getElementById('f-file');
       if (fileInput.files[0]) data.append('video_file', fileInput.files[0]);
 
-      /* ── Replace YOUR_FORMSPREE_ID with your actual Formspree form ID ──
-         Sign up free at formspree.io → New Form → copy the ID from the endpoint URL */
-      const ENDPOINT = 'https://formspree.io/f/YOUR_FORMSPREE_ID';
-
       try {
-        const res = await fetch(ENDPOINT, {
+        const res = await fetch('https://formspree.io/f/xnjrnvqa', {
           method: 'POST',
           body: data,
           headers: { 'Accept': 'application/json' }
         });
-
         if (res.ok) {
-          /* All steps done — hide progress, show confirmation */
           document.getElementById('progress').style.display = 'none';
           goTo(4);
         } else {
-          throw new Error('Server error');
+          throw new Error();
         }
       } catch (_) {
         btn.disabled = false;
