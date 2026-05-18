@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Uploadcare widget — handles direct video uploads up to 5 GB -->
+  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -78,6 +80,8 @@
     }
     .site-back:hover { color: var(--gold-soft); }
 
+    /* ── Progress ─────────────────────────────────────────────── */
+
     .progress {
       display: flex;
       align-items: flex-start;
@@ -123,16 +127,15 @@
       transition: background 0.35s ease;
     }
 
-    .prog-step.active .prog-num  { border-color: var(--gold); color: var(--gold); }
+    .prog-step.active .prog-num   { border-color: var(--gold); color: var(--gold); }
     .prog-step.active .prog-label { color: var(--gold-dim); }
-    .prog-step.done   .prog-num  { background: var(--gold-dim); border-color: var(--gold-dim); color: var(--black); }
+    .prog-step.done   .prog-num   { background: var(--gold-dim); border-color: var(--gold-dim); color: var(--black); }
     .prog-step.done   .prog-label { color: var(--gold-dim); }
     .prog-line.done               { background: var(--gold-dim); }
 
-    .form-step {
-      display: none;
-      animation: stepIn 0.4s ease forwards;
-    }
+    /* ── Steps ────────────────────────────────────────────────── */
+
+    .form-step { display: none; animation: stepIn 0.4s ease forwards; }
     .form-step.active { display: block; }
 
     @keyframes stepIn {
@@ -168,6 +171,8 @@
       line-height: 1.6;
     }
 
+    /* ── Tier cards ───────────────────────────────────────────── */
+
     .tier-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -184,12 +189,8 @@
       transition: border-color 0.2s ease, background 0.2s ease;
       user-select: none;
     }
-
-    .tier-card:hover   { border-color: var(--gold-dim); }
-    .tier-card.selected {
-      border-color: var(--gold);
-      background: #1c1609;
-    }
+    .tier-card:hover    { border-color: var(--gold-dim); }
+    .tier-card.selected { border-color: var(--gold); background: #1c1609; }
 
     .tc-num {
       font-size: 9px;
@@ -216,24 +217,13 @@
       margin-bottom: 10px;
     }
 
-    .tc-divider {
-      width: 22px;
-      height: 1px;
-      background: var(--gold-dim);
-      margin-bottom: 10px;
-    }
+    .tc-divider { width: 22px; height: 1px; background: var(--gold-dim); margin-bottom: 10px; }
 
-    .tc-outcome {
-      font-size: 12px;
-      color: var(--muted);
-      font-style: italic;
-      line-height: 1.5;
-    }
+    .tc-outcome { font-size: 12px; color: var(--muted); font-style: italic; line-height: 1.5; }
 
-    .fields {
-      max-width: 520px;
-      margin: 0 auto;
-    }
+    /* ── Fields ───────────────────────────────────────────────── */
+
+    .fields { max-width: 520px; margin: 0 auto; }
 
     .field-group { margin-bottom: 26px; }
 
@@ -246,19 +236,9 @@
       margin-bottom: 9px;
     }
 
-    .optional {
-      color: var(--muted);
-      font-size: 9px;
-      letter-spacing: 0.08em;
-      text-transform: none;
-    }
+    .optional { color: var(--muted); font-size: 9px; letter-spacing: 0.08em; text-transform: none; }
 
-    .field-helper {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.55;
-      margin-bottom: 10px;
-    }
+    .field-helper { font-size: 12px; color: var(--muted); line-height: 1.55; margin-bottom: 10px; }
 
     .field-input,
     .field-textarea {
@@ -275,28 +255,16 @@
       transition: border-color 0.2s ease;
       -webkit-appearance: none;
     }
-
     .field-input::placeholder,
     .field-textarea::placeholder { color: rgba(136,136,128,0.45); }
-
     .field-input:focus,
-    .field-textarea:focus { border-color: var(--gold-dim); }
-
+    .field-textarea:focus  { border-color: var(--gold-dim); }
     .field-input.invalid,
     .field-textarea.invalid { border-color: var(--error); }
 
-    .field-textarea {
-      min-height: 110px;
-      resize: vertical;
-      line-height: 1.6;
-    }
+    .field-textarea { min-height: 110px; resize: vertical; line-height: 1.6; }
 
-    .field-error {
-      font-size: 11px;
-      color: var(--error);
-      margin-top: 6px;
-      display: none;
-    }
+    .field-error { font-size: 11px; color: var(--error); margin-top: 6px; display: none; }
     .field-error.visible { display: block; }
 
     .or-row {
@@ -307,36 +275,54 @@
     }
     .or-row::before,
     .or-row::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .or-row span {
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
+    .or-row span { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
 
-    .field-file-label {
+    /* ── Upload button (Uploadcare trigger) ───────────────────── */
+
+    .upload-btn {
       display: flex;
       align-items: center;
       gap: 14px;
+      width: 100%;
       background: var(--surface);
-      border: 1px dashed rgba(201,168,76,0.22);
+      border: 1px dashed rgba(201,168,76,0.25);
       border-radius: 2px;
-      padding: 14px 16px;
+      padding: 16px;
       cursor: pointer;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s ease;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      text-align: left;
     }
-    .field-file-label:hover { border-color: var(--gold-dim); }
-    .field-file-label span { font-size: 12px; color: var(--muted); }
-    .field-file-label .file-icon { font-size: 16px; color: var(--gold-dim); flex-shrink: 0; }
+    .upload-btn:hover       { border-color: var(--gold-dim); }
+    .upload-btn.uploading   { border-color: var(--gold-dim); border-style: solid; cursor: wait; }
+    .upload-btn.done        { border-color: var(--gold); border-style: solid; }
 
-    input[type="file"] { display: none; }
+    .upload-icon { font-size: 18px; color: var(--gold-dim); flex-shrink: 0; line-height: 1; }
 
-    .file-name {
-      font-size: 12px;
-      color: var(--gold-dim);
-      margin-top: 8px;
-      min-height: 18px;
+    .upload-btn-inner { display: flex; flex-direction: column; gap: 3px; }
+    .upload-btn-main  { font-size: 13px; color: var(--muted); transition: color 0.2s; }
+    .upload-btn.done .upload-btn-main { color: var(--gold-soft); }
+    .upload-btn-sub   { font-size: 11px; color: rgba(136,136,128,0.5); }
+
+    .upload-progress {
+      margin-top: 10px;
+      height: 2px;
+      background: rgba(201,168,76,0.12);
+      border-radius: 1px;
+      overflow: hidden;
+      display: none;
     }
+    .upload-progress.visible { display: block; }
+    .upload-progress-bar {
+      height: 100%;
+      background: var(--gold-dim);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* ── Navigation ───────────────────────────────────────────── */
 
     .step-nav {
       display: flex;
@@ -347,7 +333,6 @@
       margin-left: auto;
       margin-right: auto;
     }
-
     .step-nav.center-nav { justify-content: center; }
 
     .cta-btn {
@@ -387,6 +372,8 @@
     }
     .back-btn:hover { color: var(--gold-soft); }
 
+    /* ── Confirmation ─────────────────────────────────────────── */
+
     .confirmation {
       text-align: center;
       padding: 48px 0 24px;
@@ -412,24 +399,17 @@
 
     .confirm-divider { width: 36px; height: 1px; background: var(--gold-dim); }
 
-    .confirm-body {
-      font-size: 16px;
-      line-height: 1.8;
-      color: var(--muted);
-    }
+    .confirm-body { font-size: 16px; line-height: 1.8; color: var(--muted); }
 
-    .confirm-note {
-      font-size: 11px;
-      color: var(--gold-dim);
-      letter-spacing: 0.07em;
-    }
+    .confirm-note { font-size: 11px; color: var(--gold-dim); letter-spacing: 0.07em; }
+
+    /* ── Responsive ───────────────────────────────────────────── */
 
     @media (max-width: 660px) {
       .tier-grid { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
       .apply-wrap { padding: 36px 20px 80px; }
       .prog-line { width: 36px; }
     }
-
     @media (max-width: 400px) {
       .prog-line { width: 20px; }
       .prog-label { font-size: 7.5px; }
@@ -461,7 +441,7 @@
       </div>
     </div>
 
-    <!-- Step 1: Tier Selection -->
+    <!-- ── Step 1: Tier Selection ── -->
     <div class="form-step active" id="step-1">
       <p class="step-eyebrow">S.T.A.R.R. Analysis</p>
       <h1 class="form-heading">Choose your <em>tier</em></h1>
@@ -496,7 +476,7 @@
       </div>
     </div>
 
-    <!-- Step 2: Contact Info -->
+    <!-- ── Step 2: Contact Info ── -->
     <div class="form-step" id="step-2">
       <p class="step-eyebrow">Step 2 of 3</p>
       <h2 class="form-heading">Your <em>details</em></h2>
@@ -505,17 +485,17 @@
       <div class="fields">
         <div class="field-group">
           <label class="field-label" for="f-name">Full Name *</label>
-          <input class="field-input" type="text" id="f-name" name="name" autocomplete="name" placeholder="Your full name" />
+          <input class="field-input" type="text" id="f-name" autocomplete="name" placeholder="Your full name" />
           <div class="field-error" id="err-name">Please enter your name.</div>
         </div>
         <div class="field-group">
           <label class="field-label" for="f-email">Email Address *</label>
-          <input class="field-input" type="email" id="f-email" name="email" autocomplete="email" placeholder="you@example.com" />
+          <input class="field-input" type="email" id="f-email" autocomplete="email" placeholder="you@example.com" />
           <div class="field-error" id="err-email">Please enter a valid email address.</div>
         </div>
         <div class="field-group">
           <label class="field-label" for="f-ig">Instagram Handle <span class="optional">(optional)</span></label>
-          <input class="field-input" type="text" id="f-ig" name="instagram" placeholder="@handle" />
+          <input class="field-input" type="text" id="f-ig" placeholder="@handle" />
         </div>
       </div>
 
@@ -525,40 +505,49 @@
       </div>
     </div>
 
-    <!-- Step 3: Performance Submission -->
+    <!-- ── Step 3: Performance Submission ── -->
     <div class="form-step" id="step-3">
       <p class="step-eyebrow">Step 3 of 3</p>
       <h2 class="form-heading">Your <em>performance</em></h2>
       <p class="form-sub">Submit the piece you want scored.</p>
 
       <div class="fields">
+
         <div class="field-group">
           <label class="field-label" for="f-title">Performance Title *</label>
-          <input class="field-input" type="text" id="f-title" name="title" placeholder="Name of your piece" />
+          <input class="field-input" type="text" id="f-title" placeholder="Name of your piece" />
           <div class="field-error" id="err-title">Please enter your performance title.</div>
         </div>
+
         <div class="field-group">
           <label class="field-label" for="f-link">Video Link</label>
           <p class="field-helper">YouTube, Google Drive, or Dropbox. Set sharing to "Anyone with the link can view."</p>
-          <input class="field-input" type="url" id="f-link" name="video_link" placeholder="https://..." />
+          <input class="field-input" type="url" id="f-link" placeholder="https://..." />
         </div>
-        <div class="or-row"><span>or</span></div>
+
+        <div class="or-row"><span>or upload directly</span></div>
+
         <div class="field-group">
-          <label class="field-label">Upload Video <span class="optional">(max 100 MB)</span></label>
-          <label class="field-file-label" for="f-file">
-            <span class="file-icon">↑</span>
-            <span id="file-label-text">Choose file — MP4 preferred</span>
-          </label>
-          <input type="file" id="f-file" name="video_file" accept="video/*" />
-          <div class="file-name" id="file-name-display"></div>
+          <label class="field-label">Upload Video <span class="optional">(up to 500 MB · MP4 preferred)</span></label>
+          <button type="button" class="upload-btn" id="uc-trigger" aria-label="Upload video file">
+            <span class="upload-icon">↑</span>
+            <span class="upload-btn-inner">
+              <span class="upload-btn-main" id="upload-btn-main">Choose file or drag &amp; drop</span>
+              <span class="upload-btn-sub" id="upload-btn-sub">MP4, MOV, or any video format</span>
+            </span>
+          </button>
+          <div class="upload-progress" id="upload-progress">
+            <div class="upload-progress-bar" id="upload-progress-bar"></div>
+          </div>
           <div class="field-error" id="err-media">Please provide a video link or upload a file.</div>
         </div>
+
         <div class="field-group">
           <label class="field-label" for="f-context">Anything the coach should know <span class="optional">(optional)</span></label>
           <p class="field-helper">Goals, context, specific areas you want focused on.</p>
-          <textarea class="field-textarea" id="f-context" name="context" placeholder="e.g. I freeze up in the second verse and tend to drop eye contact..."></textarea>
+          <textarea class="field-textarea" id="f-context" placeholder="e.g. I freeze up in the second verse and tend to drop eye contact..."></textarea>
         </div>
-        <input type="hidden" id="f-tier" name="tier" />
+
       </div>
 
       <div class="step-nav">
@@ -571,7 +560,7 @@
       </div>
     </div>
 
-    <!-- Step 4: Confirmation -->
+    <!-- ── Step 4: Confirmation ── -->
     <div class="form-step" id="step-4">
       <div class="confirmation">
         <div class="confirm-star">★</div>
@@ -589,15 +578,23 @@
   </div>
 
   <script>
-    let currentStep = 1;
-    let selectedTier = '';
+    /* ─── Replace with your Uploadcare public key ───────────────
+       Sign up free at uploadcare.com → Dashboard → API keys → Public key */
+    var UC_PUBLIC_KEY = 'YOUR_UPLOADCARE_PUBLIC_KEY';
 
+    /* ─── State ─────────────────────────────────────────────── */
+    var currentStep  = 1;
+    var selectedTier = '';
+    var videoFileUrl = '';   // set by Uploadcare on successful upload
+    var isUploading  = false;
+
+    /* ─── Progress ──────────────────────────────────────────── */
     function setProgress(active) {
-      document.querySelectorAll('.prog-step').forEach((el, i) => {
+      document.querySelectorAll('.prog-step').forEach(function(el, i) {
         el.classList.toggle('active', i + 1 === active);
         el.classList.toggle('done',   i + 1 < active);
       });
-      document.querySelectorAll('.prog-line').forEach((el, i) => {
+      document.querySelectorAll('.prog-line').forEach(function(el, i) {
         el.classList.toggle('done', i < active - 1);
       });
     }
@@ -610,9 +607,10 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    document.querySelectorAll('.tier-card').forEach(card => {
+    /* ─── Tier cards ────────────────────────────────────────── */
+    document.querySelectorAll('.tier-card').forEach(function(card) {
       function select() {
-        document.querySelectorAll('.tier-card').forEach(c => {
+        document.querySelectorAll('.tier-card').forEach(function(c) {
           c.classList.remove('selected');
           c.setAttribute('aria-checked', 'false');
         });
@@ -622,93 +620,132 @@
         document.getElementById('btn-1-next').disabled = false;
       }
       card.addEventListener('click', select);
-      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(); } });
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(); }
+      });
     });
 
-    document.getElementById('btn-1-next').addEventListener('click', () => { if (selectedTier) goTo(2); });
+    document.getElementById('btn-1-next').addEventListener('click', function() {
+      if (selectedTier) goTo(2);
+    });
 
+    /* ─── Step 2 validation ─────────────────────────────────── */
     function validateStep2() {
-      let ok = true;
-      const name = document.getElementById('f-name').value.trim();
-      const errName = document.getElementById('err-name');
+      var ok = true;
+      var name = document.getElementById('f-name').value.trim();
       if (!name) {
         document.getElementById('f-name').classList.add('invalid');
-        errName.classList.add('visible');
+        document.getElementById('err-name').classList.add('visible');
         ok = false;
       } else {
         document.getElementById('f-name').classList.remove('invalid');
-        errName.classList.remove('visible');
+        document.getElementById('err-name').classList.remove('visible');
       }
-      const email = document.getElementById('f-email').value.trim();
-      const errEmail = document.getElementById('err-email');
+      var email = document.getElementById('f-email').value.trim();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         document.getElementById('f-email').classList.add('invalid');
-        errEmail.classList.add('visible');
+        document.getElementById('err-email').classList.add('visible');
         ok = false;
       } else {
         document.getElementById('f-email').classList.remove('invalid');
-        errEmail.classList.remove('visible');
+        document.getElementById('err-email').classList.remove('visible');
       }
       return ok;
     }
 
-    document.getElementById('btn-2-next').addEventListener('click', () => { if (validateStep2()) goTo(3); });
-    document.getElementById('btn-2-back').addEventListener('click', () => goTo(1));
+    document.getElementById('btn-2-next').addEventListener('click', function() { if (validateStep2()) goTo(3); });
+    document.getElementById('btn-2-back').addEventListener('click', function() { goTo(1); });
+    document.getElementById('btn-3-back').addEventListener('click', function() { goTo(2); });
 
-    document.getElementById('f-file').addEventListener('change', function () {
-      const name = this.files[0] ? this.files[0].name : '';
-      document.getElementById('file-name-display').textContent = name;
-      document.getElementById('file-label-text').textContent = name || 'Choose file — MP4 preferred';
-      if (name) document.getElementById('err-media').classList.remove('visible');
+    /* ─── Uploadcare ────────────────────────────────────────── */
+    document.getElementById('uc-trigger').addEventListener('click', function() {
+      if (isUploading) return;
+
+      var dialog = uploadcare.openDialog(null, {
+        publicKey:      UC_PUBLIC_KEY,
+        imagesOnly:     false,
+        tabs:           'file camera',
+        preferredTypes: 'video/*',
+        inputAcceptTypes: 'video/*'
+      });
+
+      dialog.done(function(file) {
+        /* Show indeterminate progress while waiting for CDN processing */
+        isUploading = true;
+        var btn = document.getElementById('uc-trigger');
+        btn.classList.add('uploading');
+        document.getElementById('upload-btn-main').textContent = 'Uploading…';
+        document.getElementById('upload-btn-sub').textContent  = 'Please keep this page open';
+        var bar = document.getElementById('upload-progress-bar');
+        document.getElementById('upload-progress').classList.add('visible');
+
+        file.progress(function(info) {
+          bar.style.width = Math.round(info.progress * 100) + '%';
+        });
+
+        file.promise()
+          .done(function(fileInfo) {
+            isUploading  = false;
+            videoFileUrl = fileInfo.cdnUrl;
+            btn.classList.remove('uploading');
+            btn.classList.add('done');
+            document.getElementById('upload-btn-main').textContent = '✓ ' + (fileInfo.name || 'File ready');
+            document.getElementById('upload-btn-sub').textContent  = 'Upload complete';
+            bar.style.width = '100%';
+            document.getElementById('err-media').classList.remove('visible');
+          })
+          .fail(function() {
+            isUploading = false;
+            btn.classList.remove('uploading');
+            document.getElementById('upload-btn-main').textContent = 'Upload failed — try again';
+            document.getElementById('upload-btn-sub').textContent  = 'MP4, MOV, or any video format';
+            document.getElementById('upload-progress').classList.remove('visible');
+          });
+      });
     });
 
-    document.getElementById('btn-3-back').addEventListener('click', () => goTo(2));
+    /* ─── Submit ────────────────────────────────────────────── */
+    document.getElementById('btn-submit').addEventListener('click', async function() {
+      if (isUploading) return;
 
-    document.getElementById('btn-submit').addEventListener('click', async () => {
-      let ok = true;
-
-      const title = document.getElementById('f-title').value.trim();
-      const errTitle = document.getElementById('err-title');
+      var ok = true;
+      var title = document.getElementById('f-title').value.trim();
       if (!title) {
         document.getElementById('f-title').classList.add('invalid');
-        errTitle.classList.add('visible');
+        document.getElementById('err-title').classList.add('visible');
         ok = false;
       } else {
         document.getElementById('f-title').classList.remove('invalid');
-        errTitle.classList.remove('visible');
+        document.getElementById('err-title').classList.remove('visible');
       }
 
-      const hasLink = document.getElementById('f-link').value.trim().length > 0;
-      const hasFile = document.getElementById('f-file').files.length > 0;
-      const errMedia = document.getElementById('err-media');
+      var hasLink = document.getElementById('f-link').value.trim().length > 0;
+      var hasFile = videoFileUrl.length > 0;
       if (!hasLink && !hasFile) {
-        errMedia.classList.add('visible');
+        document.getElementById('err-media').classList.add('visible');
         ok = false;
       } else {
-        errMedia.classList.remove('visible');
+        document.getElementById('err-media').classList.remove('visible');
       }
 
       if (!ok) return;
 
-      document.getElementById('f-tier').value = selectedTier;
-
-      const btn = document.getElementById('btn-submit');
+      var btn = document.getElementById('btn-submit');
       btn.disabled = true;
       btn.textContent = 'Submitting…';
 
-      const data = new FormData();
-      data.append('tier',       selectedTier);
-      data.append('name',       document.getElementById('f-name').value.trim());
-      data.append('email',      document.getElementById('f-email').value.trim());
-      data.append('instagram',  document.getElementById('f-ig').value.trim());
-      data.append('title',      title);
-      data.append('video_link', document.getElementById('f-link').value.trim());
-      data.append('context',    document.getElementById('f-context').value.trim());
-      const fileInput = document.getElementById('f-file');
-      if (fileInput.files[0]) data.append('video_file', fileInput.files[0]);
+      var data = new FormData();
+      data.append('tier',           selectedTier);
+      data.append('name',           document.getElementById('f-name').value.trim());
+      data.append('email',          document.getElementById('f-email').value.trim());
+      data.append('instagram',      document.getElementById('f-ig').value.trim());
+      data.append('title',          title);
+      data.append('video_link',     document.getElementById('f-link').value.trim());
+      data.append('video_file_url', videoFileUrl);
+      data.append('context',        document.getElementById('f-context').value.trim());
 
       try {
-        const res = await fetch('https://formspree.io/f/xnjrnvqa', {
+        var res = await fetch('https://formspree.io/f/xnjrnvqa', {
           method: 'POST',
           body: data,
           headers: { 'Accept': 'application/json' }
@@ -719,7 +756,7 @@
         } else {
           throw new Error();
         }
-      } catch (_) {
+      } catch(_) {
         btn.disabled = false;
         btn.textContent = 'Submit →';
         document.getElementById('submit-error').style.display = 'block';
