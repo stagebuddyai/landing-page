@@ -55,8 +55,6 @@
       z-index: 0;
     }
 
-    /* ── Layout ───────────────────────────────────────────────── */
-
     .pay-wrap {
       position: relative;
       z-index: 1;
@@ -82,8 +80,6 @@
       transition: color 0.2s;
     }
     .site-back:hover { color: var(--gold-soft); }
-
-    /* ── Header ───────────────────────────────────────────────── */
 
     .pay-eyebrow {
       font-size: 10px;
@@ -113,8 +109,6 @@
       max-width: 420px;
       margin-bottom: 52px;
     }
-
-    /* ── Payment cards ────────────────────────────────────────── */
 
     .pay-stack {
       width: 100%;
@@ -210,8 +204,6 @@
     }
     .pay-btn:active { transform: translateY(0); }
 
-    /* ── Footer note ──────────────────────────────────────────── */
-
     .pay-note {
       font-size: 11px;
       color: var(--gold-dim);
@@ -226,14 +218,12 @@
     }
     .pay-note a:hover { color: var(--gold-soft); }
 
-    /* ── Responsive ───────────────────────────────────────────── */
-
     @media (max-width: 480px) {
-      .pay-wrap { padding: 36px 20px 60px; }
+      .pay-wrap  { padding: 36px 20px 60px; }
       .pay-card  { padding: 24px 20px 20px; }
       .pay-card-top { flex-direction: column; gap: 8px; }
       .pay-card-price { font-size: 30px; }
-      .pay-btn { padding: 20px 24px; font-size: 13px; }
+      .pay-btn   { padding: 20px 24px; font-size: 13px; }
     }
   </style>
 </head>
@@ -251,7 +241,6 @@
 
     <div class="pay-stack">
 
-      <!-- Tier 1 -->
       <div class="pay-card">
         <div class="pay-card-top">
           <div class="pay-card-left">
@@ -262,10 +251,9 @@
         </div>
         <div class="pay-card-divider"></div>
         <p class="pay-card-outcome">Diagnosis. Know exactly where you stand.</p>
-        <a class="pay-btn" href="STRIPE_LINK_TIER_1">Pay $95 &rarr;</a>
+        <a class="pay-btn" href="https://buy.stripe.com/28E8wP2lZ9ZT887dmu1sQ0e">Pay $95 &rarr;</a>
       </div>
 
-      <!-- Tier 2 -->
       <div class="pay-card">
         <div class="pay-card-top">
           <div class="pay-card-left">
@@ -276,10 +264,9 @@
         </div>
         <div class="pay-card-divider"></div>
         <p class="pay-card-outcome">Targeted improvement. Fix what's costing you the room.</p>
-        <a class="pay-btn" href="STRIPE_LINK_TIER_2">Pay $195 &rarr;</a>
+        <a class="pay-btn" href="https://buy.stripe.com/5kQ5kDf8Lc814VVaai1sQ0f">Pay $195 &rarr;</a>
       </div>
 
-      <!-- Tier 3 -->
       <div class="pay-card">
         <div class="pay-card-top">
           <div class="pay-card-left">
@@ -290,7 +277,7 @@
         </div>
         <div class="pay-card-divider"></div>
         <p class="pay-card-outcome">Execution. Walk on stage different.</p>
-        <a class="pay-btn" href="STRIPE_LINK_TIER_3">Pay $450 &rarr;</a>
+        <a class="pay-btn" href="https://buy.stripe.com/7sY3cv4u71tn4VV82a1sQ0g">Pay $450 &rarr;</a>
       </div>
 
     </div>
