@@ -973,9 +973,11 @@
       var pieceLenEl   = document.querySelector('input[name="piece_length"]:checked');
 
       var data = new FormData();
+      var submitterEmail = document.getElementById('f-email').value.trim();
+      data.append('_replyto',       submitterEmail);
       data.append('tier',           selectedTier);
       data.append('name',           document.getElementById('f-name').value.trim());
-      data.append('email',          document.getElementById('f-email').value.trim());
+      data.append('email',          submitterEmail);
       data.append('instagram',      document.getElementById('f-ig').value.trim());
       data.append('title',          title);
       data.append('video_link',     document.getElementById('f-link').value.trim());
