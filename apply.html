@@ -227,14 +227,15 @@
 
     .field-label {
       display: block;
-      font-size: 10px;
-      letter-spacing: 0.2em;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--gold-dim);
+      color: var(--gold);
       margin-bottom: 9px;
     }
 
-    .optional { color: var(--muted); font-size: 9px; letter-spacing: 0.08em; text-transform: none; }
+    .optional { color: var(--muted); font-size: 9px; letter-spacing: 0.08em; text-transform: none; font-weight: 300; }
 
     .field-helper { font-size: 12px; color: var(--muted); line-height: 1.55; margin-bottom: 10px; }
 
@@ -621,7 +622,6 @@
           <div class="field-error" id="err-media">Please provide a video link or upload a file.</div>
         </div>
 
-        <!-- ── Performance context questions ── -->
         <div class="field-section-rule"></div>
 
         <div class="field-group">
@@ -811,7 +811,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    /* ── Tier cards ─────────────────────────────────────────── */
     document.querySelectorAll('.tier-card').forEach(function(card) {
       function select() {
         document.querySelectorAll('.tier-card').forEach(function(c) {
@@ -833,7 +832,6 @@
       if (selectedTier) goTo(2);
     });
 
-    /* ── Step 2 validation ──────────────────────────────────── */
     function validateStep2() {
       var ok = true;
       var name = document.getElementById('f-name').value.trim();
@@ -861,7 +859,6 @@
     document.getElementById('btn-2-back').addEventListener('click', function() { goTo(1); });
     document.getElementById('btn-3-back').addEventListener('click', function() { goTo(2); });
 
-    /* ── Uploadcare ─────────────────────────────────────────── */
     document.getElementById('uc-trigger').addEventListener('click', function() {
       if (isUploading) return;
       var dialog = uploadcare.openDialog(null, {
@@ -903,7 +900,6 @@
       });
     });
 
-    /* ── Submit ─────────────────────────────────────────────── */
     document.getElementById('btn-submit').addEventListener('click', async function() {
       if (isUploading) return;
 
@@ -970,12 +966,9 @@
       btn.disabled = true;
       btn.textContent = 'Submitting…';
 
-      /* Collect checkbox values as comma-separated string */
       var focusValues = Array.from(focusChecked).map(function(el) { return el.value; }).join(', ');
-
-      /* Optional radio values */
-      var experienceEl  = document.querySelector('input[name="experience"]:checked');
-      var pieceLenEl    = document.querySelector('input[name="piece_length"]:checked');
+      var experienceEl = document.querySelector('input[name="experience"]:checked');
+      var pieceLenEl   = document.querySelector('input[name="piece_length"]:checked');
 
       var data = new FormData();
       data.append('tier',           selectedTier);
@@ -989,8 +982,8 @@
       data.append('perf_type',      perfType.value);
       data.append('goal',           goal);
       data.append('feedback_focus', focusValues);
-      data.append('experience',     experienceEl  ? experienceEl.value  : '');
-      data.append('piece_length',   pieceLenEl    ? pieceLenEl.value    : '');
+      data.append('experience',     experienceEl ? experienceEl.value : '');
+      data.append('piece_length',   pieceLenEl   ? pieceLenEl.value   : '');
       data.append('context',        document.getElementById('f-context').value.trim());
 
       try {
