@@ -65,19 +65,21 @@
       padding: 44px 28px 100px;
     }
 
-    .site-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      text-decoration: none;
+    .site-logo {
+      display: block;
+      text-align: center;
       margin-bottom: 44px;
-      transition: color 0.2s;
+      text-decoration: none;
     }
-    .site-back:hover { color: var(--gold-soft); }
+    .site-logo img {
+      width: 140px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      opacity: 0.92;
+      transition: opacity 0.2s;
+    }
+    .site-logo:hover img { opacity: 1; }
 
     /* ── Progress ─────────────────────────────────────────────── */
 
@@ -502,7 +504,7 @@
 
   <div class="apply-wrap">
 
-    <a href="/" class="site-back">← Stage Buddy</a>
+    <a href="/" class="site-logo"><img src="/logo.png" alt="Stage Buddy" /></a>
 
     <div class="progress" id="progress">
       <div class="prog-step active" data-step="1">
@@ -659,7 +661,7 @@
 
         <div class="field-group">
           <label class="field-label" for="f-goal">What's the goal for this piece? *</label>
-          <input class="field-input" type="text" id="f-goal" placeholder="e.g. Win the slam, land a feature, improve stage presence…" />
+          <input class="field-input" type="text" id="f-goal" />
           <div class="field-error" id="err-goal">Please share your goal for this piece.</div>
         </div>
 
@@ -753,7 +755,7 @@
         <div class="field-group">
           <label class="field-label" for="f-context">Anything the coach should know <span class="optional">(optional)</span></label>
           <p class="field-helper">Goals, context, specific areas you want focused on.</p>
-          <textarea class="field-textarea" id="f-context" placeholder="e.g. I freeze up in the second verse and tend to drop eye contact..."></textarea>
+          <textarea class="field-textarea" id="f-context"></textarea>
         </div>
 
       </div>
