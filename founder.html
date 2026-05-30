@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B Rockstar — Founder · Stage Buddy</title>
+  <meta name="description" content="Meet the founder of Stage Buddy. B Rockstar — spoken word artist, coach, and creator of the S.T.A.R.R. framework. Available for features, keynotes, and corporate events nationwide." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:      #0a0a0a;
+      --surface:    #161616;
+      --gold:       #c9a84c;
+      --gold-soft:  #e2c27d;
+      --gold-dim:   #7a6030;
+      --white:      #f4f0e8;
+      --muted:      #888880;
+      --border:     rgba(201,168,76,0.18);
+      --error:      #c97a6a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    .glow-top {
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Layout ──────────────────────────────────────────────────── */
+
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 28px 100px;
+    }
+
+    /* ── Logo / site nav ─────────────────────────────────────────── */
+
+    .site-logo {
+      display: block;
+      text-align: center;
+      padding: 44px 0 52px;
+      text-decoration: none;
+    }
+    .site-logo img {
+      width: 130px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+    .site-logo:hover img { opacity: 1; }
+
+    /* ── Shared section primitives ───────────────────────────────── */
+
+    .section-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 0 0 60px;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5.5vw, 42px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.15;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .section-heading em { font-style: italic; color: var(--gold-soft); }
+
+    .section-sub {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto 48px;
+    }
+
+    .gold-rule {
+      width: 36px;
+      height: 1px;
+      background: var(--gold-dim);
+      margin: 24px auto 36px;
+    }
+
+    /* ── SECTION 1: Founder Header ───────────────────────────────── */
+
+    .founder-header {
+      text-align: center;
+      padding-bottom: 64px;
+    }
+
+    .founder-company {
+      font-size: 10px;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 18px;
+    }
+
+    .founder-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(44px, 10vw, 76px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .founder-name em { font-style: italic; color: var(--gold-soft); }
+
+    /* PLACEHOLDER: replace the tagline below with final copy */
+    .founder-tagline {
+      font-size: 16px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+
+    .cred-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .cred-pill {
+      font-size: 9.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 5px 12px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    /* ── SECTION 2: Founder Message ──────────────────────────────── */
+
+    .founder-message {
+      padding-bottom: 64px;
+    }
+
+    /* Tone direction: personal, storytelling, first person.
+       This is not a bio. It is a brief narrative about the problem
+       Stage Buddy solves and why B Rockstar was the one to build it. */
+    .message-body {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .message-body p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: rgba(244,240,232,0.72);
+      margin-bottom: 22px;
+    }
+    .message-body p:last-child { margin-bottom: 0; }
+
+    .message-body p.placeholder-note {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      border: 1px dashed rgba(201,168,76,0.2);
+      border-radius: 2px;
+      padding: 16px 20px;
+      font-style: normal;
+      line-height: 1.6;
+    }
+
+    /* ── SECTION 3: Performance Video ───────────────────────────── */
+
+    .video-section {
+      padding-bottom: 64px;
+    }
+
+    .video-outer {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Responsive 16:9 wrapper */
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 2px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    /* Placeholder shown until iframe URL is filled in */
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+    .video-placeholder-icon {
+      width: 56px;
+      height: 56px;
+      border: 1.5px solid var(--gold-dim);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--gold);
+    }
+    .video-placeholder-label {
+      font-size: 10px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    /* ── SECTION 4: Booking ──────────────────────────────────────── */
+
+    .booking-section {
+      padding-bottom: 64px;
+    }
+
+    .booking-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 40px 36px 44px;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .booking-card .section-heading { text-align: left; }
+    .booking-card .section-sub     { text-align: left; margin: 0 0 36px; }
+
+    .booking-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      margin-bottom: 36px;
+    }
+    .booking-list li {
+      font-size: 14px;
+      color: rgba(244,240,232,0.65);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .booking-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold-dim);
+      font-size: 11px;
+      top: 1px;
+    }
+
+    .rate-card-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .rate-card-label {
+      flex: 1;
+    }
+    .rate-card-label p {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 4px;
+    }
+    .rate-card-label span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Ghost download button */
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: transparent;
+      border: 1px solid var(--gold-dim);
+      color: var(--gold);
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 13px 24px;
+      border-radius: 2px;
+      white-space: nowrap;
+      transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+      flex-shrink: 0;
+    }
+    .download-btn:hover {
+      border-color: var(--gold);
+      color: var(--black);
+      background: var(--gold);
+    }
+    .download-btn-icon { font-size: 13px; line-height: 1; }
+
+    /* ── SECTION 5: Booking Inquiry Form ─────────────────────────── */
+
+    .inquiry-section {
+      padding-bottom: 40px;
+    }
+
+    .inquiry-inner {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .field-group { margin-bottom: 24px; }
+
+    .field-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 9px;
+    }
+
+    .optional {
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: none;
+      font-weight: 300;
+    }
+
+    .field-input,
+    .field-select,
+    .field-textarea {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      padding: 13px 15px;
+      outline: none;
+      transition: border-color 0.2s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .field-input::placeholder,
+    .field-textarea::placeholder { color: rgba(136,136,128,0.4); }
+    .field-input:focus,
+    .field-select:focus,
+    .field-textarea:focus { border-color: var(--gold-dim); }
+    .field-input.invalid,
+    .field-select.invalid,
+    .field-textarea.invalid { border-color: var(--error); }
+
+    /* Custom dropdown arrow */
+    .select-wrap {
+      position: relative;
+    }
+    .select-wrap::after {
+      content: '▾';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold-dim);
+      font-size: 13px;
+      pointer-events: none;
+    }
+    .field-select { cursor: pointer; padding-right: 36px; }
+    .field-select option { background: var(--surface); color: var(--white); }
+
+    .field-textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
+
+    .field-error { font-size: 11px; color: var(--error); margin-top: 6px; display: none; }
+    .field-error.visible { display: block; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* Primary CTA button */
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease, opacity 0.2s;
+    }
+    .cta-btn:hover:not(:disabled) {
+      background: var(--gold-soft);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px rgba(201,168,76,0.22);
+    }
+    .cta-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .form-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    .direct-contact {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .direct-contact a {
+      color: var(--gold-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .direct-contact a:hover { color: var(--gold-soft); }
+
+    .form-success {
+      background: var(--surface);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 2px;
+      padding: 28px 24px;
+      text-align: center;
+      display: none;
+    }
+    .form-success.visible { display: block; }
+    .form-success p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .form-success strong { color: var(--gold); }
+
+    .submit-error {
+      font-size: 12px;
+      color: var(--error);
+      margin-top: 14px;
+      display: none;
+    }
+    .submit-error.visible { display: block; }
+
+    /* ── Footer ──────────────────────────────────────────────────── */
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 28px 36px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .site-footer p {
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.18);
+    }
+    .site-footer a {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--gold-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .site-footer a:hover { color: var(--gold-soft); }
+
+    /* ── Responsive ──────────────────────────────────────────────── */
+
+    @media (max-width: 600px) {
+      .page-wrap { padding: 0 20px 80px; }
+      .booking-card { padding: 28px 22px 32px; }
+      .rate-card-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .download-btn { width: 100%; justify-content: center; }
+      .two-col { grid-template-columns: 1fr; gap: 0; }
+      .form-footer-row { flex-direction: column; align-items: flex-start; }
+      .cred-pill { font-size: 8.5px; }
+    }
+    @media (max-width: 400px) {
+      .founder-name { font-size: 38px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-top"></div>
+
+  <div class="page-wrap">
+
+    <!-- Site Logo / Back to Home -->
+    <a href="/" class="site-logo">
+      <img src="/logo.png" alt="Stage Buddy" />
+    </a>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 1: FOUNDER HEADER
+    ══════════════════════════════════════════════════════════ -->
+    <header class="founder-header">
+
+      <p class="founder-company">B Rock &amp; Co</p>
+
+      <h1 class="founder-name">B <em>Rockstar</em></h1>
+
+      <!-- PLACEHOLDER: Replace with final tagline -->
+      <p class="founder-tagline">[TAGLINE — REPLACE]</p>
+
+      <div class="gold-rule"></div>
+
+      <!-- Credential bar -->
+      <div class="cred-bar">
+        <span class="cred-pill">16+ Years</span>
+        <span class="cred-pill">22 States</span>
+        <span class="cred-pill">CBS</span>
+        <span class="cred-pill">PBS</span>
+        <span class="cred-pill">V103</span>
+        <span class="cred-pill">Black Enterprise</span>
+        <span class="cred-pill">National Black Theater Festival</span>
+      </div>
+
+    </header>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 2: FOUNDER MESSAGE
+         Tone: personal, storytelling, first person.
+         This is NOT a bio. It is a brief narrative about the problem
+         Stage Buddy solves and why B Rockstar was the one to build it.
+    ══════════════════════════════════════════════════════════ -->
+    <section class="founder-message">
+      <div class="section-rule"></div>
+
+      <p class="eyebrow">The Story</p>
+      <h2 class="section-heading">Why I Built <em>Stage Buddy</em></h2>
+      <div class="gold-rule"></div>
+
+      <div class="message-body">
+
+        <!-- PLACEHOLDER: Replace all three paragraphs below with final founder message copy -->
+        <p class="placeholder-note">
+          [FOUNDER MESSAGE — REPLACE WITH FINAL COPY]<br /><br />
+          Guidance: Write in first person. Share what you saw happening to performers that no one was addressing. Explain the moment you realized a scoring framework could change how artists understood their own work. Keep it under 300 words. This is a story, not a résumé.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 3: PERFORMANCE VIDEO
+         PLACEHOLDER: Replace src="" with final YouTube embed URL
+         Format: https://www.youtube.com/embed/VIDEO_ID
+    ══════════════════════════════════════════════════════════ -->
+    <section class="video-section">
+      <div class="section-rule"></div>
+
+      <p class="eyebrow">Watch Her Perform</p>
+      <h2 class="section-heading">See the <em>stage</em></h2>
+      <div class="gold-rule" style="margin-bottom: 40px;"></div>
+
+      <div class="video-outer">
+        <div class="video-wrap">
+          <!-- PLACEHOLDER: Replace src value with YouTube embed URL before going live -->
+          <!-- Example: src="https://www.youtube.com/embed/YOUR_VIDEO_ID" -->
+          <div class="video-placeholder">
+            <div class="video-placeholder-icon">▶</div>
+            <span class="video-placeholder-label">[YouTube Performance Video — Replace with Embed URL]</span>
+          </div>
+          <!-- Uncomment and fill in when ready:
+          <iframe
+            src="https://www.youtube.com/embed/[VIDEO_ID_HERE]"
+            title="B Rockstar — Live Performance"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+          -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 4: BOOKING
+    ══════════════════════════════════════════════════════════ -->
+    <section class="booking-section">
+      <div class="section-rule"></div>
+
+      <p class="eyebrow">Bookings &amp; Rates</p>
+
+      <div class="booking-card">
+
+        <h2 class="section-heading" style="text-align:left;margin-bottom:8px;">Book <em>B Rockstar</em></h2>
+        <p class="section-sub" style="text-align:left;margin-bottom:28px;">
+          Available for features, keynotes, full shows, corporate events, and workshop facilitation — nationwide.
+        </p>
+
+        <div class="gold-rule" style="margin: 0 0 28px;"></div>
+
+        <ul class="booking-list">
+          <li>Feature sets and headline performances</li>
+          <li>Keynote speaking &amp; motivational presentations</li>
+          <li>Full evening shows</li>
+          <li>Corporate events and brand activations</li>
+          <li>Spoken word &amp; performance workshop facilitation</li>
+        </ul>
+
+        <div class="rate-card-row">
+          <div class="rate-card-label">
+            <p>Rate Card</p>
+            <span>Full pricing, availability &amp; technical requirements</span>
+          </div>
+          <!-- PLACEHOLDER: Replace href with final PDF URL before going live -->
+          <a href="[PDF RATE CARD URL — REPLACE WITH FINAL LINK]" class="download-btn" download>
+            <span class="download-btn-icon">↓</span>
+            Download Full Rate Card (PDF)
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 5: BOOKING INQUIRY FORM
+         PLACEHOLDER: Replace Formspree endpoint in the fetch() call below
+    ══════════════════════════════════════════════════════════ -->
+    <section class="inquiry-section">
+      <div class="section-rule"></div>
+
+      <p class="eyebrow">Get in Touch</p>
+      <h2 class="section-heading">Ready to <em>Book?</em></h2>
+      <div class="gold-rule" style="margin-bottom: 44px;"></div>
+
+      <div class="inquiry-inner">
+
+        <div class="two-col">
+          <div class="field-group">
+            <label class="field-label" for="b-name">Name *</label>
+            <input class="field-input" type="text" id="b-name" autocomplete="name" />
+            <div class="field-error" id="err-b-name">Please enter your name.</div>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="b-org">Organization <span class="optional">(optional)</span></label>
+            <input class="field-input" type="text" id="b-org" autocomplete="organization" />
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="b-email">Email Address *</label>
+          <input class="field-input" type="email" id="b-email" autocomplete="email" />
+          <div class="field-error" id="err-b-email">Please enter a valid email address.</div>
+        </div>
+
+        <div class="two-col">
+          <div class="field-group">
+            <label class="field-label" for="b-date">Event Date <span class="optional">(optional)</span></label>
+            <input class="field-input" type="text" id="b-date" placeholder="MM / DD / YYYY" />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="b-type">Event Type *</label>
+            <div class="select-wrap">
+              <select class="field-select" id="b-type">
+                <option value="" disabled selected>Select one</option>
+                <option value="Feature">Feature</option>
+                <option value="Full Show">Full Show</option>
+                <option value="Workshop">Workshop</option>
+                <option value="Corporate">Corporate</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field-error" id="err-b-type">Please select an event type.</div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="b-message">Message <span class="optional">(optional)</span></label>
+          <textarea class="field-textarea" id="b-message"></textarea>
+        </div>
+
+        <div id="booking-form" style="display:contents;">
+          <div class="form-footer-row">
+            <button class="cta-btn" type="button" id="btn-booking-submit">Send Booking Inquiry</button>
+            <p class="direct-contact">
+              Prefer to reach out directly?
+              <!-- PLACEHOLDER: Replace with final direct email address -->
+              <a href="mailto:[founder@stagebuddy.app — REPLACE]">[founder@stagebuddy.app — REPLACE]</a>
+            </p>
+          </div>
+          <div class="submit-error" id="booking-submit-error">
+            Something went wrong. Please try again or email us directly.
+          </div>
+        </div>
+
+        <div class="form-success" id="booking-success">
+          <p><strong>Inquiry received.</strong><br />We'll be in touch within 2 business days to discuss availability and details.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </div><!-- /page-wrap -->
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2026 B Rock &amp; Co &nbsp;·&nbsp; Stage Buddy</p>
+    <a href="https://instagram.com/stagebuddyai" target="_blank" rel="noopener">@stagebuddyai</a>
+  </footer>
+
+  <script>
+    document.getElementById('btn-booking-submit').addEventListener('click', async function () {
+
+      var ok = true;
+
+      // Validate name
+      var name = document.getElementById('b-name').value.trim();
+      if (!name) {
+        document.getElementById('b-name').classList.add('invalid');
+        document.getElementById('err-b-name').classList.add('visible');
+        ok = false;
+      } else {
+        document.getElementById('b-name').classList.remove('invalid');
+        document.getElementById('err-b-name').classList.remove('visible');
+      }
+
+      // Validate email
+      var email = document.getElementById('b-email').value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('b-email').classList.add('invalid');
+        document.getElementById('err-b-email').classList.add('visible');
+        ok = false;
+      } else {
+        document.getElementById('b-email').classList.remove('invalid');
+        document.getElementById('err-b-email').classList.remove('visible');
+      }
+
+      // Validate event type
+      var eventType = document.getElementById('b-type').value;
+      if (!eventType) {
+        document.getElementById('b-type').classList.add('invalid');
+        document.getElementById('err-b-type').classList.add('visible');
+        ok = false;
+      } else {
+        document.getElementById('b-type').classList.remove('invalid');
+        document.getElementById('err-b-type').classList.remove('visible');
+      }
+
+      if (!ok) return;
+
+      var btn = document.getElementById('btn-booking-submit');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      var data = new FormData();
+      data.append('_replyto',     email);
+      data.append('name',         name);
+      data.append('email',        email);
+      data.append('organization', document.getElementById('b-org').value.trim());
+      data.append('event_date',   document.getElementById('b-date').value.trim());
+      data.append('event_type',   eventType);
+      data.append('message',      document.getElementById('b-message').value.trim());
+      data.append('_subject',     'New Booking Inquiry — Stage Buddy');
+
+      try {
+        // PLACEHOLDER: Replace the Formspree endpoint URL before going live
+        var res = await fetch('https://formspree.io/f/[FORMSPREE_ENDPOINT — REPLACE]', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          document.getElementById('booking-form').style.display = 'none';
+          // Hide all form fields visually
+          document.querySelectorAll('.field-group').forEach(function (el) {
+            el.style.display = 'none';
+          });
+          document.getElementById('booking-success').classList.add('visible');
+        } else {
+          throw new Error();
+        }
+      } catch (_) {
+        btn.disabled = false;
+        btn.textContent = 'Send Booking Inquiry';
+        document.getElementById('booking-submit-error').classList.add('visible');
+      }
+    });
+  </script>
+
+</body>
+</html>
