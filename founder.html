@@ -510,6 +510,21 @@
     }
     .form-success strong { color: var(--gold); }
 
+    .radio-box {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(201,168,76,0.25);
+      flex-shrink: 0;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      background: var(--surface);
+      display: inline-block;
+    }
+    input[type="radio"]:checked + .radio-box {
+      border-color: var(--gold);
+      box-shadow: inset 0 0 0 4px var(--surface), inset 0 0 0 9px var(--gold);
+    }
+
     .submit-error {
       font-size: 12px;
       color: var(--error);
@@ -576,12 +591,9 @@
     ══════════════════════════════════════════════════════════ -->
     <header class="founder-header">
 
-      <p class="founder-company">B Rock &amp; Co</p>
-
       <h1 class="founder-name">B <em>Rockstar</em></h1>
 
-      <!-- PLACEHOLDER: Replace with final tagline -->
-      <p class="founder-tagline">[TAGLINE — REPLACE]</p>
+      <p class="founder-tagline">Championing Performance Intelligence</p>
 
       <div class="gold-rule"></div>
 
@@ -630,8 +642,7 @@
     <section class="video-section">
       <div class="section-rule"></div>
 
-      <p class="eyebrow">Watch Her Perform</p>
-      <h2 class="section-heading">See the <em>stage</em></h2>
+      <h2 class="section-heading">A Stage <em>Master</em></h2>
       <div class="gold-rule" style="margin-bottom: 40px;"></div>
 
       <div class="video-outer">
@@ -678,6 +689,7 @@
           <li>Full evening shows</li>
           <li>Corporate events and brand activations</li>
           <li>Spoken word &amp; performance workshop facilitation</li>
+          <li>Custom poem available upon request</li>
         </ul>
 
         <div class="rate-card-row">
@@ -747,6 +759,52 @@
           </div>
         </div>
 
+        <div class="two-col">
+          <div class="field-group">
+            <label class="field-label" for="b-budget">Budget Range <span class="optional">(optional)</span></label>
+            <div class="select-wrap">
+              <select class="field-select" id="b-budget">
+                <option value="" disabled selected>Select range</option>
+                <option value="Under $500">Under $500</option>
+                <option value="$500 – $1,000">$500 – $1,000</option>
+                <option value="$1,000 – $2,500">$1,000 – $2,500</option>
+                <option value="$2,500 – $5,000">$2,500 – $5,000</option>
+                <option value="$5,000+">$5,000+</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="b-capacity">Attendance Capacity <span class="optional">(optional)</span></label>
+            <div class="select-wrap">
+              <select class="field-select" id="b-capacity">
+                <option value="" disabled selected>Select range</option>
+                <option value="Under 50">Under 50</option>
+                <option value="50 – 150">50 – 150</option>
+                <option value="150 – 500">150 – 500</option>
+                <option value="500 – 1,000">500 – 1,000</option>
+                <option value="1,000+">1,000+</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Have you booked B Rockstar before? <span class="optional">(optional)</span></label>
+          <div style="display:flex;gap:24px;margin-top:4px;">
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;color:var(--white);font-weight:300;">
+              <input type="radio" name="prior_booking" value="Yes" style="position:absolute;opacity:0;width:0;height:0;" />
+              <span class="radio-box" id="rb-yes"></span>
+              Yes
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;color:var(--white);font-weight:300;">
+              <input type="radio" name="prior_booking" value="No" style="position:absolute;opacity:0;width:0;height:0;" />
+              <span class="radio-box" id="rb-no"></span>
+              No
+            </label>
+          </div>
+        </div>
+
         <div class="field-group">
           <label class="field-label" for="b-message">Message <span class="optional">(optional)</span></label>
           <textarea class="field-textarea" id="b-message"></textarea>
@@ -757,8 +815,7 @@
             <button class="cta-btn" type="button" id="btn-booking-submit">Send Booking Inquiry</button>
             <p class="direct-contact">
               Prefer to reach out directly?
-              <!-- PLACEHOLDER: Replace with final direct email address -->
-              <a href="mailto:[founder@stagebuddy.app — REPLACE]">[founder@stagebuddy.app — REPLACE]</a>
+              <a href="mailto:founder@stagebuddy.app">founder@stagebuddy.app</a>
             </p>
           </div>
           <div class="submit-error" id="booking-submit-error">
@@ -830,9 +887,13 @@
       data.append('name',         name);
       data.append('email',        email);
       data.append('organization', document.getElementById('b-org').value.trim());
-      data.append('event_date',   document.getElementById('b-date').value.trim());
-      data.append('event_type',   eventType);
-      data.append('message',      document.getElementById('b-message').value.trim());
+      data.append('event_date',        document.getElementById('b-date').value.trim());
+      data.append('event_type',        eventType);
+      data.append('budget_range',      document.getElementById('b-budget').value);
+      data.append('attendance',        document.getElementById('b-capacity').value);
+      var priorEl = document.querySelector('input[name="prior_booking"]:checked');
+      data.append('booked_before',     priorEl ? priorEl.value : '');
+      data.append('message',           document.getElementById('b-message').value.trim());
       data.append('_subject',     'New Booking Inquiry — Stage Buddy');
 
       try {
