@@ -84,6 +84,16 @@
       transition: opacity 0.2s;
     }
     .site-logo:hover img { opacity: 1; }
+    .site-logo-label {
+      display: block;
+      margin-top: 10px;
+      font-size: 9px;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      transition: color 0.2s;
+    }
+    .site-logo:hover .site-logo-label { color: var(--gold); }
 
     /* ── Shared section primitives ───────────────────────────────── */
 
@@ -584,6 +594,7 @@
     <!-- Site Logo / Back to Home -->
     <a href="/" class="site-logo">
       <img src="/logo.png" alt="Stage Buddy" />
+      <span class="site-logo-label">Stage Buddy Founder</span>
     </a>
 
     <!-- ══════════════════════════════════════════════════════════
