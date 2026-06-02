@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rate Card — B Rockstar · Stage Buddy</title>
+  <meta name="description" content="Official booking rate card for B Rockstar — spoken word artist, coach, and creator of the S.T.A.R.R. framework. Available nationwide." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:      #0a0a0a;
+      --surface:    #161616;
+      --gold:       #c9a84c;
+      --gold-soft:  #e2c27d;
+      --gold-dim:   #7a6030;
+      --white:      #f4f0e8;
+      --muted:      #888880;
+      --border:     rgba(201,168,76,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    .glow-top {
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Print action bar (screen only) ─────────────────────────── */
+
+    .print-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .print-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .print-bar a {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .print-bar a:hover { color: var(--gold-soft); }
+
+    .print-bar-divider {
+      width: 1px;
+      height: 14px;
+      background: var(--border);
+    }
+
+    .print-bar p {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 1px solid var(--gold-dim);
+      color: var(--gold);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 9px 20px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+    .print-btn:hover {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ── Page wrapper ────────────────────────────────────────────── */
+
+    .rc-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 56px 36px 100px;
+    }
+
+    /* ── Header ──────────────────────────────────────────────────── */
+
+    .rc-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rc-header-left { flex: 1; }
+
+    .rc-logo img {
+      width: 80px;
+      height: auto;
+      opacity: 0.85;
+      flex-shrink: 0;
+    }
+
+    .rc-eyebrow {
+      font-size: 9px;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 10px;
+    }
+
+    .rc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+    .rc-name em { font-style: italic; color: var(--gold-soft); }
+
+    .rc-tagline {
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .rc-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .rc-contact a,
+    .rc-contact span {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--gold-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .rc-contact a:hover { color: var(--gold-soft); }
+
+    /* ── Credentials ─────────────────────────────────────────────── */
+
+    .cred-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 52px;
+    }
+
+    .cred-pill {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 4px 11px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    /* ── Section primitives ──────────────────────────────────────── */
+
+    .rc-section { margin-bottom: 52px; }
+
+    .rc-section-label {
+      font-size: 9px;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .rc-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Rate rows ───────────────────────────────────────────────── */
+
+    .rate-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .rate-table tr {
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+    }
+    .rate-table tr:last-child { border-bottom: none; }
+
+    .rate-table td {
+      padding: 16px 0;
+      vertical-align: top;
+    }
+
+    .rate-type {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--white);
+      width: 46%;
+      padding-right: 24px;
+    }
+
+    .rate-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      width: 36%;
+      padding-right: 16px;
+    }
+
+    .rate-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--gold);
+      text-align: right;
+      white-space: nowrap;
+      width: 18%;
+    }
+
+    .rate-price.placeholder {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      font-weight: 400;
+    }
+
+    /* ── Add-on block ────────────────────────────────────────────── */
+
+    .addon-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .addon-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 20px 22px;
+    }
+
+    .addon-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 5px;
+    }
+
+    .addon-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 10px;
+    }
+
+    .addon-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--gold);
+    }
+
+    .addon-price.placeholder {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      font-weight: 400;
+    }
+
+    /* ── Technical requirements ──────────────────────────────────── */
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px 32px;
+    }
+
+    .tech-item {}
+    .tech-item dt {
+      font-size: 9px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 5px;
+    }
+    .tech-item dd {
+      font-size: 13px;
+      color: rgba(244,240,232,0.7);
+      line-height: 1.55;
+    }
+
+    /* ── Terms block ─────────────────────────────────────────────── */
+
+    .terms-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .terms-list li {
+      font-size: 12px;
+      color: var(--muted);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .terms-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold-dim);
+      font-size: 10px;
+      top: 2px;
+    }
+
+    /* ── Footer ──────────────────────────────────────────────────── */
+
+    .rc-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .rc-footer p {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.18);
+    }
+
+    .rc-footer a {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--gold-dim);
+      text-decoration: none;
+    }
+
+    /* ── Responsive ──────────────────────────────────────────────── */
+
+    @media (max-width: 600px) {
+      .rc-wrap { padding: 40px 22px 80px; }
+      .rc-header { flex-direction: column-reverse; gap: 16px; }
+      .rc-logo img { width: 64px; }
+      .rate-table, .rate-table tbody, .rate-table tr, .rate-table td { display: block; width: 100%; }
+      .rate-table tr { padding: 16px 0; border-bottom: 1px solid rgba(201,168,76,0.08); }
+      .rate-table tr:last-child { border-bottom: none; }
+      .rate-type { font-size: 16px; margin-bottom: 4px; }
+      .rate-desc { margin-bottom: 8px; color: var(--muted); }
+      .rate-price { text-align: left; font-size: 20px; }
+      .addon-grid { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Print styles ────────────────────────────────────────────── */
+
+    @media print {
+      .print-bar { display: none !important; }
+      body::before { display: none; }
+      .glow-top { display: none; }
+      body { background: #0a0a0a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .rc-wrap { padding: 32px 32px 48px; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-top"></div>
+
+  <!-- Print / Save bar — hidden when printing -->
+  <div class="print-bar">
+    <div class="print-bar-left">
+      <a href="/founder">← Back to Founder</a>
+      <div class="print-bar-divider"></div>
+      <p>B Rockstar — Official Rate Card</p>
+    </div>
+    <button class="print-btn" onclick="window.print()">↓ Save as PDF</button>
+  </div>
+
+  <div class="rc-wrap">
+
+    <!-- ── Header ── -->
+    <div class="rc-header">
+      <div class="rc-header-left">
+        <p class="rc-eyebrow">Official Rate Card · 2026</p>
+        <h1 class="rc-name">B <em>Rockstar</em></h1>
+        <p class="rc-tagline">Championing Performance Intelligence</p>
+        <div class="rc-contact">
+          <a href="mailto:founder@stagebuddy.app">founder@stagebuddy.app</a>
+          <a href="https://instagram.com/stagebuddyai" target="_blank" rel="noopener">@stagebuddyai</a>
+          <span>stagebuddy.app</span>
+        </div>
+      </div>
+      <div class="rc-logo">
+        <a href="/"><img src="/logo.png" alt="Stage Buddy" /></a>
+      </div>
+    </div>
+
+    <!-- ── Credentials ── -->
+    <div class="cred-bar">
+      <span class="cred-pill">16+ Years</span>
+      <span class="cred-pill">22 States</span>
+      <span class="cred-pill">CBS</span>
+      <span class="cred-pill">PBS</span>
+      <span class="cred-pill">V103</span>
+      <span class="cred-pill">Black Enterprise</span>
+      <span class="cred-pill">National Black Theater Festival</span>
+    </div>
+
+    <!-- ── Performance Rates ── -->
+    <div class="rc-section">
+      <p class="rc-section-label">Performance Rates</p>
+      <table class="rate-table">
+        <tbody>
+          <tr>
+            <td class="rate-type">Feature Set</td>
+            <td class="rate-desc">15–30 min curated set. Ideal for showcases, arts events, and community programs.</td>
+            <!-- PLACEHOLDER: Replace with actual rate -->
+            <td class="rate-price placeholder">Rate on<br/>Request</td>
+          </tr>
+          <tr>
+            <td class="rate-type">Full Evening Show</td>
+            <td class="rate-desc">60–90 min headlining performance. Full production with audience engagement.</td>
+            <!-- PLACEHOLDER: Replace with actual rate -->
+            <td class="rate-price placeholder">Rate on<br/>Request</td>
+          </tr>
+          <tr>
+            <td class="rate-type">Keynote / Speaker</td>
+            <td class="rate-desc">30–60 min motivational keynote weaving spoken word and performance intelligence.</td>
+            <!-- PLACEHOLDER: Replace with actual rate -->
+            <td class="rate-price placeholder">Rate on<br/>Request</td>
+          </tr>
+          <tr>
+            <td class="rate-type">Corporate Event</td>
+            <td class="rate-desc">Brand activations, galas, retreats, and internal events. Custom scope available.</td>
+            <!-- PLACEHOLDER: Replace with actual rate -->
+            <td class="rate-price placeholder">Rate on<br/>Request</td>
+          </tr>
+          <tr>
+            <td class="rate-type">Workshop Facilitation</td>
+            <td class="rate-desc">Half-day or full-day S.T.A.R.R. performance workshop. Groups up to 30 artists.</td>
+            <!-- PLACEHOLDER: Replace with actual rate -->
+            <td class="rate-price placeholder">Rate on<br/>Request</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ── Add-ons ── -->
+    <div class="rc-section">
+      <p class="rc-section-label">Add-ons &amp; Enhancements</p>
+      <div class="addon-grid">
+
+        <div class="addon-card">
+          <p class="addon-name">Custom Poem</p>
+          <p class="addon-desc">Original piece written for your organization, event theme, or honoree. Available upon request.</p>
+          <!-- PLACEHOLDER: Replace with actual rate -->
+          <p class="addon-price placeholder">Rate on Request</p>
+        </div>
+
+        <div class="addon-card">
+          <p class="addon-name">VIP Meet &amp; Greet</p>
+          <p class="addon-desc">Pre- or post-show reception access. Limited availability per event.</p>
+          <!-- PLACEHOLDER: Replace with actual rate -->
+          <p class="addon-price placeholder">Rate on Request</p>
+        </div>
+
+        <div class="addon-card">
+          <p class="addon-name">S.T.A.R.R. Group Audit</p>
+          <p class="addon-desc">Live group scoring session — ideal as a workshop add-on or conference breakout.</p>
+          <!-- PLACEHOLDER: Replace with actual rate -->
+          <p class="addon-price placeholder">Rate on Request</p>
+        </div>
+
+        <div class="addon-card">
+          <p class="addon-name">Travel &amp; Lodging</p>
+          <p class="addon-desc">Billed at cost for events outside Atlanta metro. Quote provided at inquiry.</p>
+          <p class="addon-price placeholder">Actuals Billed</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Technical Requirements ── -->
+    <div class="rc-section">
+      <p class="rc-section-label">Technical Requirements</p>
+      <dl class="tech-grid">
+        <div class="tech-item">
+          <dt>Sound</dt>
+          <!-- PLACEHOLDER: Replace with actual tech rider details -->
+          <dd>Wired or wireless handheld mic, monitor wedge, PA appropriate for venue size</dd>
+        </div>
+        <div class="tech-item">
+          <dt>Stage</dt>
+          <!-- PLACEHOLDER: Replace with actual tech rider details -->
+          <dd>Minimum 12 ft × 10 ft clear stage area; no obstructions downstage</dd>
+        </div>
+        <div class="tech-item">
+          <dt>Lighting</dt>
+          <!-- PLACEHOLDER: Replace with actual tech rider details -->
+          <dd>Spotlight or single follow spot preferred; no strobes</dd>
+        </div>
+        <div class="tech-item">
+          <dt>A/V</dt>
+          <!-- PLACEHOLDER: Replace with actual tech rider details -->
+          <dd>HDMI connection for intro video playback (optional but preferred)</dd>
+        </div>
+        <div class="tech-item">
+          <dt>Load-in</dt>
+          <!-- PLACEHOLDER: Replace with actual tech rider details -->
+          <dd>Minimum 1 hour before doors; soundcheck required</dd>
+        </div>
+        <div class="tech-item">
+          <dt>Hospitality</dt>
+          <!-- PLACEHOLDER: Replace with actual tech rider details -->
+          <dd>Private green room or dressing area; still water provided</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- ── Booking Terms ── -->
+    <div class="rc-section">
+      <p class="rc-section-label">Booking Terms</p>
+      <ul class="terms-list">
+        <!-- PLACEHOLDER: Replace with actual booking terms -->
+        <li>50% deposit required to hold the date. Balance due 7 days prior to event.</li>
+        <li>Cancellations within 14 days of event date forfeit the deposit.</li>
+        <li>Travel and lodging billed separately at cost; quote provided at inquiry.</li>
+        <li>All rates subject to change. Quote is valid for 30 days from issue date.</li>
+        <li>Custom packages available for multi-date engagements and annual partnerships.</li>
+      </ul>
+    </div>
+
+    <!-- ── Footer ── -->
+    <div class="rc-footer">
+      <p>© 2026 B Rock &amp; Co · Stage Buddy</p>
+      <a href="mailto:founder@stagebuddy.app">founder@stagebuddy.app</a>
+    </div>
+
+  </div><!-- /rc-wrap -->
+
+</body>
+</html>
