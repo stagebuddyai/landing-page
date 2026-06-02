@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rate Card — B Rockstar · Stage Buddy</title>
-  <meta name="description" content="Official booking rate card for B Rockstar — spoken word artist, coach, and creator of the S.T.A.R.R. framework. Available nationwide." />
+  <meta name="description" content="Official services and rates for B Rockstar — live performance, coaching, workshop facilitation, events, and weddings. Atlanta-based, available nationwide." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -55,16 +55,16 @@
       z-index: 0;
     }
 
-    /* ── Print action bar (screen only) ─────────────────────────── */
+    /* ── Print / Save bar ────────────────────────────────────────── */
 
     .print-bar {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(10,10,10,0.92);
+      background: rgba(10,10,10,0.94);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
-      padding: 14px 28px;
+      padding: 13px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -87,13 +87,9 @@
     }
     .print-bar a:hover { color: var(--gold-soft); }
 
-    .print-bar-divider {
-      width: 1px;
-      height: 14px;
-      background: var(--border);
-    }
+    .print-bar-divider { width: 1px; height: 14px; background: var(--border); }
 
-    .print-bar p {
+    .print-bar-label {
       font-size: 10px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -118,35 +114,29 @@
       transition: border-color 0.2s, background 0.2s, color 0.2s;
       flex-shrink: 0;
     }
-    .print-btn:hover {
-      border-color: var(--gold);
-      background: var(--gold);
-      color: var(--black);
-    }
+    .print-btn:hover { border-color: var(--gold); background: var(--gold); color: var(--black); }
 
     /* ── Page wrapper ────────────────────────────────────────────── */
 
     .rc-wrap {
       position: relative;
       z-index: 1;
-      max-width: 780px;
+      max-width: 820px;
       margin: 0 auto;
       padding: 56px 36px 100px;
     }
 
-    /* ── Header ──────────────────────────────────────────────────── */
+    /* ── Document header ─────────────────────────────────────────── */
 
     .rc-header {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 24px;
-      margin-bottom: 48px;
-      padding-bottom: 40px;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
       border-bottom: 1px solid var(--border);
     }
-
-    .rc-header-left { flex: 1; }
 
     .rc-logo img {
       width: 80px;
@@ -165,7 +155,7 @@
 
     .rc-name {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 6vw, 52px);
+      font-size: clamp(32px, 5.5vw, 52px);
       font-weight: 400;
       color: var(--white);
       line-height: 1.05;
@@ -173,20 +163,10 @@
     }
     .rc-name em { font-style: italic; color: var(--gold-soft); }
 
-    .rc-tagline {
-      font-size: 13px;
-      color: var(--muted);
-      font-style: italic;
-      margin-bottom: 20px;
-    }
+    .rc-tagline { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 18px; }
 
-    .rc-contact {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .rc-contact a,
-    .rc-contact span {
+    .rc-contact { display: flex; flex-direction: column; gap: 4px; }
+    .rc-contact a, .rc-contact span {
       font-size: 11px;
       letter-spacing: 0.1em;
       color: var(--gold-dim);
@@ -201,7 +181,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
-      margin-bottom: 52px;
+      margin-bottom: 56px;
     }
 
     .cred-pill {
@@ -217,166 +197,206 @@
 
     /* ── Section primitives ──────────────────────────────────────── */
 
-    .rc-section { margin-bottom: 52px; }
+    .rc-section { margin-bottom: 56px; }
 
-    .rc-section-label {
-      font-size: 9px;
-      letter-spacing: 0.36em;
+    .rc-section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .rc-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--white);
+    }
+
+    .rc-section-tag {
+      font-size: 8.5px;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--gold-dim);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .rc-section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
+      white-space: nowrap;
     }
 
-    /* ── Rate rows ───────────────────────────────────────────────── */
+    .section-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 0;
+    }
+
+    /* ── Rate table ──────────────────────────────────────────────── */
 
     .rate-table {
       width: 100%;
       border-collapse: collapse;
     }
 
-    .rate-table tr {
-      border-bottom: 1px solid rgba(201,168,76,0.08);
+    .rate-table thead tr {
+      border-bottom: 1px solid rgba(201,168,76,0.12);
     }
-    .rate-table tr:last-child { border-bottom: none; }
 
-    .rate-table td {
-      padding: 16px 0;
+    .rate-table thead th {
+      font-size: 8px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      font-weight: 500;
+      padding: 10px 0 10px;
+      text-align: left;
+    }
+    .rate-table thead th.col-rate  { text-align: right; width: 120px; }
+    .rate-table thead th.col-detail { text-align: right; width: 180px; }
+
+    .rate-table tbody tr {
+      border-bottom: 1px solid rgba(201,168,76,0.07);
+    }
+    .rate-table tbody tr:last-child { border-bottom: none; }
+
+    .rate-table tbody td {
+      padding: 15px 0;
       vertical-align: top;
     }
 
-    .rate-type {
-      font-family: 'Playfair Display', serif;
-      font-size: 17px;
-      font-weight: 400;
-      color: var(--white);
-      width: 46%;
-      padding-right: 24px;
+    .col-service {
+      font-size: 14px;
+      color: rgba(244,240,232,0.85);
+      font-weight: 300;
+      padding-right: 20px;
     }
 
-    .rate-desc {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.6;
-      width: 36%;
-      padding-right: 16px;
-    }
-
-    .rate-price {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      color: var(--gold);
-      text-align: right;
-      white-space: nowrap;
-      width: 18%;
-    }
-
-    .rate-price.placeholder {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      font-weight: 400;
-    }
-
-    /* ── Add-on block ────────────────────────────────────────────── */
-
-    .addon-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-
-    .addon-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 20px 22px;
-    }
-
-    .addon-name {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--white);
-      margin-bottom: 5px;
-    }
-
-    .addon-desc {
-      font-size: 11px;
-      color: var(--muted);
-      line-height: 1.55;
-      margin-bottom: 10px;
-    }
-
-    .addon-price {
+    .col-rate {
       font-family: 'Playfair Display', serif;
       font-size: 18px;
       color: var(--gold);
+      text-align: right;
+      white-space: nowrap;
+      padding-right: 20px;
+      vertical-align: middle;
     }
 
-    .addon-price.placeholder {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 9px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      font-weight: 400;
-    }
-
-    /* ── Technical requirements ──────────────────────────────────── */
-
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px 32px;
-    }
-
-    .tech-item {}
-    .tech-item dt {
-      font-size: 9px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      margin-bottom: 5px;
-    }
-    .tech-item dd {
-      font-size: 13px;
-      color: rgba(244,240,232,0.7);
+    .col-detail {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
       line-height: 1.55;
+      vertical-align: middle;
     }
 
-    /* ── Terms block ─────────────────────────────────────────────── */
+    .rate-note {
+      font-size: 11px;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.6;
+      padding: 14px 0 4px;
+      border-top: 1px solid rgba(201,168,76,0.07);
+      margin-top: 4px;
+    }
 
-    .terms-list {
+    /* ── Coaching tier cards ─────────────────────────────────────── */
+
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .tier-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 24px 20px 26px;
+      position: relative;
+    }
+
+    .tier-card.featured {
+      border-color: var(--gold-dim);
+      background: #191510;
+    }
+
+    .tier-badge {
+      font-size: 8px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 8px;
+    }
+
+    .tier-badge.pop {
+      color: var(--gold);
+    }
+
+    .tier-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .tier-sub {
+      font-size: 11px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+
+    .tier-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .tier-delivery {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 14px;
+    }
+
+    .tier-divider { width: 20px; height: 1px; background: var(--gold-dim); margin-bottom: 14px; }
+
+    .tier-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 7px;
     }
-    .terms-list li {
-      font-size: 12px;
-      color: var(--muted);
-      padding-left: 18px;
+    .tier-list li {
+      font-size: 11.5px;
+      color: rgba(244,240,232,0.6);
+      padding-left: 14px;
       position: relative;
-      line-height: 1.6;
+      line-height: 1.45;
     }
-    .terms-list li::before {
+    .tier-list li::before {
       content: '—';
       position: absolute;
       left: 0;
       color: var(--gold-dim);
       font-size: 10px;
-      top: 2px;
+      top: 1px;
     }
+
+    /* ── Extended programs table (no header) ─────────────────────── */
+
+    .ext-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+    }
+    .ext-table tr { border-bottom: 1px solid rgba(201,168,76,0.07); }
+    .ext-table tr:last-child { border-bottom: none; }
+    .ext-table td { padding: 14px 0; vertical-align: middle; }
 
     /* ── Footer ──────────────────────────────────────────────────── */
 
@@ -389,45 +409,51 @@
       gap: 16px;
       flex-wrap: wrap;
     }
+    .rc-footer p { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.18); }
+    .rc-footer a { font-size: 10px; letter-spacing: 0.1em; color: var(--gold-dim); text-decoration: none; transition: color 0.2s; }
+    .rc-footer a:hover { color: var(--gold-soft); }
 
-    .rc-footer p {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.18);
-    }
-
-    .rc-footer a {
-      font-size: 10px;
-      letter-spacing: 0.12em;
+    .all-rates-note {
+      text-align: center;
+      font-size: 11px;
       color: var(--gold-dim);
-      text-decoration: none;
+      letter-spacing: 0.08em;
+      font-style: italic;
+      margin-bottom: 40px;
     }
 
     /* ── Responsive ──────────────────────────────────────────────── */
 
-    @media (max-width: 600px) {
-      .rc-wrap { padding: 40px 22px 80px; }
-      .rc-header { flex-direction: column-reverse; gap: 16px; }
+    @media (max-width: 660px) {
+      .rc-wrap { padding: 36px 20px 80px; }
+      .rc-header { flex-direction: column-reverse; gap: 14px; }
       .rc-logo img { width: 64px; }
-      .rate-table, .rate-table tbody, .rate-table tr, .rate-table td { display: block; width: 100%; }
-      .rate-table tr { padding: 16px 0; border-bottom: 1px solid rgba(201,168,76,0.08); }
-      .rate-table tr:last-child { border-bottom: none; }
-      .rate-type { font-size: 16px; margin-bottom: 4px; }
-      .rate-desc { margin-bottom: 8px; color: var(--muted); }
-      .rate-price { text-align: left; font-size: 20px; }
-      .addon-grid { grid-template-columns: 1fr; }
-      .tech-grid { grid-template-columns: 1fr; }
+
+      .rate-table thead { display: none; }
+      .rate-table tbody tr { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 14px 0; border-bottom: 1px solid rgba(201,168,76,0.07); }
+      .rate-table tbody td { padding: 0; }
+      .col-service { grid-column: 1; font-size: 13px; }
+      .col-rate    { grid-column: 2; grid-row: 1; text-align: right; font-size: 16px; }
+      .col-detail  { grid-column: 1 / -1; text-align: left; font-size: 11px; }
+
+      .tier-grid { grid-template-columns: 1fr; max-width: 320px; }
+
+      .ext-table td { display: block; padding: 4px 0; }
+      .ext-table tr { display: block; padding: 14px 0; border-bottom: 1px solid rgba(201,168,76,0.07); }
+      .ext-table tr:last-child { border-bottom: none; }
+
+      .rc-section-head { flex-direction: column; gap: 4px; }
     }
 
-    /* ── Print styles ────────────────────────────────────────────── */
+    /* ── Print ───────────────────────────────────────────────────── */
 
     @media print {
       .print-bar { display: none !important; }
       body::before { display: none; }
       .glow-top { display: none; }
       body { background: #0a0a0a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .rc-wrap { padding: 32px 32px 48px; max-width: 100%; }
+      .rc-wrap { padding: 28px 28px 40px; max-width: 100%; }
+      .tier-grid { grid-template-columns: repeat(3, 1fr); }
     }
   </style>
 </head>
@@ -435,28 +461,28 @@
 
   <div class="glow-top"></div>
 
-  <!-- Print / Save bar — hidden when printing -->
+  <!-- Sticky action bar -->
   <div class="print-bar">
     <div class="print-bar-left">
-      <a href="/founder">← Back to Founder</a>
+      <a href="/founder">← Founder</a>
       <div class="print-bar-divider"></div>
-      <p>B Rockstar — Official Rate Card</p>
+      <span class="print-bar-label">B Rockstar · Services &amp; Rates</span>
     </div>
     <button class="print-btn" onclick="window.print()">↓ Save as PDF</button>
   </div>
 
   <div class="rc-wrap">
 
-    <!-- ── Header ── -->
+    <!-- Document header -->
     <div class="rc-header">
       <div class="rc-header-left">
-        <p class="rc-eyebrow">Official Rate Card · 2026</p>
+        <p class="rc-eyebrow">Services &amp; Rates · 2026</p>
         <h1 class="rc-name">B <em>Rockstar</em></h1>
         <p class="rc-tagline">Championing Performance Intelligence</p>
         <div class="rc-contact">
           <a href="mailto:founder@stagebuddy.app">founder@stagebuddy.app</a>
           <a href="https://instagram.com/stagebuddyai" target="_blank" rel="noopener">@stagebuddyai</a>
-          <span>stagebuddy.app</span>
+          <span>stagebuddy.app &nbsp;·&nbsp; Atlanta, GA · Available Nationwide</span>
         </div>
       </div>
       <div class="rc-logo">
@@ -464,7 +490,7 @@
       </div>
     </div>
 
-    <!-- ── Credentials ── -->
+    <!-- Credentials -->
     <div class="cred-bar">
       <span class="cred-pill">16+ Years</span>
       <span class="cred-pill">22 States</span>
@@ -475,137 +501,326 @@
       <span class="cred-pill">National Black Theater Festival</span>
     </div>
 
-    <!-- ── Performance Rates ── -->
+    <!-- ══════════════════════════════════════════════
+         LIVE PERFORMANCE
+    ══════════════════════════════════════════════ -->
     <div class="rc-section">
-      <p class="rc-section-label">Performance Rates</p>
+      <div class="rc-section-head">
+        <h2 class="rc-section-title">Live Performance</h2>
+        <span class="rc-section-tag">Features · Keynotes · Full Shows</span>
+      </div>
+      <div class="section-rule"></div>
       <table class="rate-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th class="col-rate">Rate</th>
+            <th class="col-detail">Details</th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
-            <td class="rate-type">Feature Set</td>
-            <td class="rate-desc">15–30 min curated set. Ideal for showcases, arts events, and community programs.</td>
-            <!-- PLACEHOLDER: Replace with actual rate -->
-            <td class="rate-price placeholder">Rate on<br/>Request</td>
+            <td class="col-service">Single Poem &nbsp;·&nbsp; Up to 5 minutes</td>
+            <td class="col-rate">$350</td>
+            <td class="col-detail"></td>
           </tr>
           <tr>
-            <td class="rate-type">Full Evening Show</td>
-            <td class="rate-desc">60–90 min headlining performance. Full production with audience engagement.</td>
-            <!-- PLACEHOLDER: Replace with actual rate -->
-            <td class="rate-price placeholder">Rate on<br/>Request</td>
+            <td class="col-service">Feature Set &nbsp;·&nbsp; 15 minutes</td>
+            <td class="col-rate">$750</td>
+            <td class="col-detail"></td>
           </tr>
           <tr>
-            <td class="rate-type">Keynote / Speaker</td>
-            <td class="rate-desc">30–60 min motivational keynote weaving spoken word and performance intelligence.</td>
-            <!-- PLACEHOLDER: Replace with actual rate -->
-            <td class="rate-price placeholder">Rate on<br/>Request</td>
+            <td class="col-service">Feature Set &nbsp;·&nbsp; 30 minutes</td>
+            <td class="col-rate">$1,500</td>
+            <td class="col-detail"></td>
           </tr>
           <tr>
-            <td class="rate-type">Corporate Event</td>
-            <td class="rate-desc">Brand activations, galas, retreats, and internal events. Custom scope available.</td>
-            <!-- PLACEHOLDER: Replace with actual rate -->
-            <td class="rate-price placeholder">Rate on<br/>Request</td>
+            <td class="col-service">Full Show &nbsp;·&nbsp; 45–60 minutes</td>
+            <td class="col-rate">$2,500</td>
+            <td class="col-detail"></td>
           </tr>
           <tr>
-            <td class="rate-type">Workshop Facilitation</td>
-            <td class="rate-desc">Half-day or full-day S.T.A.R.R. performance workshop. Groups up to 30 artists.</td>
-            <!-- PLACEHOLDER: Replace with actual rate -->
-            <td class="rate-price placeholder">Rate on<br/>Request</td>
+            <td class="col-service">Full Show with Live Band &nbsp;·&nbsp; 30+ minutes</td>
+            <td class="col-rate">$3,500</td>
+            <td class="col-detail">Deposit required</td>
+          </tr>
+          <tr>
+            <td class="col-service">Host / Master of Ceremonies</td>
+            <td class="col-rate" style="font-size:14px;">$3,000 – $3,500</td>
+            <td class="col-detail">$3,000 Community<br/>$3,500 Corporate / Private</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="rate-note">Travel billed at $0.67/mile from Atlanta city center. Out-of-state: travel + lodging quoted per engagement.</p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+         VIRTUAL PERFORMANCE
+    ══════════════════════════════════════════════ -->
+    <div class="rc-section">
+      <div class="rc-section-head">
+        <h2 class="rc-section-title">Virtual Performance</h2>
+        <span class="rc-section-tag">Live-Streamed · Remote · Hybrid Events</span>
+      </div>
+      <div class="section-rule"></div>
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th class="col-rate">Rate</th>
+            <th class="col-detail">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-service">Single Poem &nbsp;·&nbsp; Up to 5 minutes</td>
+            <td class="col-rate">$250</td>
+            <td class="col-detail"></td>
+          </tr>
+          <tr>
+            <td class="col-service">Feature Set &nbsp;·&nbsp; 10–15 minutes</td>
+            <td class="col-rate">$500</td>
+            <td class="col-detail"></td>
+          </tr>
+          <tr>
+            <td class="col-service">Feature Set &nbsp;·&nbsp; 30 minutes</td>
+            <td class="col-rate">$1,200</td>
+            <td class="col-detail"></td>
+          </tr>
+          <tr>
+            <td class="col-service">Full Show with Live Band &nbsp;·&nbsp; 30+ min</td>
+            <td class="col-rate">$1,500</td>
+            <td class="col-detail"></td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <!-- ── Add-ons ── -->
+    <!-- ══════════════════════════════════════════════
+         WEDDING & PRIVATE EVENTS
+    ══════════════════════════════════════════════ -->
     <div class="rc-section">
-      <p class="rc-section-label">Add-ons &amp; Enhancements</p>
-      <div class="addon-grid">
-
-        <div class="addon-card">
-          <p class="addon-name">Custom Poem</p>
-          <p class="addon-desc">Original piece written for your organization, event theme, or honoree. Available upon request.</p>
-          <!-- PLACEHOLDER: Replace with actual rate -->
-          <p class="addon-price placeholder">Rate on Request</p>
-        </div>
-
-        <div class="addon-card">
-          <p class="addon-name">VIP Meet &amp; Greet</p>
-          <p class="addon-desc">Pre- or post-show reception access. Limited availability per event.</p>
-          <!-- PLACEHOLDER: Replace with actual rate -->
-          <p class="addon-price placeholder">Rate on Request</p>
-        </div>
-
-        <div class="addon-card">
-          <p class="addon-name">S.T.A.R.R. Group Audit</p>
-          <p class="addon-desc">Live group scoring session — ideal as a workshop add-on or conference breakout.</p>
-          <!-- PLACEHOLDER: Replace with actual rate -->
-          <p class="addon-price placeholder">Rate on Request</p>
-        </div>
-
-        <div class="addon-card">
-          <p class="addon-name">Travel &amp; Lodging</p>
-          <p class="addon-desc">Billed at cost for events outside Atlanta metro. Quote provided at inquiry.</p>
-          <p class="addon-price placeholder">Actuals Billed</p>
-        </div>
-
+      <div class="rc-section-head">
+        <h2 class="rc-section-title">Wedding &amp; Private Events</h2>
+        <span class="rc-section-tag">Custom Packages Available</span>
       </div>
+      <div class="section-rule"></div>
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th class="col-rate">Rate</th>
+            <th class="col-detail">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-service">Performance &nbsp;·&nbsp; Poem or custom reading</td>
+            <td class="col-rate">$750</td>
+            <td class="col-detail">+ applicable expenses</td>
+          </tr>
+          <tr>
+            <td class="col-service">Master of Ceremonies &nbsp;·&nbsp; Full ceremony &amp; reception</td>
+            <td class="col-rate">$4,500</td>
+            <td class="col-detail">+ applicable expenses</td>
+          </tr>
+          <tr>
+            <td class="col-service">Custom Wedding Vows &nbsp;·&nbsp; Written only</td>
+            <td class="col-rate">$750</td>
+            <td class="col-detail"></td>
+          </tr>
+          <tr>
+            <td class="col-service">Custom Wedding Vows &nbsp;·&nbsp; Written &amp; performed</td>
+            <td class="col-rate">$1,500</td>
+            <td class="col-detail">+ applicable expenses</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="rate-note">All wedding packages quoted all-in. Travel, lodging &amp; rehearsal billed separately outside ATL metro.</p>
     </div>
 
-    <!-- ── Technical Requirements ── -->
+    <!-- ══════════════════════════════════════════════
+         STAGE BUDDY — PERFORMANCE COACHING
+    ══════════════════════════════════════════════ -->
     <div class="rc-section">
-      <p class="rc-section-label">Technical Requirements</p>
-      <dl class="tech-grid">
-        <div class="tech-item">
-          <dt>Sound</dt>
-          <!-- PLACEHOLDER: Replace with actual tech rider details -->
-          <dd>Wired or wireless handheld mic, monitor wedge, PA appropriate for venue size</dd>
+      <div class="rc-section-head">
+        <h2 class="rc-section-title">Stage Buddy &nbsp;<em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--gold-soft);">Human</em></h2>
+        <span class="rc-section-tag">Performance Coaching · S.T.A.R.R. Framework</span>
+      </div>
+      <div class="section-rule" style="margin-bottom:16px;"></div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.65;max-width:580px;margin-bottom:28px;">Every performance is scored across four pillars — Spirit, Chest, Body, and Audience — using the proprietary S.T.A.R.R. framework. Built from 200+ coaching sessions. This is not writing critique. This is performance optimization.</p>
+
+      <!-- Tier cards -->
+      <div class="tier-grid">
+        <div class="tier-card">
+          <p class="tier-badge">Tier 1</p>
+          <p class="tier-name">Performance Audit</p>
+          <p class="tier-sub">Diagnosis</p>
+          <p class="tier-price">$95</p>
+          <p class="tier-delivery">48-Hour Delivery</p>
+          <div class="tier-divider"></div>
+          <ul class="tier-list">
+            <li>S.T.A.R.R. scorecard (1–5 per pillar)</li>
+            <li>Written audit report</li>
+            <li>Top 3 correction priorities</li>
+            <li>Clear next-move recommendation</li>
+          </ul>
         </div>
-        <div class="tech-item">
-          <dt>Stage</dt>
-          <!-- PLACEHOLDER: Replace with actual tech rider details -->
-          <dd>Minimum 12 ft × 10 ft clear stage area; no obstructions downstage</dd>
+        <div class="tier-card featured">
+          <p class="tier-badge pop">Tier 2 · Most Popular</p>
+          <p class="tier-name">Performance Breakdown</p>
+          <p class="tier-sub">Targeted Improvement</p>
+          <p class="tier-price">$195</p>
+          <p class="tier-delivery">48-Hour Delivery</p>
+          <div class="tier-divider"></div>
+          <ul class="tier-list">
+            <li>Everything in Tier 1</li>
+            <li>Time-stamped performance notes</li>
+            <li>5–7 targeted corrections</li>
+            <li>Private video walkthrough</li>
+            <li>Revision roadmap</li>
+          </ul>
         </div>
-        <div class="tech-item">
-          <dt>Lighting</dt>
-          <!-- PLACEHOLDER: Replace with actual tech rider details -->
-          <dd>Spotlight or single follow spot preferred; no strobes</dd>
+        <div class="tier-card">
+          <p class="tier-badge">Tier 3</p>
+          <p class="tier-name">Performance Transformation</p>
+          <p class="tier-sub">Live Execution Coaching</p>
+          <p class="tier-price">$450</p>
+          <p class="tier-delivery">60-Min Live Session</p>
+          <div class="tier-divider"></div>
+          <ul class="tier-list">
+            <li>Everything in Tier 2</li>
+            <li>60-min private coaching session</li>
+            <li>Real-time interruption-based correction</li>
+            <li>Post-session action summary</li>
+            <li>Follow-up check-in</li>
+          </ul>
         </div>
-        <div class="tech-item">
-          <dt>A/V</dt>
-          <!-- PLACEHOLDER: Replace with actual tech rider details -->
-          <dd>HDMI connection for intro video playback (optional but preferred)</dd>
-        </div>
-        <div class="tech-item">
-          <dt>Load-in</dt>
-          <!-- PLACEHOLDER: Replace with actual tech rider details -->
-          <dd>Minimum 1 hour before doors; soundcheck required</dd>
-        </div>
-        <div class="tech-item">
-          <dt>Hospitality</dt>
-          <!-- PLACEHOLDER: Replace with actual tech rider details -->
-          <dd>Private green room or dressing area; still water provided</dd>
-        </div>
-      </dl>
+      </div>
+
+      <!-- Extended Programs -->
+      <p style="font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold-dim);margin:32px 0 0;">Extended Programs</p>
+      <table class="ext-table">
+        <tbody>
+          <tr>
+            <td class="col-service" style="padding-right:20px;">Discovery Session &nbsp;·&nbsp; 45–60 min &nbsp;·&nbsp; S.T.A.R.R. framework intro</td>
+            <td class="col-rate" style="white-space:nowrap;text-align:right;padding-right:20px;">$95</td>
+            <td class="col-detail" style="text-align:right;"></td>
+          </tr>
+          <tr>
+            <td class="col-service" style="padding-right:20px;">5-Week Group Cohort &nbsp;·&nbsp; S.T.A.R.R. methodology &nbsp;·&nbsp; group format</td>
+            <td class="col-rate" style="white-space:nowrap;text-align:right;padding-right:20px;">$600</td>
+            <td class="col-detail" style="text-align:right;">Per artist</td>
+          </tr>
+          <tr>
+            <td class="col-service" style="padding-right:20px;">3-Month 1-on-1 Elite Bootcamp &nbsp;·&nbsp; Full transformation program</td>
+            <td class="col-rate" style="white-space:nowrap;text-align:right;padding-right:20px;">$5,000</td>
+            <td class="col-detail" style="text-align:right;">Application required</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <!-- ── Booking Terms ── -->
+    <!-- ══════════════════════════════════════════════
+         EVENTS & CURATION
+    ══════════════════════════════════════════════ -->
     <div class="rc-section">
-      <p class="rc-section-label">Booking Terms</p>
-      <ul class="terms-list">
-        <!-- PLACEHOLDER: Replace with actual booking terms -->
-        <li>50% deposit required to hold the date. Balance due 7 days prior to event.</li>
-        <li>Cancellations within 14 days of event date forfeit the deposit.</li>
-        <li>Travel and lodging billed separately at cost; quote provided at inquiry.</li>
-        <li>All rates subject to change. Quote is valid for 30 days from issue date.</li>
-        <li>Custom packages available for multi-date engagements and annual partnerships.</li>
-      </ul>
+      <div class="rc-section-head">
+        <h2 class="rc-section-title">Events &amp; Curation</h2>
+        <span class="rc-section-tag">Produced &amp; Curated by B Rockstar</span>
+      </div>
+      <div class="section-rule"></div>
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th class="col-rate">Rate</th>
+            <th class="col-detail">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-service">Deep Strokes — In-State Curation</td>
+            <td class="col-rate">$350</td>
+            <td class="col-detail">+ applicable expenses</td>
+          </tr>
+          <tr>
+            <td class="col-service">Deep Strokes — Out-of-State Curation</td>
+            <td class="col-rate">$500</td>
+            <td class="col-detail">+ travel &amp; lodging</td>
+          </tr>
+          <tr>
+            <td class="col-service">Deep Strokes — In-House Tickets</td>
+            <td class="col-rate" style="font-size:14px;">$50 / $75</td>
+            <td class="col-detail">$50 per person · $75 per couple<br/>Full participation</td>
+          </tr>
+          <tr>
+            <td class="col-service">Deep Strokes — Spectator Admission</td>
+            <td class="col-rate" style="font-size:14px;">$15 / $20</td>
+            <td class="col-detail">$15 advance · $20 at door</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <!-- ── Footer ── -->
+    <!-- ══════════════════════════════════════════════
+         WORKSHOP FACILITATION
+    ══════════════════════════════════════════════ -->
+    <div class="rc-section">
+      <div class="rc-section-head">
+        <h2 class="rc-section-title">Workshop Facilitation</h2>
+        <span class="rc-section-tag">S.T.A.R.R. Framework · Performance Education</span>
+      </div>
+      <div class="section-rule"></div>
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th class="col-rate">Rate</th>
+            <th class="col-detail">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-service">Community Series / Artist Event &nbsp;·&nbsp; 2 hours</td>
+            <td class="col-rate" style="font-size:15px;">$350–$500</td>
+            <td class="col-detail">In-person or hybrid</td>
+          </tr>
+          <tr>
+            <td class="col-service">Conference / University / Professional Dev &nbsp;·&nbsp; 2 hours</td>
+            <td class="col-rate" style="font-size:15px;">$750–$1,200</td>
+            <td class="col-detail">In-person or virtual</td>
+          </tr>
+          <tr>
+            <td class="col-service">Corporate / Private Organization &nbsp;·&nbsp; 2 hours</td>
+            <td class="col-rate" style="font-size:15px;">$1,500+</td>
+            <td class="col-detail">Custom quote</td>
+          </tr>
+          <tr>
+            <td class="col-service">Half-Day Intensive &nbsp;·&nbsp; 3–4 hours</td>
+            <td class="col-rate" style="font-size:15px;">$1,200–$2,000</td>
+            <td class="col-detail">In-person</td>
+          </tr>
+          <tr>
+            <td class="col-service">Full-Day Workshop &nbsp;·&nbsp; 6–8 hours</td>
+            <td class="col-rate" style="font-size:15px;">$2,500–$4,000</td>
+            <td class="col-detail">In-person</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="rate-note">All rates are starting rates. Custom packages available. Travel billed at $0.67/mile. Out-of-state: lodging quoted per engagement.</p>
+    </div>
+
+    <!-- All-rates disclaimer -->
+    <p class="all-rates-note">All rates are starting rates &nbsp;·&nbsp; Custom packages available &nbsp;·&nbsp; Atlanta, Georgia &nbsp;·&nbsp; Available Nationwide</p>
+
+    <!-- Footer -->
     <div class="rc-footer">
       <p>© 2026 B Rock &amp; Co · Stage Buddy</p>
       <a href="mailto:founder@stagebuddy.app">founder@stagebuddy.app</a>
     </div>
 
-  </div><!-- /rc-wrap -->
+  </div>
 
 </body>
 </html>
