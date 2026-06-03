@@ -72,37 +72,16 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
       margin-bottom: 52px;
       opacity: 0;
       animation: fadeUp 0.9s ease forwards;
       animation-delay: 0.1s;
     }
 
-    .mark-icon {
-      width: 48px;
-      height: 48px;
-      border: 1.5px solid var(--gold-dim);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .mark-icon::after {
-      content: '★';
-      font-size: 20px;
-      color: var(--gold);
-      line-height: 1;
-    }
-
-    .brand-name {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 11px;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
+    .mark img {
+      width: 160px;
+      height: auto;
+      display: block;
     }
 
     .headline {
@@ -424,8 +403,7 @@
   <div class="wrap">
 
     <div class="mark">
-      <div class="mark-icon"></div>
-      <span class="brand-name">Stage Buddy</span>
+      <img src="/logo.png" alt="Stage Buddy" />
     </div>
 
     <div class="headline">
