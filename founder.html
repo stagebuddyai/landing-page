@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>B Rockstar — Founder · Stage Buddy</title>
-  <meta name="description" content="Meet the founder of Stage Buddy. B Rockstar — spoken word artist, coach, and creator of the S.T.A.R.R. framework. Available for features, keynotes, and corporate events nationwide." />
+  <title>Book B Rockstar — Stage Buddy</title>
+  <meta name="description" content="Book B Rockstar — spoken word performer, keynote speaker, and workshop facilitator. 16+ years, 22 states, CBS, PBS. Available nationwide." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -34,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* Noise texture overlay */
     body::before {
       content: '';
       position: fixed;
@@ -67,13 +66,12 @@
       padding: 0 28px 100px;
     }
 
-    /* ── Logo / site nav ─────────────────────────────────────────── */
+    /* ── Logo block ──────────────────────────────────────────────── */
 
     .site-logo {
       display: block;
       text-align: center;
       padding: 44px 0 52px;
-      text-decoration: none;
     }
     .site-logo img {
       width: 130px;
@@ -81,7 +79,6 @@
       display: block;
       margin: 0 auto;
       opacity: 0.9;
-      transition: opacity 0.2s;
     }
     .site-logo-label {
       display: block;
@@ -137,14 +134,14 @@
       margin: 24px auto 36px;
     }
 
-    /* ── SECTION 1: Founder Header ───────────────────────────────── */
+    /* ── 1. HERO ─────────────────────────────────────────────────── */
 
     .founder-header {
       text-align: center;
       padding-bottom: 64px;
     }
 
-    .founder-company {
+    .founder-role {
       font-size: 10px;
       letter-spacing: 0.38em;
       text-transform: uppercase;
@@ -159,17 +156,122 @@
       color: var(--white);
       line-height: 1.05;
       letter-spacing: -0.01em;
-      margin-bottom: 6px;
+      margin-bottom: 18px;
     }
     .founder-name em { font-style: italic; color: var(--gold-soft); }
 
-    /* PLACEHOLDER: replace the tagline below with final copy */
     .founder-tagline {
       font-size: 16px;
       color: var(--muted);
-      letter-spacing: 0.04em;
-      margin-bottom: 28px;
+      letter-spacing: 0.02em;
+      margin-bottom: 36px;
       font-style: italic;
+      line-height: 1.65;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── 2. SPIRIT · CHEST · BODY · AUDIENCE ────────────────────── */
+
+    .pillars-section {
+      padding-bottom: 64px;
+      text-align: center;
+    }
+
+    .pillars-display {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 5vw, 36px);
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      line-height: 1.3;
+      margin-bottom: 18px;
+    }
+
+    .pillars-sub {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── 3. PERFORMANCE PHOTO ────────────────────────────────────── */
+
+    .photo-section {
+      padding-bottom: 64px;
+    }
+
+    /* Replace with high-res stage performance photo of B Rockstar */
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3 / 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .photo-placeholder-text {
+      font-size: 10px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 600px) {
+      .photo-placeholder { aspect-ratio: 16 / 9; }
+    }
+
+    /* ── 4. TESTIMONIAL ──────────────────────────────────────────── */
+
+    .testimonial-section {
+      padding-bottom: 64px;
+      text-align: center;
+    }
+
+    .testimonial-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(18px, 3.5vw, 26px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.55;
+      max-width: 600px;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+
+    .testimonial-quote::before {
+      content: '\201C';
+      font-size: 72px;
+      color: var(--gold-dim);
+      opacity: 0.4;
+      position: absolute;
+      top: -24px;
+      left: -16px;
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+    }
+
+    .testimonial-attr {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    /* ── 5. CREDENTIALS BAR ──────────────────────────────────────── */
+
+    .cred-section {
+      padding-bottom: 64px;
     }
 
     .cred-bar {
@@ -177,7 +279,6 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 8px;
-      margin-top: 32px;
     }
 
     .cred-pill {
@@ -191,52 +292,34 @@
       white-space: nowrap;
     }
 
-    /* ── SECTION 2: Founder Message ──────────────────────────────── */
+    /* ── 6. WHAT YOU GET ─────────────────────────────────────────── */
 
-    .founder-message {
+    .experience-section {
       padding-bottom: 64px;
     }
 
-    /* Tone direction: personal, storytelling, first person.
-       This is not a bio. It is a brief narrative about the problem
-       Stage Buddy solves and why B Rockstar was the one to build it. */
-    .message-body {
+    .experience-body {
       max-width: 620px;
       margin: 0 auto;
     }
 
-    .message-body p {
+    .experience-body p {
       font-size: 16px;
       line-height: 1.85;
       color: rgba(244,240,232,0.72);
       margin-bottom: 22px;
     }
-    .message-body p:last-child { margin-bottom: 0; }
+    .experience-body p:last-child { margin-bottom: 0; }
 
-    .message-body p.placeholder-note {
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      border: 1px dashed rgba(201,168,76,0.2);
-      border-radius: 2px;
-      padding: 16px 20px;
-      font-style: normal;
-      line-height: 1.6;
-    }
+    /* ── 7. VIDEO ────────────────────────────────────────────────── */
 
-    /* ── SECTION 3: Performance Video ───────────────────────────── */
-
-    .video-section {
-      padding-bottom: 64px;
-    }
+    .video-section { padding-bottom: 64px; }
 
     .video-outer {
       max-width: 680px;
       margin: 0 auto;
     }
 
-    /* Responsive 16:9 wrapper */
     .video-wrap {
       position: relative;
       padding-bottom: 56.25%;
@@ -253,39 +336,9 @@
       border: 0;
     }
 
-    /* Placeholder shown until iframe URL is filled in */
-    .video-placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-    }
-    .video-placeholder-icon {
-      width: 56px;
-      height: 56px;
-      border: 1.5px solid var(--gold-dim);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      color: var(--gold);
-    }
-    .video-placeholder-label {
-      font-size: 10px;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-    }
+    /* ── 8. BOOKINGS & RATES ─────────────────────────────────────── */
 
-    /* ── SECTION 4: Booking ──────────────────────────────────────── */
-
-    .booking-section {
-      padding-bottom: 64px;
-    }
+    .booking-section { padding-bottom: 64px; }
 
     .booking-card {
       background: var(--surface);
@@ -330,9 +383,7 @@
       border-top: 1px solid var(--border);
     }
 
-    .rate-card-label {
-      flex: 1;
-    }
+    .rate-card-label { flex: 1; }
     .rate-card-label p {
       font-size: 11px;
       letter-spacing: 0.12em;
@@ -340,12 +391,8 @@
       color: var(--gold-dim);
       margin-bottom: 4px;
     }
-    .rate-card-label span {
-      font-size: 13px;
-      color: var(--muted);
-    }
+    .rate-card-label span { font-size: 13px; color: var(--muted); }
 
-    /* Ghost download button */
     .download-btn {
       display: inline-flex;
       align-items: center;
@@ -365,18 +412,12 @@
       transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
       flex-shrink: 0;
     }
-    .download-btn:hover {
-      border-color: var(--gold);
-      color: var(--black);
-      background: var(--gold);
-    }
+    .download-btn:hover { border-color: var(--gold); color: var(--black); background: var(--gold); }
     .download-btn-icon { font-size: 13px; line-height: 1; }
 
-    /* ── SECTION 5: Booking Inquiry Form ─────────────────────────── */
+    /* ── 9. BOOKING FORM ─────────────────────────────────────────── */
 
-    .inquiry-section {
-      padding-bottom: 40px;
-    }
+    .inquiry-section { padding-bottom: 64px; }
 
     .inquiry-inner {
       max-width: 620px;
@@ -429,10 +470,7 @@
     .field-select.invalid,
     .field-textarea.invalid { border-color: var(--error); }
 
-    /* Custom dropdown arrow */
-    .select-wrap {
-      position: relative;
-    }
+    .select-wrap { position: relative; }
     .select-wrap::after {
       content: '▾';
       position: absolute;
@@ -457,7 +495,6 @@
       gap: 20px;
     }
 
-    /* Primary CTA button */
     .cta-btn {
       display: inline-block;
       background: var(--gold);
@@ -490,10 +527,7 @@
       margin-top: 10px;
     }
 
-    .direct-contact {
-      font-size: 12px;
-      color: var(--muted);
-    }
+    .direct-contact { font-size: 12px; color: var(--muted); }
     .direct-contact a {
       color: var(--gold-dim);
       text-decoration: none;
@@ -510,11 +544,7 @@
       display: none;
     }
     .form-success.visible { display: block; }
-    .form-success p {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
+    .form-success p { font-size: 15px; color: var(--muted); line-height: 1.7; }
     .form-success strong { color: var(--gold); }
 
     .radio-box {
@@ -532,13 +562,24 @@
       box-shadow: inset 0 0 0 4px var(--surface), inset 0 0 0 9px var(--gold);
     }
 
-    .submit-error {
-      font-size: 12px;
-      color: var(--error);
-      margin-top: 14px;
-      display: none;
-    }
+    .submit-error { font-size: 12px; color: var(--error); margin-top: 14px; display: none; }
     .submit-error.visible { display: block; }
+
+    /* ── 10. FOUNDER MESSAGE ─────────────────────────────────────── */
+
+    .founder-message { padding-bottom: 64px; }
+
+    .message-body {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .message-body p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: rgba(244,240,232,0.72);
+      margin-bottom: 22px;
+    }
+    .message-body p:last-child { margin-bottom: 0; }
 
     /* ── Footer ──────────────────────────────────────────────────── */
 
@@ -576,9 +617,11 @@
       .two-col { grid-template-columns: 1fr; gap: 0; }
       .form-footer-row { flex-direction: column; align-items: flex-start; }
       .cred-pill { font-size: 8.5px; }
+      .testimonial-quote::before { font-size: 52px; top: -16px; left: -4px; }
     }
     @media (max-width: 400px) {
       .founder-name { font-size: 38px; }
+      .pillars-display { font-size: 20px; }
     }
   </style>
 </head>
@@ -588,24 +631,85 @@
 
   <div class="page-wrap">
 
-    <!-- Site Logo / Back to Home -->
+    <!-- Logo — static, no link -->
     <div class="site-logo">
       <img src="/logo.png" alt="Stage Buddy" />
       <span class="site-logo-label">Founder</span>
     </div>
 
     <!-- ══════════════════════════════════════════════════════════
-         SECTION 1: FOUNDER HEADER
+         1. HERO
     ══════════════════════════════════════════════════════════ -->
     <header class="founder-header">
 
+      <p class="founder-role">Performer &nbsp;·&nbsp; Speaker &nbsp;·&nbsp; Educator</p>
+
       <h1 class="founder-name">B <em>Rockstar</em></h1>
 
-      <p class="founder-tagline">Championing Performance Intelligence</p>
+      <p class="founder-tagline">
+        The stage is a science. B Rockstar has spent 16+ years mastering it —<br>
+        and bringing that energy to every event he touches.
+      </p>
 
+      <a class="cta-btn" href="#booking-form">Book B Rockstar</a>
+
+    </header>
+
+    <!-- ══════════════════════════════════════════════════════════
+         2. SPIRIT · CHEST · BODY · AUDIENCE
+    ══════════════════════════════════════════════════════════ -->
+    <section class="pillars-section">
+      <div class="section-rule"></div>
+
+      <p class="pillars-display">Spirit &nbsp;·&nbsp; Chest &nbsp;·&nbsp; Body &nbsp;·&nbsp; Audience</p>
+      <p class="pillars-sub">
+        The four-pillar methodology behind every B Rockstar performance.<br>
+        Forged from thousands of hours of live stage footage. Felt by every audience.
+      </p>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         3. PERFORMANCE PHOTO
+         Replace with high-res stage performance photo of B Rockstar
+    ══════════════════════════════════════════════════════════ -->
+    <section class="photo-section">
+      <div class="section-rule"></div>
+
+      <!-- Replace with high-res stage performance photo of B Rockstar -->
+      <div class="photo-placeholder">
+        <p class="photo-placeholder-text">
+          [PERFORMANCE PHOTO — TO BE PROVIDED]<br>
+          Panoramic stage shot &nbsp;·&nbsp; 3:1 or 16:9
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         4. TESTIMONIAL
+         Replace with real testimonial once provided
+    ══════════════════════════════════════════════════════════ -->
+    <section class="testimonial-section">
+      <div class="section-rule"></div>
+
+      <p class="eyebrow">What People Say</p>
       <div class="gold-rule"></div>
 
-      <!-- Credential bar -->
+      <!-- Replace with real testimonial once provided -->
+      <blockquote class="testimonial-quote">
+        [ TESTIMONIAL QUOTE TO BE PROVIDED ]
+      </blockquote>
+      <p class="testimonial-attr">— [ Name, Title, Organization ]</p>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         5. CREDENTIALS BAR
+    ══════════════════════════════════════════════════════════ -->
+    <section class="cred-section">
+      <div class="section-rule"></div>
+
       <div class="cred-bar">
         <span class="cred-pill">16+ Years</span>
         <span class="cred-pill">22 States</span>
@@ -616,42 +720,30 @@
         <span class="cred-pill">National Black Theater Festival</span>
       </div>
 
-    </header>
-
-    <!-- ══════════════════════════════════════════════════════════
-         SECTION 2: FOUNDER MESSAGE
-         Tone: personal, storytelling, first person.
-         This is NOT a bio. It is a brief narrative about the problem
-         Stage Buddy solves and why B Rockstar was the one to build it.
-    ══════════════════════════════════════════════════════════ -->
-    <section class="founder-message">
-      <div class="section-rule"></div>
-
-      <p class="eyebrow">The Story</p>
-      <h2 class="section-heading">Why I Built <em>Stage Buddy</em></h2>
-      <div class="gold-rule"></div>
-
-      <div class="message-body">
-
-        <p>The burning desire to be better is what makes us better. I woke up in the middle of 2020 and decided I wanted to get better. Phone was still ringing and I was still lighting up stages. I just knew there was more room for improvement.</p>
-
-        <p>In search for performance-enhancing tools, I ran into an avalanche of <em style="font-style:italic;color:var(--white);">writing</em> workshops. "Where are the true performance workshops?", I asked. I decided to take matters into my own hands and begin breaking down the science of live performance using the thousands of hours of footage I had on myself.</p>
-
-        <p>Thus the methodology was born:<br /><span style="letter-spacing:0.12em;color:var(--gold);font-weight:500;">Spirit · Chest · Body · Audience.</span></p>
-
-        <p>It became my mission to spread this knowledge to 100 poets in one year. About 9 months later, we not only completed that goal — the science exploded with new insights and pain points gathered from one-on-one sessions with a wide range of artists. From there, workshops, books, cheat sheets, and bootcamps were established.</p>
-
-        <p>Stage Buddy Premium and Stage Buddy AI are the two most recent — and most critical — developments to the ecosystem of performance intelligence.</p>
-
-        <p style="color:var(--gold-soft);font-style:italic;">And we are still just getting started.</p>
-
-      </div>
     </section>
 
     <!-- ══════════════════════════════════════════════════════════
-         SECTION 3: PERFORMANCE VIDEO
-         PLACEHOLDER: Replace src="" with final YouTube embed URL
-         Format: https://www.youtube.com/embed/VIDEO_ID
+         6. WHAT YOU GET WHEN YOU BOOK B ROCKSTAR
+    ══════════════════════════════════════════════════════════ -->
+    <section class="experience-section">
+      <div class="section-rule"></div>
+
+      <p class="eyebrow">The Experience</p>
+      <h2 class="section-heading">What You Get When You Book <em>B Rockstar</em></h2>
+      <div class="gold-rule" style="margin-bottom: 40px;"></div>
+
+      <div class="experience-body">
+        <p>B Rockstar doesn't just perform — he connects. Whether it's a 10-minute feature, a full evening show, or a corporate keynote, he reads the room and delivers exactly what the moment needs. Audiences don't just applaud. They remember.</p>
+
+        <p>His work has taken him across 22 states, to broadcast stages at CBS and PBS, to the National Black Theater Festival, and into boardrooms and ballrooms nationwide. The range is intentional. The standard never drops.</p>
+
+        <p>Every booking — feature, full show, workshop, or keynote — is backed by a proven methodology, a professional tech rider, and a collaborator who shows up prepared. You bring the event. He brings the moment.</p>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         7. VIDEO — A STAGE MASTER
     ══════════════════════════════════════════════════════════ -->
     <section class="video-section">
       <div class="section-rule"></div>
@@ -673,7 +765,7 @@
     </section>
 
     <!-- ══════════════════════════════════════════════════════════
-         SECTION 4: BOOKING
+         8. BOOKINGS & RATES
     ══════════════════════════════════════════════════════════ -->
     <section class="booking-section">
       <div class="section-rule"></div>
@@ -703,7 +795,6 @@
             <p>Rate Card</p>
             <span>Full pricing, availability &amp; technical requirements</span>
           </div>
-          <!-- PLACEHOLDER: Replace href with final PDF URL before going live -->
           <a href="/rate-card" class="download-btn" target="_blank" rel="noopener">
             <span class="download-btn-icon">↓</span>
             Download Full Rate Card (PDF)
@@ -714,10 +805,9 @@
     </section>
 
     <!-- ══════════════════════════════════════════════════════════
-         SECTION 5: BOOKING INQUIRY FORM
-         PLACEHOLDER: Replace Formspree endpoint in the fetch() call below
+         9. BOOKING FORM — DO NOT EDIT
     ══════════════════════════════════════════════════════════ -->
-    <section class="inquiry-section">
+    <section class="inquiry-section" id="booking-form">
       <div class="section-rule"></div>
 
       <p class="eyebrow">Get in Touch</p>
@@ -816,12 +906,14 @@
           <textarea class="field-textarea" id="b-message"></textarea>
         </div>
 
-        <div id="booking-form" style="display:contents;">
+        <div id="booking-form-inner" style="display:contents;">
           <div class="form-footer-row">
             <button class="cta-btn" type="button" id="btn-booking-submit">Send Booking Inquiry</button>
             <p class="direct-contact">
-              Prefer to reach out directly?
-              <a href="mailto:founder@stagebuddy.app">founder@stagebuddy.app</a>
+              Prefer to reach out directly?<br>
+              <a href="mailto:founder@stagebuddy.app">founder@stagebuddy.app</a><br>
+              <!-- PLACEHOLDER: Replace with actual phone number -->
+              <a href="tel:[PHONE NUMBER — REPLACE]">[PHONE NUMBER — REPLACE]</a>
             </p>
           </div>
           <div class="submit-error" id="booking-submit-error">
@@ -836,9 +928,36 @@
       </div>
     </section>
 
+    <!-- ══════════════════════════════════════════════════════════
+         10. WHY I BUILT STAGE BUDDY — closing note
+    ══════════════════════════════════════════════════════════ -->
+    <section class="founder-message">
+      <div class="section-rule"></div>
+
+      <p class="eyebrow">A Final Note</p>
+      <h2 class="section-heading">Why I Built <em>Stage Buddy</em></h2>
+      <div class="gold-rule"></div>
+
+      <div class="message-body">
+
+        <p>The burning desire to be better is what makes us better. I woke up in the middle of 2020 and decided I wanted to get better. Phone was still ringing and I was still lighting up stages. I just knew there was more room for improvement.</p>
+
+        <p>In search for performance-enhancing tools, I ran into an avalanche of <em style="font-style:italic;color:var(--white);">writing</em> workshops. "Where are the true performance workshops?", I asked. I decided to take matters into my own hands and begin breaking down the science of live performance using the thousands of hours of footage I had on myself.</p>
+
+        <p>Thus the methodology was born.</p>
+
+        <p>It became my mission to spread this knowledge to 100 poets in one year. About 9 months later, we not only completed that goal — the science exploded with new insights and pain points gathered from one-on-one sessions with a wide range of artists. From there, workshops, books, cheat sheets, and bootcamps were established.</p>
+
+        <p>Stage Buddy Premium and Stage Buddy AI are the two most recent — and most critical — developments to the ecosystem of performance intelligence.</p>
+
+        <p style="color:var(--gold-soft);font-style:italic;">And we are still just getting started.</p>
+
+      </div>
+    </section>
+
   </div><!-- /page-wrap -->
 
-  <!-- Footer -->
+  <!-- 11. FOOTER -->
   <footer class="site-footer">
     <p>© 2026 B Rock &amp; Co &nbsp;·&nbsp; Stage Buddy</p>
     <a href="https://instagram.com/stagebuddyai" target="_blank" rel="noopener">@stagebuddyai</a>
@@ -849,7 +968,6 @@
 
       var ok = true;
 
-      // Validate name
       var name = document.getElementById('b-name').value.trim();
       if (!name) {
         document.getElementById('b-name').classList.add('invalid');
@@ -860,7 +978,6 @@
         document.getElementById('err-b-name').classList.remove('visible');
       }
 
-      // Validate email
       var email = document.getElementById('b-email').value.trim();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         document.getElementById('b-email').classList.add('invalid');
@@ -871,7 +988,6 @@
         document.getElementById('err-b-email').classList.remove('visible');
       }
 
-      // Validate event type
       var eventType = document.getElementById('b-type').value;
       if (!eventType) {
         document.getElementById('b-type').classList.add('invalid');
@@ -893,13 +1009,13 @@
       data.append('name',         name);
       data.append('email',        email);
       data.append('organization', document.getElementById('b-org').value.trim());
-      data.append('event_date',        document.getElementById('b-date').value.trim());
-      data.append('event_type',        eventType);
-      data.append('budget_range',      document.getElementById('b-budget').value);
-      data.append('attendance',        document.getElementById('b-capacity').value);
+      data.append('event_date',   document.getElementById('b-date').value.trim());
+      data.append('event_type',   eventType);
+      data.append('budget_range', document.getElementById('b-budget').value);
+      data.append('attendance',   document.getElementById('b-capacity').value);
       var priorEl = document.querySelector('input[name="prior_booking"]:checked');
-      data.append('booked_before',     priorEl ? priorEl.value : '');
-      data.append('message',           document.getElementById('b-message').value.trim());
+      data.append('booked_before', priorEl ? priorEl.value : '');
+      data.append('message',      document.getElementById('b-message').value.trim());
       data.append('_subject',     'New Booking Inquiry — Stage Buddy');
 
       try {
@@ -910,8 +1026,7 @@
         });
 
         if (res.ok) {
-          document.getElementById('booking-form').style.display = 'none';
-          // Hide all form fields visually
+          document.getElementById('booking-form-inner').style.display = 'none';
           document.querySelectorAll('.field-group').forEach(function (el) {
             el.style.display = 'none';
           });
