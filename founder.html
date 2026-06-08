@@ -71,7 +71,7 @@
     .site-logo {
       display: block;
       text-align: center;
-      padding: 44px 0 52px;
+      padding: 44px 0 40px;
     }
     .site-logo img {
       width: 130px;
@@ -80,22 +80,20 @@
       margin: 0 auto;
       opacity: 0.9;
     }
-    .site-logo-label {
-      display: block;
-      margin-top: 10px;
-      font-size: 9px;
-      letter-spacing: 0.38em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-    }
 
     /* ── Shared section primitives ───────────────────────────────── */
 
     .section-rule {
-      width: 100%;
+      /* Break out of .page-wrap's max-width to span full viewport */
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      width: 100vw;
       height: 1px;
-      background: var(--border);
-      margin: 0 0 60px;
+      background: rgba(201,168,76,0.55);
+      margin-bottom: 44px;
     }
 
     .eyebrow {
@@ -128,17 +126,17 @@
     }
 
     .gold-rule {
-      width: 36px;
+      width: 48px;
       height: 1px;
       background: var(--gold-dim);
-      margin: 24px auto 36px;
+      margin: 18px auto 28px;
     }
 
     /* ── 1. HERO ─────────────────────────────────────────────────── */
 
     .founder-header {
       text-align: center;
-      padding-bottom: 64px;
+      padding-bottom: 48px;
     }
 
     .founder-role {
@@ -175,7 +173,7 @@
     /* ── 2. SPIRIT · CHEST · BODY · AUDIENCE ────────────────────── */
 
     .pillars-section {
-      padding-bottom: 64px;
+      padding-bottom: 48px;
       text-align: center;
     }
 
@@ -199,7 +197,7 @@
 
     /* ── 3. PHOTO CAROUSEL ───────────────────────────────────────── */
 
-    .photo-section { padding-bottom: 64px; }
+    .photo-section { padding-bottom: 48px; }
 
     .carousel {
       position: relative;
@@ -278,7 +276,7 @@
     /* ── 4. TESTIMONIAL ──────────────────────────────────────────── */
 
     .testimonial-section {
-      padding-bottom: 64px;
+      padding-bottom: 48px;
       text-align: center;
     }
 
@@ -316,7 +314,7 @@
     /* ── 5. CREDENTIALS BAR ──────────────────────────────────────── */
 
     .cred-section {
-      padding-bottom: 64px;
+      padding-bottom: 48px;
     }
 
     .cred-bar {
@@ -341,7 +339,7 @@
     /* ── 6. WHAT YOU GET ─────────────────────────────────────────── */
 
     .experience-section {
-      padding-bottom: 64px;
+      padding-bottom: 48px;
     }
 
     .experience-body {
@@ -359,7 +357,7 @@
 
     /* ── 7. VIDEO ────────────────────────────────────────────────── */
 
-    .video-section { padding-bottom: 64px; }
+    .video-section { padding-bottom: 48px; }
 
     .video-outer {
       max-width: 680px;
@@ -384,7 +382,7 @@
 
     /* ── 8. BOOKINGS & RATES ─────────────────────────────────────── */
 
-    .booking-section { padding-bottom: 64px; }
+    .booking-section { padding-bottom: 48px; }
 
     .booking-card {
       background: var(--surface);
@@ -463,7 +461,7 @@
 
     /* ── 9. BOOKING FORM ─────────────────────────────────────────── */
 
-    .inquiry-section { padding-bottom: 64px; }
+    .inquiry-section { padding-bottom: 48px; }
 
     .inquiry-inner {
       max-width: 620px;
@@ -613,7 +611,7 @@
 
     /* ── 10. FOUNDER MESSAGE ─────────────────────────────────────── */
 
-    .founder-message { padding-bottom: 64px; }
+    .founder-message { padding-bottom: 48px; }
 
     .message-body {
       max-width: 620px;
@@ -680,7 +678,6 @@
     <!-- Logo — static, no link -->
     <div class="site-logo">
       <img src="/logo.png" alt="Stage Buddy" />
-      <span class="site-logo-label">Founder</span>
     </div>
 
     <!-- ══════════════════════════════════════════════════════════
