@@ -609,6 +609,74 @@
     .submit-error { font-size: 12px; color: var(--error); margin-top: 14px; display: none; }
     .submit-error.visible { display: block; }
 
+    /* ── Autocomplete dropdown ───────────────────────────────────── */
+
+    .autocomplete-wrap { position: relative; }
+
+    .autocomplete-dropdown {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: #1e1e1e;
+      border: 1px solid var(--gold-dim);
+      border-radius: 2px;
+      z-index: 50;
+      max-height: 220px;
+      overflow-y: auto;
+      display: none;
+    }
+    .autocomplete-dropdown.open { display: block; }
+
+    .autocomplete-item {
+      padding: 11px 14px;
+      font-size: 13px;
+      color: rgba(244,240,232,0.75);
+      cursor: pointer;
+      border-bottom: 1px solid rgba(201,168,76,0.07);
+      line-height: 1.4;
+      transition: background 0.15s;
+    }
+    .autocomplete-item:last-child { border-bottom: none; }
+    .autocomplete-item:hover { background: rgba(201,168,76,0.08); color: var(--white); }
+
+    .tbd-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 9px;
+      cursor: pointer;
+      width: fit-content;
+    }
+    .tbd-row input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .tbd-check {
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid rgba(201,168,76,0.25);
+      border-radius: 2px;
+      background: var(--surface);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .tbd-check::after {
+      content: '';
+      width: 8px;
+      height: 5px;
+      border-left: 1.5px solid var(--black);
+      border-bottom: 1.5px solid var(--black);
+      transform: rotate(-45deg) translateY(-1px);
+      display: none;
+    }
+    .tbd-row input[type="checkbox"]:checked ~ .tbd-check {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+    .tbd-row input[type="checkbox"]:checked ~ .tbd-check::after { display: block; }
+    .tbd-label-text { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+
     /* ── 10. FOUNDER MESSAGE ─────────────────────────────────────── */
 
     .founder-message { padding-bottom: 48px; }
@@ -887,16 +955,56 @@
           </div>
         </div>
 
-        <div class="field-group">
-          <label class="field-label" for="b-email">Email Address *</label>
-          <input class="field-input" type="email" id="b-email" autocomplete="email" />
-          <div class="field-error" id="err-b-email">Please enter a valid email address.</div>
+        <div class="two-col">
+          <div class="field-group">
+            <label class="field-label" for="b-email">Email Address *</label>
+            <input class="field-input" type="email" id="b-email" autocomplete="email" />
+            <div class="field-error" id="err-b-email">Please enter a valid email address.</div>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="b-phone">Phone Number <span class="optional">(optional)</span></label>
+            <input class="field-input" type="tel" id="b-phone" autocomplete="tel" placeholder="e.g. 555-867-5309" />
+          </div>
         </div>
 
         <div class="two-col">
           <div class="field-group">
             <label class="field-label" for="b-date">Event Date <span class="optional">(optional)</span></label>
             <input class="field-input" type="text" id="b-date" placeholder="MM / DD / YYYY" />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="b-time">Event Time <span class="optional">(optional)</span></label>
+            <input class="field-input" type="text" id="b-time" placeholder="e.g. 7:00 PM" />
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="b-location">Event Location <span class="optional">(optional)</span></label>
+          <div class="autocomplete-wrap">
+            <input class="field-input" type="text" id="b-location" autocomplete="off" placeholder="Start typing a venue, address, or city…" />
+            <div class="autocomplete-dropdown" id="location-dropdown"></div>
+          </div>
+          <label class="tbd-row">
+            <input type="checkbox" id="b-location-tbd" />
+            <span class="tbd-check"></span>
+            <span class="tbd-label-text">Location is TBD</span>
+          </label>
+        </div>
+
+        <div class="two-col">
+          <div class="field-group">
+            <label class="field-label" for="b-budget">Budget Range <span class="optional">(optional)</span></label>
+            <div class="select-wrap">
+              <select class="field-select" id="b-budget">
+                <option value="" disabled selected>Select range</option>
+                <option value="Under $500">Under $500</option>
+                <option value="$500 – $1,000">$500 – $1,000</option>
+                <option value="$1,000 – $2,500">$1,000 – $2,500</option>
+                <option value="$2,500 – $5,000">$2,500 – $5,000</option>
+                <option value="$5,000+">$5,000+</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+            </div>
           </div>
           <div class="field-group">
             <label class="field-label" for="b-type">Event Type *</label>
@@ -915,20 +1023,6 @@
         </div>
 
         <div class="two-col">
-          <div class="field-group">
-            <label class="field-label" for="b-budget">Budget Range <span class="optional">(optional)</span></label>
-            <div class="select-wrap">
-              <select class="field-select" id="b-budget">
-                <option value="" disabled selected>Select range</option>
-                <option value="Under $500">Under $500</option>
-                <option value="$500 – $1,000">$500 – $1,000</option>
-                <option value="$1,000 – $2,500">$1,000 – $2,500</option>
-                <option value="$2,500 – $5,000">$2,500 – $5,000</option>
-                <option value="$5,000+">$5,000+</option>
-                <option value="Prefer not to say">Prefer not to say</option>
-              </select>
-            </div>
-          </div>
           <div class="field-group">
             <label class="field-label" for="b-capacity">Attendance Capacity <span class="optional">(optional)</span></label>
             <div class="select-wrap">
@@ -1057,6 +1151,59 @@
       setInterval(function () { goTo(current + 1); }, 5000);
     }());
 
+    // ── Location autocomplete (Nominatim / OpenStreetMap) ─────────
+    (function () {
+      var input    = document.getElementById('b-location');
+      var dropdown = document.getElementById('location-dropdown');
+      var tbd      = document.getElementById('b-location-tbd');
+      var timer    = null;
+
+      tbd.addEventListener('change', function () {
+        if (tbd.checked) {
+          input.value = 'TBD';
+          input.disabled = true;
+          dropdown.classList.remove('open');
+        } else {
+          input.value = '';
+          input.disabled = false;
+          input.focus();
+        }
+      });
+
+      input.addEventListener('input', function () {
+        clearTimeout(timer);
+        var q = input.value.trim();
+        if (q.length < 3) { dropdown.classList.remove('open'); return; }
+        timer = setTimeout(function () {
+          fetch('https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=6&q=' + encodeURIComponent(q), {
+            headers: { 'Accept-Language': 'en' }
+          })
+          .then(function (r) { return r.json(); })
+          .then(function (results) {
+            dropdown.innerHTML = '';
+            if (!results.length) { dropdown.classList.remove('open'); return; }
+            results.forEach(function (place) {
+              var item = document.createElement('div');
+              item.className = 'autocomplete-item';
+              item.textContent = place.display_name;
+              item.addEventListener('mousedown', function (e) {
+                e.preventDefault();
+                input.value = place.display_name;
+                dropdown.classList.remove('open');
+              });
+              dropdown.appendChild(item);
+            });
+            dropdown.classList.add('open');
+          })
+          .catch(function () { dropdown.classList.remove('open'); });
+        }, 320);
+      });
+
+      input.addEventListener('blur', function () {
+        setTimeout(function () { dropdown.classList.remove('open'); }, 180);
+      });
+    }());
+
     document.getElementById('btn-booking-submit').addEventListener('click', async function () {
 
       var ok = true;
@@ -1101,8 +1248,11 @@
       data.append('_replyto',     email);
       data.append('name',         name);
       data.append('email',        email);
+      data.append('phone',        document.getElementById('b-phone').value.trim());
       data.append('organization', document.getElementById('b-org').value.trim());
       data.append('event_date',   document.getElementById('b-date').value.trim());
+      data.append('event_time',   document.getElementById('b-time').value.trim());
+      data.append('event_location', document.getElementById('b-location').value.trim());
       data.append('event_type',   eventType);
       data.append('budget_range', document.getElementById('b-budget').value);
       data.append('attendance',   document.getElementById('b-capacity').value);
