@@ -105,17 +105,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 500;
       color: rgba(255,255,255,0.2);
       transition: all 0.35s ease;
     }
 
     .prog-label {
-      font-size: 8.5px;
-      letter-spacing: 0.2em;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.35);
       transition: color 0.35s ease;
     }
 
@@ -146,8 +147,9 @@
 
     .step-eyebrow {
       text-align: center;
-      font-size: 10px;
-      letter-spacing: 0.32em;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.26em;
       text-transform: uppercase;
       color: var(--gold-dim);
       margin-bottom: 12px;
@@ -194,8 +196,9 @@
     .tier-card.selected { border-color: var(--gold); background: #1c1609; }
 
     .tc-num {
-      font-size: 9px;
-      letter-spacing: 0.28em;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--gold-dim);
       margin-bottom: 9px;
@@ -219,7 +222,7 @@
     }
 
     .tc-divider { width: 22px; height: 1px; background: var(--gold-dim); margin-bottom: 10px; }
-    .tc-outcome { font-size: 12px; color: var(--muted); font-style: italic; line-height: 1.5; }
+    .tc-outcome { font-size: 14px; font-weight: 400; color: var(--muted); font-style: italic; line-height: 1.5; }
 
     /* ── Fields ───────────────────────────────────────────────── */
 
@@ -229,17 +232,17 @@
 
     .field-label {
       display: block;
-      font-size: 11px;
+      font-size: 14px;
       font-weight: 500;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 9px;
     }
 
-    .optional { color: var(--muted); font-size: 9px; letter-spacing: 0.08em; text-transform: none; font-weight: 300; }
+    .optional { color: var(--muted); font-size: 12px; letter-spacing: 0.08em; text-transform: none; font-weight: 400; }
 
-    .field-helper { font-size: 12px; color: var(--muted); line-height: 1.55; margin-bottom: 10px; }
+    .field-helper { font-size: 14px; font-weight: 400; color: var(--muted); line-height: 1.55; margin-bottom: 10px; }
 
     .field-input,
     .field-textarea {
@@ -265,7 +268,7 @@
 
     .field-textarea { min-height: 110px; resize: vertical; line-height: 1.6; }
 
-    .field-error { font-size: 11px; color: var(--error); margin-top: 6px; display: none; }
+    .field-error { font-size: 13px; font-weight: 400; color: var(--error); margin-top: 6px; display: none; }
     .field-error.visible { display: block; }
 
     /* ── Radio buttons ────────────────────────────────────────── */
@@ -351,7 +354,7 @@
     }
     .or-row::before,
     .or-row::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .or-row span { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .or-row span { font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
 
     /* ── Section divider inside step ─────────────────────────── */
 
@@ -386,9 +389,9 @@
 
     .upload-icon { font-size: 18px; color: var(--gold-dim); flex-shrink: 0; line-height: 1; }
     .upload-btn-inner  { display: flex; flex-direction: column; gap: 3px; }
-    .upload-btn-main   { font-size: 13px; color: var(--muted); transition: color 0.2s; }
+    .upload-btn-main   { font-size: 15px; font-weight: 400; color: var(--muted); transition: color 0.2s; }
     .upload-btn.done .upload-btn-main { color: var(--gold-soft); }
-    .upload-btn-sub    { font-size: 11px; color: rgba(136,136,128,0.5); }
+    .upload-btn-sub    { font-size: 13px; color: rgba(136,136,128,0.6); }
 
     .upload-progress {
       margin-top: 10px;
@@ -444,8 +447,9 @@
 
     .back-btn {
       font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.16em;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--gold-dim);
       background: none;
@@ -483,7 +487,7 @@
 
     .confirm-divider { width: 36px; height: 1px; background: var(--gold-dim); }
     .confirm-body { font-size: 16px; line-height: 1.8; color: var(--muted); }
-    .confirm-note { font-size: 11px; color: var(--gold-dim); letter-spacing: 0.07em; }
+    .confirm-note { font-size: 14px; font-weight: 400; color: var(--gold-dim); letter-spacing: 0.07em; }
 
     /* ── Responsive ───────────────────────────────────────────── */
 
