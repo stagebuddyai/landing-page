@@ -57,12 +57,33 @@
       z-index: 0;
     }
 
+    .back-nav {
+      position: relative;
+      z-index: 1;
+      padding: 20px 28px 0;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--gold-soft); }
+
     .apply-wrap {
       position: relative;
       z-index: 1;
       max-width: 780px;
       margin: 0 auto;
-      padding: 44px 28px 100px;
+      padding: 24px 28px 100px;
     }
 
     .site-logo {
@@ -505,6 +526,10 @@
 <body>
 
   <div class="glow-top"></div>
+
+  <nav class="back-nav">
+    <a class="back-link" href="/">&#8592; &nbsp;Back to Stage Buddy</a>
+  </nav>
 
   <div class="apply-wrap">
 

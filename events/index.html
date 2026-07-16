@@ -243,13 +243,30 @@
     /* ── Coming soon teaser ────────────────────────────────────── */
 
     .teaser {
+      position: relative;
       text-align: center;
-      padding: 40px 20px;
+      padding: 48px 20px;
       border: 1px solid rgba(201,168,76,0.10);
       border-radius: 2px;
+      overflow: hidden;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards;
       animation-delay: 0.55s;
+    }
+
+    .teaser-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('/moan-room.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.12;
+      filter: grayscale(30%);
+    }
+
+    .teaser-content {
+      position: relative;
+      z-index: 1;
     }
 
     .teaser-label {
@@ -266,7 +283,7 @@
       font-size: 20px;
       font-weight: 400;
       font-style: italic;
-      color: rgba(244,240,232,0.40);
+      color: rgba(244,240,232,0.55);
     }
 
     /* ── Footer ────────────────────────────────────────────────── */
@@ -341,7 +358,7 @@
       <p class="event-venue">Urban Grind</p>
       <div class="event-card-rule"></div>
       <p class="event-desc">
-        The longest-running poetry event in Atlanta. Every Thursday, artists step up to the mic at Urban Grind for an evening of raw spoken word, community, and craft. Come to listen. Stay to perform.
+        Crown Me is every 2nd Thursday and is a part of the longest-running poetry event series in Atlanta. Artists step up to the mic at Urban Grind for an evening of raw spoken word, community, and craft. Come to listen. Stay to perform.
       </p>
       <div class="event-actions">
         <a class="btn-ticket" href="https://www.eventbrite.com/e/thursdays-open-mic-poetry-tickets-1677673258879?aff=erelexpmlt" target="_blank" rel="noopener">
@@ -355,8 +372,11 @@
 
     <!-- Coming soon teaser -->
     <div class="teaser">
-      <p class="teaser-label">On the horizon</p>
-      <p class="teaser-text">More events coming soon.</p>
+      <div class="teaser-bg"></div>
+      <div class="teaser-content">
+        <p class="teaser-label">On the horizon</p>
+        <p class="teaser-text">More events coming soon.</p>
+      </div>
     </div>
 
   </div>
