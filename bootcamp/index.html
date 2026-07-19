@@ -219,6 +219,14 @@
       animation: fadeUp 0.5s ease forwards;
     }
 
+    .questions-block {
+      display: none;
+    }
+    .questions-block.active {
+      display: block;
+      animation: fadeUp 0.4s ease forwards;
+    }
+
     .section-rule {
       width: 100%;
       height: 1px;
@@ -455,12 +463,12 @@
     <!-- ── Track selector ────────────────────────────────────── -->
     <p class="track-label">Step 1 — Choose your track</p>
     <div class="track-grid" id="track-grid">
-      <div class="track-option" data-track="Performer Track — Elite Bootcamp ($7,000)" onclick="selectTrack(this)">
+      <div class="track-option" data-track="Performer Track — Elite Bootcamp ($7,000)" data-track-key="performer" onclick="selectTrack(this)">
         <span class="track-option-emoji">🎤</span>
         <span class="track-option-name">Elite Bootcamp</span>
         <span class="track-option-price">Performer Track &nbsp;·&nbsp; $7,000</span>
       </div>
-      <div class="track-option" data-track="Confidence Track — Universal Curriculum ($5,000)" onclick="selectTrack(this)">
+      <div class="track-option" data-track="Confidence Track — Universal Curriculum ($5,000)" data-track-key="confidence" onclick="selectTrack(this)">
         <span class="track-option-emoji">🌱</span>
         <span class="track-option-name">Universal Curriculum</span>
         <span class="track-option-price">Confidence Track &nbsp;·&nbsp; $5,000</span>
@@ -478,46 +486,87 @@
           <input type="text" name="website" tabindex="-1" autocomplete="off" />
         </div>
 
-        <!-- Q1 -->
-        <div class="field-group">
-          <label class="field-label"><span class="q-num">01</span> Stage History</label>
-          <p class="field-prompt">Where are you performing right now?</p>
-          <textarea class="field-textarea" id="q1" name="q1" rows="5"
-            placeholder="Walk me through your last 90 days on stage — open mics, features, showcases, or nothing. Be specific."
-            required></textarea>
-        </div>
+        <!-- ── Performer Track questions ──────────────────────── -->
+        <div class="questions-block" id="questions-performer">
 
-        <!-- Q2 -->
-        <div class="field-group">
-          <label class="field-label"><span class="q-num">02</span> The Block</label>
-          <p class="field-prompt">What is the one thing about your performance you have not been able to fix on your own, no matter how much you've practiced?</p>
-          <textarea class="field-textarea" id="q2" name="q2" rows="5" required></textarea>
-        </div>
+          <div class="field-group">
+            <label class="field-label"><span class="q-num">01</span> Stage History</label>
+            <p class="field-prompt">Where are you performing right now?</p>
+            <textarea class="field-textarea" id="p-q1" rows="5"
+              placeholder="Walk me through your last 90 days on stage — open mics, features, showcases, or nothing. Be specific."
+              ></textarea>
+          </div>
 
-        <!-- Q3 -->
-        <div class="field-group">
-          <label class="field-label"><span class="q-num">03</span> The Vision</label>
-          <p class="field-prompt">If we nail this, what does your performance look like 90 days from now?</p>
-          <textarea class="field-textarea" id="q3" name="q3" rows="5"
-            placeholder="Describe the version of you that walks off stage at the end of this program."
-            required></textarea>
-        </div>
+          <div class="field-group">
+            <label class="field-label"><span class="q-num">02</span> The Block</label>
+            <p class="field-prompt">What is the one thing about your performance you have not been able to fix on your own, no matter how much you've practiced?</p>
+            <textarea class="field-textarea" id="p-q2" rows="5"></textarea>
+          </div>
 
-        <!-- Q4 -->
-        <div class="field-group">
-          <label class="field-label"><span class="q-num">04</span> Prior Investment</label>
-          <p class="field-prompt">What have you already invested in your development?</p>
-          <textarea class="field-textarea" id="q4" name="q4" rows="5"
-            placeholder="Courses, coaches, programs, conferences — what have you paid for, and what did it actually do for you?"
-            required></textarea>
-        </div>
+          <div class="field-group">
+            <label class="field-label"><span class="q-num">03</span> The Vision</label>
+            <p class="field-prompt">If we nail this, what does your performance look like 90 days from now?</p>
+            <textarea class="field-textarea" id="p-q3" rows="5"
+              placeholder="Describe the version of you that walks off stage at the end of this program."
+              ></textarea>
+          </div>
 
-        <!-- Q5 -->
-        <div class="field-group">
-          <label class="field-label"><span class="q-num">05</span> Why Now</label>
-          <p class="field-prompt">How did you find me — and what made you decide this was worth an application?</p>
-          <textarea class="field-textarea" id="q5" name="q5" rows="5" required></textarea>
-        </div>
+          <div class="field-group">
+            <label class="field-label"><span class="q-num">04</span> Prior Investment</label>
+            <p class="field-prompt">What have you already invested in your development?</p>
+            <textarea class="field-textarea" id="p-q4" rows="5"
+              placeholder="Courses, coaches, programs, conferences — what have you paid for, and what did it actually do for you?"
+              ></textarea>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label"><span class="q-num">05</span> Why Now</label>
+            <p class="field-prompt">How did you find me — and what made you decide this was worth an application?</p>
+            <textarea class="field-textarea" id="p-q5" rows="5"></textarea>
+          </div>
+
+        </div><!-- /questions-performer -->
+
+        <!-- ── Confidence Track questions ─────────────────────── -->
+        <div class="questions-block" id="questions-confidence">
+
+          <div class="field-group">
+            <label class="field-label"><span class="q-num">01</span> Your Voice Right Now</label>
+            <p class="field-prompt">Tell me about your relationship with speaking up.</p>
+            <textarea class="field-textarea" id="c-q1" rows="5"
+              placeholder="In meetings, in conversations, in rooms where you had something to say but didn't. When do you go quiet when you wish you'd spoken?"
+              ></textarea>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label"><span class="q-num">02</span> The Wall</label>
+            <p class="field-prompt">What's the one thing about how you show up that you haven't been able to change, no matter what you've tried?</p>
+            <textarea class="field-textarea" id="c-q2" rows="5"></textarea>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label"><span class="q-num">03</span> The Version of You</label>
+            <p class="field-prompt">If we nail this, what does your life look like 90 days from now?</p>
+            <textarea class="field-textarea" id="c-q3" rows="5"
+              placeholder="Describe the version of you who found their voice. What are you doing differently? Where are you speaking that you're currently silent?"
+              ></textarea>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label"><span class="q-num">04</span> What You've Tried</label>
+            <p class="field-prompt">What have you already done to work on this?</p>
+            <textarea class="field-textarea" id="c-q4" rows="5"
+              placeholder="Therapy, self-help, workshops, journaling, affirmations — what have you invested in, and what did it actually move for you?"
+              ></textarea>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label"><span class="q-num">05</span> Why Now</label>
+            <p class="field-prompt">How did you find me — and what made you decide this was worth an application?</p>
+            <textarea class="field-textarea" id="c-q5" rows="5"></textarea>
+          </div>
+
+        </div><!-- /questions-confidence -->
 
         <div class="section-rule"></div>
 
@@ -570,16 +619,29 @@
 
   <script>
     var selectedTrack = '';
+    var activeTrackKey = '';
 
     function selectTrack(el) {
+      // Highlight selected card
       document.querySelectorAll('.track-option').forEach(function(o) {
         o.classList.remove('selected');
       });
       el.classList.add('selected');
       selectedTrack = el.getAttribute('data-track');
+      activeTrackKey = el.getAttribute('data-track-key');
+
+      // Toggle question blocks
+      document.querySelectorAll('.questions-block').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      document.getElementById('questions-' + activeTrackKey).classList.add('active');
+
+      // Reveal form section (first time only)
       var section = document.getElementById('form-section');
-      section.classList.add('visible');
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!section.classList.contains('visible')) {
+        section.classList.add('visible');
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     document.getElementById('bootcamp-form').addEventListener('submit', async function(e) {
@@ -589,7 +651,7 @@
       if (document.querySelector('[name="website"]').value) return;
 
       // Track must be selected
-      if (!selectedTrack) return;
+      if (!selectedTrack || !activeTrackKey) return;
 
       var btn = document.getElementById('submit-btn');
       var errEl = document.getElementById('form-error');
@@ -597,16 +659,19 @@
       btn.textContent = 'Submitting…';
       errEl.style.display = 'none';
 
+      // Read answers from the active track's question set
+      var p = activeTrackKey === 'performer' ? 'p-' : 'c-';
+
       var payload = {
         track_selected: selectedTrack,
         name:           document.getElementById('name').value.trim(),
         email:          document.getElementById('email').value.trim(),
         social_handle:  document.getElementById('social_handle').value.trim() || null,
-        q1:             document.getElementById('q1').value.trim(),
-        q2:             document.getElementById('q2').value.trim(),
-        q3:             document.getElementById('q3').value.trim(),
-        q4:             document.getElementById('q4').value.trim(),
-        q5:             document.getElementById('q5').value.trim()
+        q1:             document.getElementById(p + 'q1').value.trim(),
+        q2:             document.getElementById(p + 'q2').value.trim(),
+        q3:             document.getElementById(p + 'q3').value.trim(),
+        q4:             document.getElementById(p + 'q4').value.trim(),
+        q5:             document.getElementById(p + 'q5').value.trim()
       };
 
       try {
