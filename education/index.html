@@ -500,6 +500,93 @@
       .pricing-section { padding: 40px 22px 80px; }
       .card-price { font-size: 36px; }
     }
+
+    /* ── Bootcamp section ──────────────────────────────────────── */
+
+    .bootcamp-section {
+      position: relative;
+      z-index: 1;
+      padding: 72px 28px 100px;
+      border-top: 1px solid var(--border);
+    }
+
+    .bootcamp-inner {
+      max-width: 1020px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .bootcamp-subhead {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--muted);
+      text-align: center;
+      letter-spacing: 0.04em;
+      margin-top: -36px;
+      margin-bottom: 56px;
+    }
+
+    .bootcamp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 100%;
+      margin-bottom: 48px;
+    }
+
+    .card-price-sub {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      margin-top: -10px;
+      margin-bottom: 16px;
+    }
+
+    .card-differentiator {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gold-soft);
+      line-height: 1.55;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+
+    .card-footnote {
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(136,136,128,0.60);
+      line-height: 1.6;
+    }
+
+    .bootcamp-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .apply-sub {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--gold-dim);
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .bootcamp-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .bootcamp-section { padding: 48px 22px 80px; }
+    }
   </style>
 </head>
 <body>
@@ -617,6 +704,58 @@
             <p class="discovery-card-link">Book a Session &nbsp;→</p>
           </div>
         </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="bootcamp-section">
+    <div class="bootcamp-inner">
+
+      <h2 class="pricing-heading">Ready to go <em>all in?</em><br>Choose your path.</h2>
+      <p class="bootcamp-subhead">3 months. 1-on-1. Application required.</p>
+
+      <div class="bootcamp-grid">
+
+        <!-- Card 1 — Elite Bootcamp (Performer Track) -->
+        <div class="price-card featured">
+          <div class="card-tier">🎤 Performer Track</div>
+          <div class="card-name">Elite Bootcamp</div>
+          <div class="card-price">$7,000</div>
+          <p class="card-price-sub">or from $2,000 a la carte</p>
+          <div class="card-divider"></div>
+          <p class="card-outcome">For the artist who's already performing and ready to go pro.</p>
+          <ul class="card-list">
+            <li>Month 1 — Performance: S.T.A.R.R. build across all 4 pillars</li>
+            <li>Month 2 — Packaging: brand, press kit, rate card, sellable product</li>
+            <li>Month 3 — Persistence: 30-day live run with B Rockstar as your stage buddy</li>
+          </ul>
+          <p class="card-differentiator">Includes 1 guaranteed paid feature + 2 post-program audit credits</p>
+          <p class="card-footnote">A la carte: Performance $2,000 · Packaging $2,500 · Persistence $3,500</p>
+        </div>
+
+        <!-- Card 2 — Universal Curriculum (Confidence Track) -->
+        <div class="price-card">
+          <div class="card-tier">🌱 Confidence Track</div>
+          <div class="card-name">Universal Curriculum</div>
+          <div class="card-price">$5,000</div>
+          <p class="card-price-sub">or from $1,500 a la carte</p>
+          <div class="card-divider"></div>
+          <p class="card-outcome">For anyone who wants to build confidence and find their voice — no stage experience required.</p>
+          <ul class="card-list">
+            <li>Month 1 — Writing: unlock your voice through poetry and reflection</li>
+            <li>Month 2 — Performance: S.T.A.R.R. build, stage presence, live delivery</li>
+            <li>Month 3 — Persistence: 30-day live run with B Rockstar as your stage buddy</li>
+          </ul>
+          <p class="card-differentiator">Poetry as the vehicle. Confidence as the destination.</p>
+          <p class="card-footnote">A la carte: Writing $1,500 · Performance $2,000 · Persistence $3,500</p>
+        </div>
+
+      </div>
+
+      <div class="bootcamp-cta">
+        <a class="cta-btn" href="/bootcamp">Apply for the Bootcamp</a>
+        <p class="apply-sub">Applications reviewed within 48 hours &nbsp;·&nbsp; Spots are limited</p>
       </div>
 
     </div>

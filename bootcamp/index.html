@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite Bootcamp — Application · Stage Buddy</title>
+  <meta name="description" content="Apply for the Elite Bootcamp or Universal Curriculum. B Rockstar reviews every application personally — hear back within 48 hours." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:      #0a0a0a;
+      --surface:    #161616;
+      --gold:       #c9a84c;
+      --gold-soft:  #e2c27d;
+      --gold-dim:   #7a6030;
+      --white:      #f4f0e8;
+      --muted:      #888880;
+      --border:     rgba(201,168,76,0.18);
+      --error:      #c97a6a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    .glow-top {
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.10) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Layout ────────────────────────────────────────────────── */
+
+    .back-nav {
+      position: relative;
+      z-index: 1;
+      padding: 20px 28px 0;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--gold-soft); }
+
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 24px 28px 100px;
+    }
+
+    /* ── Logo ──────────────────────────────────────────────────── */
+
+    .site-logo {
+      display: block;
+      text-align: center;
+      margin-bottom: 48px;
+      text-decoration: none;
+    }
+    .site-logo img {
+      width: 240px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      opacity: 0.92;
+      transition: opacity 0.2s;
+    }
+    .site-logo:hover img { opacity: 1; }
+
+    /* ── Page hero ─────────────────────────────────────────────── */
+
+    .page-hero {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .page-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 18px;
+    }
+
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 6vw, 44px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .gold-rule {
+      width: 36px;
+      height: 1px;
+      background: var(--gold-dim);
+      margin: 0 auto 20px;
+    }
+
+    .page-sub {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Track selector ────────────────────────────────────────── */
+
+    .track-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .track-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+
+    .track-option {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 24px 22px;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      user-select: none;
+    }
+    .track-option:hover {
+      border-color: var(--gold-dim);
+    }
+    .track-option.selected {
+      border-color: var(--gold);
+      background: #191510;
+    }
+
+    .track-option-emoji {
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .track-option-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .track-option-price {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gold-dim);
+      letter-spacing: 0.06em;
+    }
+
+    .track-option.selected .track-option-price {
+      color: var(--gold);
+    }
+
+    /* ── Form ──────────────────────────────────────────────────── */
+
+    .form-section {
+      display: none;
+    }
+    .form-section.visible {
+      display: block;
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .section-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 40px;
+    }
+
+    .field-group {
+      margin-bottom: 32px;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 8px;
+    }
+
+    .field-label .q-num {
+      color: var(--gold);
+      margin-right: 6px;
+    }
+
+    .field-prompt {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .field-input,
+    .field-textarea {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      padding: 14px 16px;
+      transition: border-color 0.2s ease;
+      outline: none;
+      resize: vertical;
+    }
+    .field-input:focus,
+    .field-textarea:focus {
+      border-color: var(--gold-dim);
+    }
+    .field-input::placeholder,
+    .field-textarea::placeholder {
+      color: rgba(136,136,128,0.55);
+      font-style: italic;
+    }
+
+    .field-textarea {
+      min-height: 120px;
+      line-height: 1.65;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field-optional {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-left: 6px;
+      text-transform: none;
+    }
+
+    /* ── Honeypot ──────────────────────────────────────────────── */
+
+    .hp-field { display: none; }
+
+    /* ── Submit ────────────────────────────────────────────────── */
+
+    .form-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin-top: 40px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 18px 48px;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    }
+    .cta-btn:hover:not(:disabled) {
+      background: var(--gold-soft);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px rgba(201,168,76,0.22);
+    }
+    .cta-btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .form-note {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--gold-dim);
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+
+    .form-error {
+      font-size: 14px;
+      color: var(--error);
+      text-align: center;
+      display: none;
+    }
+
+    /* ── Confirmation ──────────────────────────────────────────── */
+
+    .confirm-block {
+      display: none;
+      text-align: center;
+      padding: 56px 28px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: var(--surface);
+    }
+    .confirm-block.visible {
+      display: block;
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .confirm-icon {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    .confirm-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .confirm-body {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    /* ── Footer ────────────────────────────────────────────────── */
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 28px 28px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .site-footer p {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.30);
+    }
+    .site-footer a {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.10em;
+      color: var(--gold-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .site-footer a:hover { color: var(--gold-soft); }
+
+    /* ── Animations ────────────────────────────────────────────── */
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Mobile ────────────────────────────────────────────────── */
+
+    @media (max-width: 600px) {
+      .page-wrap { padding: 16px 20px 80px; }
+      .track-grid { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .site-logo img { width: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-top"></div>
+
+  <nav class="back-nav">
+    <a class="back-link" href="/education">&#8592; &nbsp;Back to Education</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <a class="site-logo" href="/">
+      <img src="/logo.png" alt="Stage Buddy" />
+    </a>
+
+    <!-- ── Page hero ─────────────────────────────────────────── -->
+    <div class="page-hero">
+      <p class="page-eyebrow">Application</p>
+      <h1 class="page-title">Elite Bootcamp</h1>
+      <div class="gold-rule"></div>
+      <p class="page-sub">Tell us about where you are and where you want to go. We review every application within 48 hours.</p>
+    </div>
+
+    <!-- ── Track selector ────────────────────────────────────── -->
+    <p class="track-label">Step 1 — Choose your track</p>
+    <div class="track-grid" id="track-grid">
+      <div class="track-option" data-track="Performer Track — Elite Bootcamp ($7,000)" onclick="selectTrack(this)">
+        <span class="track-option-emoji">🎤</span>
+        <span class="track-option-name">Elite Bootcamp</span>
+        <span class="track-option-price">Performer Track &nbsp;·&nbsp; $7,000</span>
+      </div>
+      <div class="track-option" data-track="Confidence Track — Universal Curriculum ($5,000)" onclick="selectTrack(this)">
+        <span class="track-option-emoji">🌱</span>
+        <span class="track-option-name">Universal Curriculum</span>
+        <span class="track-option-price">Confidence Track &nbsp;·&nbsp; $5,000</span>
+      </div>
+    </div>
+
+    <!-- ── Application form ───────────────────────────────────── -->
+    <div class="form-section" id="form-section">
+      <div class="section-rule"></div>
+
+      <form id="bootcamp-form" novalidate>
+
+        <!-- Honeypot — leave empty -->
+        <div class="hp-field" aria-hidden="true">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <!-- Q1 -->
+        <div class="field-group">
+          <label class="field-label"><span class="q-num">01</span> Stage History</label>
+          <p class="field-prompt">Where are you performing right now?</p>
+          <textarea class="field-textarea" id="q1" name="q1" rows="5"
+            placeholder="Walk me through your last 90 days on stage — open mics, features, showcases, or nothing. Be specific."
+            required></textarea>
+        </div>
+
+        <!-- Q2 -->
+        <div class="field-group">
+          <label class="field-label"><span class="q-num">02</span> The Block</label>
+          <p class="field-prompt">What is the one thing about your performance you have not been able to fix on your own, no matter how much you've practiced?</p>
+          <textarea class="field-textarea" id="q2" name="q2" rows="5" required></textarea>
+        </div>
+
+        <!-- Q3 -->
+        <div class="field-group">
+          <label class="field-label"><span class="q-num">03</span> The Vision</label>
+          <p class="field-prompt">If we nail this, what does your performance look like 90 days from now?</p>
+          <textarea class="field-textarea" id="q3" name="q3" rows="5"
+            placeholder="Describe the version of you that walks off stage at the end of this program."
+            required></textarea>
+        </div>
+
+        <!-- Q4 -->
+        <div class="field-group">
+          <label class="field-label"><span class="q-num">04</span> Prior Investment</label>
+          <p class="field-prompt">What have you already invested in your development?</p>
+          <textarea class="field-textarea" id="q4" name="q4" rows="5"
+            placeholder="Courses, coaches, programs, conferences — what have you paid for, and what did it actually do for you?"
+            required></textarea>
+        </div>
+
+        <!-- Q5 -->
+        <div class="field-group">
+          <label class="field-label"><span class="q-num">05</span> Why Now</label>
+          <p class="field-prompt">How did you find me — and what made you decide this was worth an application?</p>
+          <textarea class="field-textarea" id="q5" name="q5" rows="5" required></textarea>
+        </div>
+
+        <div class="section-rule"></div>
+
+        <!-- Contact info -->
+        <div class="two-col">
+          <div class="field-group">
+            <label class="field-label" for="name">Name</label>
+            <input class="field-input" type="text" id="name" name="name"
+              placeholder="Your name" required />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="email">Email</label>
+            <input class="field-input" type="email" id="email" name="email"
+              placeholder="your@email.com" required />
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="social_handle">
+            Where can we see your work?
+            <span class="field-optional">(optional)</span>
+          </label>
+          <input class="field-input" type="text" id="social_handle" name="social_handle"
+            placeholder="IG, YouTube, TikTok — any link works" />
+        </div>
+
+        <div class="form-footer">
+          <button class="cta-btn" type="submit" id="submit-btn">Submit Application</button>
+          <p class="form-note">Applications reviewed within 48 hours &nbsp;·&nbsp; Spots are limited</p>
+          <p class="form-error" id="form-error">Something went wrong. Please try again or email founder@stagebuddy.app.</p>
+        </div>
+
+      </form>
+
+      <!-- Confirmation -->
+      <div class="confirm-block" id="confirm-block">
+        <div class="confirm-icon">✦</div>
+        <h2 class="confirm-title">Application received.</h2>
+        <p class="confirm-body">B Rockstar reviews every application personally — you'll hear back within 48 hours.</p>
+      </div>
+
+    </div><!-- /form-section -->
+
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2026 B Rock &amp; Co &nbsp;·&nbsp; Stage Buddy</p>
+    <a href="https://instagram.com/stagebuddyai" target="_blank" rel="noopener">@stagebuddyai</a>
+  </footer>
+
+  <script>
+    var selectedTrack = '';
+
+    function selectTrack(el) {
+      document.querySelectorAll('.track-option').forEach(function(o) {
+        o.classList.remove('selected');
+      });
+      el.classList.add('selected');
+      selectedTrack = el.getAttribute('data-track');
+      var section = document.getElementById('form-section');
+      section.classList.add('visible');
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.getElementById('bootcamp-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Honeypot check — silent reject if filled
+      if (document.querySelector('[name="website"]').value) return;
+
+      // Track must be selected
+      if (!selectedTrack) return;
+
+      var btn = document.getElementById('submit-btn');
+      var errEl = document.getElementById('form-error');
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+      errEl.style.display = 'none';
+
+      var payload = {
+        track_selected: selectedTrack,
+        name:           document.getElementById('name').value.trim(),
+        email:          document.getElementById('email').value.trim(),
+        social_handle:  document.getElementById('social_handle').value.trim() || null,
+        q1:             document.getElementById('q1').value.trim(),
+        q2:             document.getElementById('q2').value.trim(),
+        q3:             document.getElementById('q3').value.trim(),
+        q4:             document.getElementById('q4').value.trim(),
+        q5:             document.getElementById('q5').value.trim()
+      };
+
+      try {
+        var res = await fetch('https://mnqntjkpahiwypatbxls.supabase.co/rest/v1/bootcamp_applications', {
+          method: 'POST',
+          headers: {
+            'apikey':        'sb_publishable_E7dT01BLUrIk_NohMF4igg_ZW3sRIkz',
+            'Authorization': 'Bearer sb_publishable_E7dT01BLUrIk_NohMF4igg_ZW3sRIkz',
+            'Content-Type':  'application/json',
+            'Prefer':        'return=minimal'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error(res.status);
+
+        // Success — swap form for confirmation
+        document.getElementById('bootcamp-form').style.display = 'none';
+        document.getElementById('confirm-block').classList.add('visible');
+
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Submit Application';
+        errEl.style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>
