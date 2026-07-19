@@ -605,6 +605,10 @@
           <div class="field-error" id="err-email">Please enter a valid email address.</div>
         </div>
         <div class="field-group">
+          <label class="field-label" for="f-phone">Phone Number <span class="optional">(optional)</span></label>
+          <input class="field-input" type="tel" id="f-phone" autocomplete="tel" placeholder="(000) 000-0000" />
+        </div>
+        <div class="field-group">
           <label class="field-label" for="f-ig">Instagram Handle <span class="optional">(optional)</span></label>
           <input class="field-input" type="text" id="f-ig" placeholder="@handle" />
         </div>
@@ -1007,6 +1011,7 @@
       data.append('tier',           selectedTier);
       data.append('name',           document.getElementById('f-name').value.trim());
       data.append('email',          submitterEmail);
+      data.append('phone',          document.getElementById('f-phone').value.trim());
       data.append('instagram',      document.getElementById('f-ig').value.trim());
       data.append('title',          title);
       data.append('video_link',     document.getElementById('f-link').value.trim());

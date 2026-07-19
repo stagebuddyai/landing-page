@@ -584,13 +584,23 @@
           </div>
         </div>
 
-        <div class="field-group">
-          <label class="field-label" for="social_handle">
-            Where can we see your work?
-            <span class="field-optional">(optional)</span>
-          </label>
-          <input class="field-input" type="text" id="social_handle" name="social_handle"
-            placeholder="IG, YouTube, TikTok — any link works" />
+        <div class="two-col">
+          <div class="field-group">
+            <label class="field-label" for="phone">
+              Phone
+              <span class="field-optional">(optional)</span>
+            </label>
+            <input class="field-input" type="tel" id="phone" name="phone"
+              placeholder="(000) 000-0000" autocomplete="tel" />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="social_handle">
+              Where can we see your work?
+              <span class="field-optional">(optional)</span>
+            </label>
+            <input class="field-input" type="text" id="social_handle" name="social_handle"
+              placeholder="IG, YouTube, TikTok — any link works" />
+          </div>
         </div>
 
         <div class="form-footer">
@@ -666,6 +676,7 @@
         track_selected: selectedTrack,
         name:           document.getElementById('name').value.trim(),
         email:          document.getElementById('email').value.trim(),
+        phone:          document.getElementById('phone').value.trim() || null,
         social_handle:  document.getElementById('social_handle').value.trim() || null,
         q1:             document.getElementById(p + 'q1').value.trim(),
         q2:             document.getElementById(p + 'q2').value.trim(),
