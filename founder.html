@@ -646,6 +646,35 @@
     .tbd-row input[type="checkbox"]:checked ~ .tbd-check::after { display: block; }
     .tbd-label-text { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
 
+    /* ── Event format toggle ─────────────────────────────────────── */
+
+    .format-toggle {
+      display: flex;
+      gap: 12px;
+    }
+
+    .format-btn {
+      flex: 1;
+      padding: 13px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      text-align: center;
+    }
+    .format-btn.active {
+      border-color: var(--gold-dim);
+      color: var(--gold);
+      background: rgba(201,168,76,0.06);
+    }
+
     /* ── 10. FOUNDER MESSAGE ─────────────────────────────────────── */
 
     .founder-message { padding-bottom: 48px; }
@@ -948,6 +977,15 @@
         </div>
 
         <div class="field-group">
+          <label class="field-label">Event Format <span class="optional">(optional)</span></label>
+          <div class="format-toggle">
+            <button type="button" class="format-btn" id="fmt-inperson">In Person</button>
+            <button type="button" class="format-btn" id="fmt-virtual">Virtual</button>
+          </div>
+          <input type="hidden" id="b-format" value="" />
+        </div>
+
+        <div class="field-group">
           <label class="field-label" for="b-venue">Venue Name <span class="optional">(if applicable)</span></label>
           <input class="field-input" type="text" id="b-venue" autocomplete="off" placeholder="e.g. City Winery Atlanta" />
         </div>
@@ -973,6 +1011,19 @@
           <span class="tbd-check"></span>
           <span class="tbd-label-text">Location is TBD</span>
         </label>
+
+        <div class="field-group">
+          <label class="field-label">Onsite Contact <span class="optional">(optional)</span></label>
+          <label class="tbd-row" style="margin-bottom:14px;">
+            <input type="checkbox" id="b-contact-same" />
+            <span class="tbd-check"></span>
+            <span class="tbd-label-text">Same as me</span>
+          </label>
+          <div class="two-col">
+            <input class="field-input" type="text" id="b-contact-name" placeholder="Contact name" autocomplete="off" />
+            <input class="field-input" type="tel" id="b-contact-phone" placeholder="Contact phone" autocomplete="off" />
+          </div>
+        </div>
 
         <div class="two-col">
           <div class="field-group">
@@ -1016,6 +1067,20 @@
                 <option value="150 – 500">150 – 500</option>
                 <option value="500 – 1,000">500 – 1,000</option>
                 <option value="1,000+">1,000+</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="b-setlength">Set Length <span class="optional">(optional)</span></label>
+            <div class="select-wrap">
+              <select class="field-select" id="b-setlength">
+                <option value="" disabled selected>Select length</option>
+                <option value="5 minutes">5 minutes</option>
+                <option value="15 minutes">15 minutes</option>
+                <option value="30 minutes">30 minutes</option>
+                <option value="45 minutes">45 minutes</option>
+                <option value="1 hour">1 hour</option>
+                <option value="Not sure yet">Not sure yet</option>
               </select>
             </div>
           </div>
@@ -1134,6 +1199,34 @@
       setInterval(function () { goTo(current + 1); }, 5000);
     }());
 
+    // ── Event format toggle ───────────────────────────────────────
+    (function () {
+      var btns = { 'In Person': document.getElementById('fmt-inperson'), 'Virtual': document.getElementById('fmt-virtual') };
+      Object.keys(btns).forEach(function (fmt) {
+        btns[fmt].addEventListener('click', function () {
+          Object.keys(btns).forEach(function (f) { btns[f].classList.remove('active'); });
+          btns[fmt].classList.add('active');
+          document.getElementById('b-format').value = fmt;
+        });
+      });
+    }());
+
+    // ── Onsite contact — same as me ───────────────────────────────
+    (function () {
+      var chk   = document.getElementById('b-contact-same');
+      var cName = document.getElementById('b-contact-name');
+      var cPhone= document.getElementById('b-contact-phone');
+      chk.addEventListener('change', function () {
+        if (chk.checked) {
+          cName.value  = document.getElementById('b-name').value.trim();
+          cPhone.value = document.getElementById('b-phone').value.trim();
+          cName.disabled = cPhone.disabled = true;
+        } else {
+          cName.disabled = cPhone.disabled = false;
+        }
+      });
+    }());
+
     // ── Location TBD toggle ───────────────────────────────────────
     (function () {
       var tbd        = document.getElementById('b-location-tbd');
@@ -1204,13 +1297,17 @@
       data.append('organization', document.getElementById('b-org').value.trim());
       data.append('event_date',   document.getElementById('b-date').value.trim());
       data.append('event_time',   document.getElementById('b-time').value.trim());
+      data.append('event_format',    document.getElementById('b-format').value);
       data.append('venue_name',     document.getElementById('b-venue').value.trim());
       data.append('event_city',     document.getElementById('b-city').value.trim());
       data.append('event_state',    document.getElementById('b-state').value.trim());
       data.append('event_zipcode',  document.getElementById('b-zip').value.trim());
       data.append('event_type',   eventType);
       data.append('budget_range', document.getElementById('b-budget').value);
-      data.append('attendance',   document.getElementById('b-capacity').value);
+      data.append('attendance',    document.getElementById('b-capacity').value);
+      data.append('set_length',    document.getElementById('b-setlength').value);
+      data.append('onsite_contact_name',  document.getElementById('b-contact-name').value.trim());
+      data.append('onsite_contact_phone', document.getElementById('b-contact-phone').value.trim());
       var priorEl = document.querySelector('input[name="prior_booking"]:checked');
       data.append('booked_before', priorEl ? priorEl.value : '');
       data.append('message',      document.getElementById('b-message').value.trim());
