@@ -56,29 +56,6 @@
       z-index: 0;
     }
 
-    /* ── Back nav ───────────────────────────────────────────────── */
-
-    .back-nav {
-      position: relative;
-      z-index: 1;
-      padding: 20px 28px 0;
-      max-width: 780px;
-      margin: 0 auto;
-    }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .back-link:hover { color: var(--gold-soft); }
-
     /* ── Layout ──────────────────────────────────────────────────── */
 
     .page-wrap {
@@ -97,7 +74,7 @@
       padding: 44px 0 40px;
     }
     .site-logo img {
-      width: 260px;
+      width: 130px;
       height: auto;
       display: block;
       margin: 0 auto;
@@ -120,9 +97,8 @@
     }
 
     .eyebrow {
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.28em;
+      font-size: 10px;
+      letter-spacing: 0.34em;
       text-transform: uppercase;
       color: var(--gold-dim);
       margin-bottom: 14px;
@@ -164,9 +140,8 @@
     }
 
     .founder-role {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.3em;
+      font-size: 10px;
+      letter-spacing: 0.38em;
       text-transform: uppercase;
       color: var(--gold-dim);
       margin-bottom: 18px;
@@ -174,11 +149,11 @@
 
     .founder-name {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(60px, 14vw, 110px);
+      font-size: clamp(44px, 10vw, 76px);
       font-weight: 400;
       color: var(--white);
-      line-height: 1.0;
-      letter-spacing: -0.02em;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
       margin-bottom: 18px;
     }
     .founder-name em { font-style: italic; color: var(--gold-soft); }
@@ -330,9 +305,8 @@
     }
 
     .testimonial-attr {
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
+      font-size: 11px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--gold-dim);
     }
@@ -430,9 +404,8 @@
       margin-bottom: 36px;
     }
     .booking-list li {
-      font-size: 16px;
-      font-weight: 400;
-      color: rgba(244,240,232,0.75);
+      font-size: 14px;
+      color: rgba(244,240,232,0.65);
       padding-left: 18px;
       position: relative;
       line-height: 1.5;
@@ -456,14 +429,13 @@
 
     .rate-card-label { flex: 1; }
     .rate-card-label p {
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
+      font-size: 11px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--gold-dim);
       margin-bottom: 4px;
     }
-    .rate-card-label span { font-size: 14px; font-weight: 400; color: var(--muted); }
+    .rate-card-label span { font-size: 13px; color: var(--muted); }
 
     .download-btn {
       display: inline-flex;
@@ -475,8 +447,8 @@
       text-decoration: none;
       font-family: 'DM Sans', sans-serif;
       font-weight: 500;
-      font-size: 13px;
-      letter-spacing: 0.15em;
+      font-size: 11px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       padding: 13px 24px;
       border-radius: 2px;
@@ -500,9 +472,9 @@
 
     .field-label {
       display: block;
-      font-size: 14px;
+      font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 9px;
@@ -510,10 +482,10 @@
 
     .optional {
       color: var(--muted);
-      font-size: 12px;
+      font-size: 9px;
       letter-spacing: 0.08em;
       text-transform: none;
-      font-weight: 400;
+      font-weight: 300;
     }
 
     .field-input,
@@ -599,7 +571,7 @@
       margin-top: 10px;
     }
 
-    .direct-contact { font-size: 14px; font-weight: 400; color: var(--muted); }
+    .direct-contact { font-size: 12px; color: var(--muted); }
     .direct-contact a {
       color: var(--gold-dim);
       text-decoration: none;
@@ -636,37 +608,6 @@
 
     .submit-error { font-size: 12px; color: var(--error); margin-top: 14px; display: none; }
     .submit-error.visible { display: block; }
-
-    /* ── Autocomplete dropdown ───────────────────────────────────── */
-
-    .autocomplete-wrap { position: relative; }
-
-    .autocomplete-dropdown {
-      position: absolute;
-      top: calc(100% + 4px);
-      left: 0;
-      right: 0;
-      background: #1e1e1e;
-      border: 1px solid var(--gold-dim);
-      border-radius: 2px;
-      z-index: 50;
-      max-height: 220px;
-      overflow-y: auto;
-      display: none;
-    }
-    .autocomplete-dropdown.open { display: block; }
-
-    .autocomplete-item {
-      padding: 11px 14px;
-      font-size: 13px;
-      color: rgba(244,240,232,0.75);
-      cursor: pointer;
-      border-bottom: 1px solid rgba(201,168,76,0.07);
-      line-height: 1.4;
-      transition: background 0.15s;
-    }
-    .autocomplete-item:last-child { border-bottom: none; }
-    .autocomplete-item:hover { background: rgba(201,168,76,0.08); color: var(--white); }
 
     .tbd-row {
       display: flex;
@@ -705,6 +646,35 @@
     .tbd-row input[type="checkbox"]:checked ~ .tbd-check::after { display: block; }
     .tbd-label-text { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
 
+    /* ── Event format toggle ─────────────────────────────────────── */
+
+    .format-toggle {
+      display: flex;
+      gap: 12px;
+    }
+
+    .format-btn {
+      flex: 1;
+      padding: 13px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      text-align: center;
+    }
+    .format-btn.active {
+      border-color: var(--gold-dim);
+      color: var(--gold);
+      background: rgba(201,168,76,0.06);
+    }
+
     /* ── 10. FOUNDER MESSAGE ─────────────────────────────────────── */
 
     .founder-message { padding-bottom: 48px; }
@@ -731,17 +701,15 @@
       z-index: 1;
     }
     .site-footer p {
-      font-size: 13px;
-      font-weight: 500;
+      font-size: 10.5px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.18);
     }
     .site-footer a {
       display: inline-block;
       margin-top: 10px;
-      font-size: 13px;
-      font-weight: 500;
+      font-size: 11px;
       letter-spacing: 0.1em;
       color: var(--gold-dim);
       text-decoration: none;
@@ -762,17 +730,14 @@
       .testimonial-quote::before { font-size: 52px; top: -16px; left: -4px; }
     }
     @media (max-width: 400px) {
-      .founder-name { font-size: 52px; }
+      .founder-name { font-size: 38px; }
+      .pillars-display { font-size: 20px; }
     }
   </style>
 </head>
 <body>
 
   <div class="glow-top"></div>
-
-  <nav class="back-nav">
-    <a class="back-link" href="/">&#8592; &nbsp;Back to Stage Buddy</a>
-  </nav>
 
   <div class="page-wrap">
 
@@ -791,12 +756,26 @@
       <h1 class="founder-name">B <em>Rockstar</em></h1>
 
       <p class="founder-tagline">
-        Stage Master
+        The stage is a science. B Rockstar has spent 16+ years mastering it.
       </p>
 
       <a class="cta-btn" href="#booking-form">Book B Rockstar</a>
 
     </header>
+
+    <!-- ══════════════════════════════════════════════════════════
+         2. SPIRIT · CHEST · BODY · AUDIENCE
+    ══════════════════════════════════════════════════════════ -->
+    <section class="pillars-section">
+      <div class="section-rule"></div>
+
+      <p class="pillars-display">Spirit &nbsp;·&nbsp; Chest &nbsp;·&nbsp; Body &nbsp;·&nbsp; Audience</p>
+      <p class="pillars-sub">
+        The four-pillar methodology behind every B Rockstar performance.<br>
+        Forged from thousands of hours of live stage footage. Felt by every audience.
+      </p>
+
+    </section>
 
     <!-- ══════════════════════════════════════════════════════════
          3. PERFORMANCE PHOTO CAROUSEL
@@ -892,6 +871,9 @@
     ══════════════════════════════════════════════════════════ -->
     <section class="video-section">
       <div class="section-rule"></div>
+
+      <h2 class="section-heading">A Stage <em>Master</em></h2>
+      <div class="gold-rule" style="margin-bottom: 40px;"></div>
 
       <div class="video-outer">
         <div class="video-wrap">
@@ -995,16 +977,52 @@
         </div>
 
         <div class="field-group">
-          <label class="field-label" for="b-location">Event Location <span class="optional">(optional)</span></label>
-          <div class="autocomplete-wrap">
-            <input class="field-input" type="text" id="b-location" autocomplete="off" placeholder="Start typing a venue, address, or city…" />
-            <div class="autocomplete-dropdown" id="location-dropdown"></div>
+          <label class="field-label">Event Format <span class="optional">(optional)</span></label>
+          <div class="format-toggle">
+            <button type="button" class="format-btn" id="fmt-inperson">In Person</button>
+            <button type="button" class="format-btn" id="fmt-virtual">Virtual</button>
           </div>
-          <label class="tbd-row">
-            <input type="checkbox" id="b-location-tbd" />
+          <input type="hidden" id="b-format" value="" />
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="b-venue">Venue Name <span class="optional">(if applicable)</span></label>
+          <input class="field-input" type="text" id="b-venue" autocomplete="off" placeholder="e.g. City Winery Atlanta" />
+        </div>
+
+        <div class="two-col">
+          <div class="field-group">
+            <label class="field-label" for="b-city">City <span class="optional">(optional)</span></label>
+            <input class="field-input" type="text" id="b-city" autocomplete="address-level2" placeholder="e.g. Atlanta" />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="b-state">State <span class="optional">(optional)</span></label>
+            <input class="field-input" type="text" id="b-state" autocomplete="address-level1" placeholder="e.g. GA" />
+          </div>
+        </div>
+
+        <div class="field-group" style="max-width:200px;">
+          <label class="field-label" for="b-zip">Zipcode <span class="optional">(optional)</span></label>
+          <input class="field-input" type="text" id="b-zip" autocomplete="postal-code" placeholder="e.g. 30318" inputmode="numeric" />
+        </div>
+
+        <label class="tbd-row" style="margin-top:-8px;margin-bottom:24px;">
+          <input type="checkbox" id="b-location-tbd" />
+          <span class="tbd-check"></span>
+          <span class="tbd-label-text">Location is TBD</span>
+        </label>
+
+        <div class="field-group">
+          <label class="field-label">Onsite Contact <span class="optional">(optional)</span></label>
+          <label class="tbd-row" style="margin-bottom:14px;">
+            <input type="checkbox" id="b-contact-same" />
             <span class="tbd-check"></span>
-            <span class="tbd-label-text">Location is TBD</span>
+            <span class="tbd-label-text">Same as me</span>
           </label>
+          <div class="two-col">
+            <input class="field-input" type="text" id="b-contact-name" placeholder="Contact name" autocomplete="off" />
+            <input class="field-input" type="tel" id="b-contact-phone" placeholder="Contact phone" autocomplete="off" />
+          </div>
         </div>
 
         <div class="two-col">
@@ -1049,6 +1067,20 @@
                 <option value="150 – 500">150 – 500</option>
                 <option value="500 – 1,000">500 – 1,000</option>
                 <option value="1,000+">1,000+</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="b-setlength">Set Length <span class="optional">(optional)</span></label>
+            <div class="select-wrap">
+              <select class="field-select" id="b-setlength">
+                <option value="" disabled selected>Select length</option>
+                <option value="5 minutes">5 minutes</option>
+                <option value="15 minutes">15 minutes</option>
+                <option value="30 minutes">30 minutes</option>
+                <option value="45 minutes">45 minutes</option>
+                <option value="1 hour">1 hour</option>
+                <option value="Not sure yet">Not sure yet</option>
               </select>
             </div>
           </div>
@@ -1167,56 +1199,53 @@
       setInterval(function () { goTo(current + 1); }, 5000);
     }());
 
-    // ── Location autocomplete (Nominatim / OpenStreetMap) ─────────
+    // ── Event format toggle ───────────────────────────────────────
     (function () {
-      var input    = document.getElementById('b-location');
-      var dropdown = document.getElementById('location-dropdown');
-      var tbd      = document.getElementById('b-location-tbd');
-      var timer    = null;
+      var btns = { 'In Person': document.getElementById('fmt-inperson'), 'Virtual': document.getElementById('fmt-virtual') };
+      Object.keys(btns).forEach(function (fmt) {
+        btns[fmt].addEventListener('click', function () {
+          Object.keys(btns).forEach(function (f) { btns[f].classList.remove('active'); });
+          btns[fmt].classList.add('active');
+          document.getElementById('b-format').value = fmt;
+        });
+      });
+    }());
 
-      tbd.addEventListener('change', function () {
-        if (tbd.checked) {
-          input.value = 'TBD';
-          input.disabled = true;
-          dropdown.classList.remove('open');
+    // ── Onsite contact — same as me ───────────────────────────────
+    (function () {
+      var chk   = document.getElementById('b-contact-same');
+      var cName = document.getElementById('b-contact-name');
+      var cPhone= document.getElementById('b-contact-phone');
+      chk.addEventListener('change', function () {
+        if (chk.checked) {
+          cName.value  = document.getElementById('b-name').value.trim();
+          cPhone.value = document.getElementById('b-phone').value.trim();
+          cName.disabled = cPhone.disabled = true;
         } else {
-          input.value = '';
-          input.disabled = false;
-          input.focus();
+          cName.disabled = cPhone.disabled = false;
         }
       });
+    }());
 
-      input.addEventListener('input', function () {
-        clearTimeout(timer);
-        var q = input.value.trim();
-        if (q.length < 3) { dropdown.classList.remove('open'); return; }
-        timer = setTimeout(function () {
-          fetch('https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=6&q=' + encodeURIComponent(q), {
-            headers: { 'Accept-Language': 'en' }
-          })
-          .then(function (r) { return r.json(); })
-          .then(function (results) {
-            dropdown.innerHTML = '';
-            if (!results.length) { dropdown.classList.remove('open'); return; }
-            results.forEach(function (place) {
-              var item = document.createElement('div');
-              item.className = 'autocomplete-item';
-              item.textContent = place.display_name;
-              item.addEventListener('mousedown', function (e) {
-                e.preventDefault();
-                input.value = place.display_name;
-                dropdown.classList.remove('open');
-              });
-              dropdown.appendChild(item);
-            });
-            dropdown.classList.add('open');
-          })
-          .catch(function () { dropdown.classList.remove('open'); });
-        }, 320);
+    // ── Location TBD toggle ───────────────────────────────────────
+    (function () {
+      var tbd        = document.getElementById('b-location-tbd');
+      var locInputs  = ['b-venue', 'b-city', 'b-state', 'b-zip'].map(function (id) {
+        return document.getElementById(id);
       });
 
-      input.addEventListener('blur', function () {
-        setTimeout(function () { dropdown.classList.remove('open'); }, 180);
+      tbd.addEventListener('change', function () {
+        locInputs.forEach(function (inp) {
+          if (tbd.checked) {
+            inp.dataset.prev = inp.value;
+            inp.value        = 'TBD';
+            inp.disabled     = true;
+          } else {
+            inp.value    = inp.dataset.prev || '';
+            inp.disabled = false;
+          }
+        });
+        if (!tbd.checked) locInputs[0].focus();
       });
     }());
 
@@ -1268,10 +1297,17 @@
       data.append('organization', document.getElementById('b-org').value.trim());
       data.append('event_date',   document.getElementById('b-date').value.trim());
       data.append('event_time',   document.getElementById('b-time').value.trim());
-      data.append('event_location', document.getElementById('b-location').value.trim());
+      data.append('event_format',    document.getElementById('b-format').value);
+      data.append('venue_name',     document.getElementById('b-venue').value.trim());
+      data.append('event_city',     document.getElementById('b-city').value.trim());
+      data.append('event_state',    document.getElementById('b-state').value.trim());
+      data.append('event_zipcode',  document.getElementById('b-zip').value.trim());
       data.append('event_type',   eventType);
       data.append('budget_range', document.getElementById('b-budget').value);
-      data.append('attendance',   document.getElementById('b-capacity').value);
+      data.append('attendance',    document.getElementById('b-capacity').value);
+      data.append('set_length',    document.getElementById('b-setlength').value);
+      data.append('onsite_contact_name',  document.getElementById('b-contact-name').value.trim());
+      data.append('onsite_contact_phone', document.getElementById('b-contact-phone').value.trim());
       var priorEl = document.querySelector('input[name="prior_booking"]:checked');
       data.append('booked_before', priorEl ? priorEl.value : '');
       data.append('message',      document.getElementById('b-message').value.trim());
