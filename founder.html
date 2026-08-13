@@ -990,6 +990,11 @@
           <input class="field-input" type="text" id="b-venue" autocomplete="off" placeholder="e.g. City Winery Atlanta" />
         </div>
 
+        <div class="field-group">
+          <label class="field-label" for="b-street">Street Address <span class="optional">(optional)</span></label>
+          <input class="field-input" type="text" id="b-street" autocomplete="street-address" placeholder="e.g. 999 Brady Ave NW" />
+        </div>
+
         <div class="two-col">
           <div class="field-group">
             <label class="field-label" for="b-city">City <span class="optional">(optional)</span></label>
@@ -1232,7 +1237,7 @@
     // ── Location TBD toggle ───────────────────────────────────────
     (function () {
       var tbd        = document.getElementById('b-location-tbd');
-      var locInputs  = ['b-venue', 'b-city', 'b-state', 'b-zip'].map(function (id) {
+      var locInputs  = ['b-venue', 'b-street', 'b-city', 'b-state', 'b-zip'].map(function (id) {
         return document.getElementById(id);
       });
 
@@ -1301,6 +1306,7 @@
       data.append('event_time',   document.getElementById('b-time').value.trim());
       data.append('event_format',    document.getElementById('b-format').value);
       data.append('venue_name',     document.getElementById('b-venue').value.trim());
+      data.append('street_address', document.getElementById('b-street').value.trim());
       data.append('event_city',     document.getElementById('b-city').value.trim());
       data.append('event_state',    document.getElementById('b-state').value.trim());
       data.append('event_zipcode',  document.getElementById('b-zip').value.trim());
@@ -1330,6 +1336,7 @@
           event_date:     document.getElementById('b-date').value.trim(),
           event_time:     document.getElementById('b-time').value.trim(),
           venue_name:     document.getElementById('b-venue').value.trim(),
+          street_address: document.getElementById('b-street').value.trim(),
           event_city:     document.getElementById('b-city').value.trim(),
           event_state:    document.getElementById('b-state').value.trim(),
           event_zipcode:  document.getElementById('b-zip').value.trim(),
