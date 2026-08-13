@@ -1109,6 +1109,8 @@
 
         <div id="booking-form-inner" style="display:contents;">
           <div class="form-footer-row">
+            <input type="text" id="b-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"
+                   aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
             <button class="cta-btn" type="button" id="btn-booking-submit">Send Booking Inquiry</button>
             <p class="direct-contact">
               Prefer to reach out directly?<br>
@@ -1312,6 +1314,30 @@
       data.append('booked_before', priorEl ? priorEl.value : '');
       data.append('message',      document.getElementById('b-message').value.trim());
       data.append('_subject',     'New Booking Inquiry — Stage Buddy');
+
+      // Stage Buddy Bookings (Brooke) — scores the lead, logs it, and sends
+      // an acknowledgment within seconds. Fired alongside Formspree, never
+      // instead of it: if Brooke is unreachable the inquiry still arrives by
+      // email exactly as before, and the visitor never sees a difference.
+      var brooke = fetch('https://stage-buddy-bookings-production.up.railway.app/public/booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name:           name,
+          email:          email,
+          phone:          document.getElementById('b-phone').value.trim(),
+          organization:   document.getElementById('b-org').value.trim(),
+          event_date:     document.getElementById('b-date').value.trim(),
+          event_time:     document.getElementById('b-time').value.trim(),
+          event_location: document.getElementById('b-location').value.trim(),
+          event_type:     eventType,
+          budget_range:   document.getElementById('b-budget').value,
+          attendance:     document.getElementById('b-capacity').value,
+          booked_before:  priorEl ? priorEl.value : '',
+          message:        document.getElementById('b-message').value.trim(),
+          _gotcha:        document.getElementById('b-gotcha') ? document.getElementById('b-gotcha').value : ''
+        })
+      }).catch(function () { /* never block the visitor on Brooke */ });
 
       try {
         var res = await fetch('https://formspree.io/f/mrednwod', {
