@@ -609,37 +609,6 @@
     .submit-error { font-size: 12px; color: var(--error); margin-top: 14px; display: none; }
     .submit-error.visible { display: block; }
 
-    /* ── Autocomplete dropdown ───────────────────────────────────── */
-
-    .autocomplete-wrap { position: relative; }
-
-    .autocomplete-dropdown {
-      position: absolute;
-      top: calc(100% + 4px);
-      left: 0;
-      right: 0;
-      background: #1e1e1e;
-      border: 1px solid var(--gold-dim);
-      border-radius: 2px;
-      z-index: 50;
-      max-height: 220px;
-      overflow-y: auto;
-      display: none;
-    }
-    .autocomplete-dropdown.open { display: block; }
-
-    .autocomplete-item {
-      padding: 11px 14px;
-      font-size: 13px;
-      color: rgba(244,240,232,0.75);
-      cursor: pointer;
-      border-bottom: 1px solid rgba(201,168,76,0.07);
-      line-height: 1.4;
-      transition: background 0.15s;
-    }
-    .autocomplete-item:last-child { border-bottom: none; }
-    .autocomplete-item:hover { background: rgba(201,168,76,0.08); color: var(--white); }
-
     .tbd-row {
       display: flex;
       align-items: center;
@@ -979,17 +948,31 @@
         </div>
 
         <div class="field-group">
-          <label class="field-label" for="b-location">Event Location <span class="optional">(optional)</span></label>
-          <div class="autocomplete-wrap">
-            <input class="field-input" type="text" id="b-location" autocomplete="off" placeholder="Start typing a venue, address, or city…" />
-            <div class="autocomplete-dropdown" id="location-dropdown"></div>
-          </div>
-          <label class="tbd-row">
-            <input type="checkbox" id="b-location-tbd" />
-            <span class="tbd-check"></span>
-            <span class="tbd-label-text">Location is TBD</span>
-          </label>
+          <label class="field-label" for="b-venue">Venue Name <span class="optional">(if applicable)</span></label>
+          <input class="field-input" type="text" id="b-venue" autocomplete="off" placeholder="e.g. City Winery Atlanta" />
         </div>
+
+        <div class="two-col">
+          <div class="field-group">
+            <label class="field-label" for="b-city">City <span class="optional">(optional)</span></label>
+            <input class="field-input" type="text" id="b-city" autocomplete="address-level2" placeholder="e.g. Atlanta" />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="b-state">State <span class="optional">(optional)</span></label>
+            <input class="field-input" type="text" id="b-state" autocomplete="address-level1" placeholder="e.g. GA" />
+          </div>
+        </div>
+
+        <div class="field-group" style="max-width:200px;">
+          <label class="field-label" for="b-zip">Zipcode <span class="optional">(optional)</span></label>
+          <input class="field-input" type="text" id="b-zip" autocomplete="postal-code" placeholder="e.g. 30318" inputmode="numeric" />
+        </div>
+
+        <label class="tbd-row" style="margin-top:-8px;margin-bottom:24px;">
+          <input type="checkbox" id="b-location-tbd" />
+          <span class="tbd-check"></span>
+          <span class="tbd-label-text">Location is TBD</span>
+        </label>
 
         <div class="two-col">
           <div class="field-group">
@@ -1151,56 +1134,25 @@
       setInterval(function () { goTo(current + 1); }, 5000);
     }());
 
-    // ── Location autocomplete (Nominatim / OpenStreetMap) ─────────
+    // ── Location TBD toggle ───────────────────────────────────────
     (function () {
-      var input    = document.getElementById('b-location');
-      var dropdown = document.getElementById('location-dropdown');
-      var tbd      = document.getElementById('b-location-tbd');
-      var timer    = null;
+      var tbd        = document.getElementById('b-location-tbd');
+      var locInputs  = ['b-venue', 'b-city', 'b-state', 'b-zip'].map(function (id) {
+        return document.getElementById(id);
+      });
 
       tbd.addEventListener('change', function () {
-        if (tbd.checked) {
-          input.value = 'TBD';
-          input.disabled = true;
-          dropdown.classList.remove('open');
-        } else {
-          input.value = '';
-          input.disabled = false;
-          input.focus();
-        }
-      });
-
-      input.addEventListener('input', function () {
-        clearTimeout(timer);
-        var q = input.value.trim();
-        if (q.length < 3) { dropdown.classList.remove('open'); return; }
-        timer = setTimeout(function () {
-          fetch('https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=6&q=' + encodeURIComponent(q), {
-            headers: { 'Accept-Language': 'en' }
-          })
-          .then(function (r) { return r.json(); })
-          .then(function (results) {
-            dropdown.innerHTML = '';
-            if (!results.length) { dropdown.classList.remove('open'); return; }
-            results.forEach(function (place) {
-              var item = document.createElement('div');
-              item.className = 'autocomplete-item';
-              item.textContent = place.display_name;
-              item.addEventListener('mousedown', function (e) {
-                e.preventDefault();
-                input.value = place.display_name;
-                dropdown.classList.remove('open');
-              });
-              dropdown.appendChild(item);
-            });
-            dropdown.classList.add('open');
-          })
-          .catch(function () { dropdown.classList.remove('open'); });
-        }, 320);
-      });
-
-      input.addEventListener('blur', function () {
-        setTimeout(function () { dropdown.classList.remove('open'); }, 180);
+        locInputs.forEach(function (inp) {
+          if (tbd.checked) {
+            inp.dataset.prev = inp.value;
+            inp.value        = 'TBD';
+            inp.disabled     = true;
+          } else {
+            inp.value    = inp.dataset.prev || '';
+            inp.disabled = false;
+          }
+        });
+        if (!tbd.checked) locInputs[0].focus();
       });
     }());
 
@@ -1252,7 +1204,10 @@
       data.append('organization', document.getElementById('b-org').value.trim());
       data.append('event_date',   document.getElementById('b-date').value.trim());
       data.append('event_time',   document.getElementById('b-time').value.trim());
-      data.append('event_location', document.getElementById('b-location').value.trim());
+      data.append('venue_name',     document.getElementById('b-venue').value.trim());
+      data.append('event_city',     document.getElementById('b-city').value.trim());
+      data.append('event_state',    document.getElementById('b-state').value.trim());
+      data.append('event_zipcode',  document.getElementById('b-zip').value.trim());
       data.append('event_type',   eventType);
       data.append('budget_range', document.getElementById('b-budget').value);
       data.append('attendance',   document.getElementById('b-capacity').value);
