@@ -1322,7 +1322,6 @@
       data.append('booked_before', priorEl ? priorEl.value : '');
       data.append('message',      document.getElementById('b-message').value.trim());
       data.append('_subject',     'New Booking Inquiry — Stage Buddy');
-      if (_leadToken) data.append('lead', _leadToken);
 
       // Stage Buddy Bookings (Brooke) — scores the lead, logs it, and sends
       // an acknowledgment within seconds. Fired alongside Formspree, never
@@ -1352,7 +1351,8 @@
           attendance:     document.getElementById('b-capacity').value,
           booked_before:  priorEl ? priorEl.value : '',
           message:        document.getElementById('b-message').value.trim(),
-          _gotcha:        document.getElementById('b-gotcha') ? document.getElementById('b-gotcha').value : ''
+          _gotcha:        document.getElementById('b-gotcha') ? document.getElementById('b-gotcha').value : '',
+          lead:           _leadToken
         })
       }).catch(function () { /* never block the visitor on Brooke */ });
 
