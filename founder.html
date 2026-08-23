@@ -1172,6 +1172,8 @@
   </footer>
 
   <script>
+    // ── Lead token — read once from URL, never displayed or stored ──
+    var _leadToken = (new URLSearchParams(window.location.search)).get('lead') || '';
     // ── Carousel ──────────────────────────────────────────────────
     (function () {
       var track  = document.getElementById('carousel-track');
@@ -1320,6 +1322,7 @@
       data.append('booked_before', priorEl ? priorEl.value : '');
       data.append('message',      document.getElementById('b-message').value.trim());
       data.append('_subject',     'New Booking Inquiry — Stage Buddy');
+      if (_leadToken) data.append('lead', _leadToken);
 
       // Stage Buddy Bookings (Brooke) — scores the lead, logs it, and sends
       // an acknowledgment within seconds. Fired alongside Formspree, never
