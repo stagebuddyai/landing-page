@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/themes/dark.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -733,6 +734,53 @@
       .founder-name { font-size: 38px; }
       .pillars-display { font-size: 20px; }
     }
+
+    /* ── Time select row ────────────────────────────────────────── */
+
+    .time-row { display: flex; gap: 8px; }
+    .time-row .select-wrap { flex: 1; }
+
+    /* ── Flatpickr gold overrides ────────────────────────────────── */
+
+    .flatpickr-calendar {
+      background: #1a1a1a !important;
+      border: 1px solid rgba(201,168,76,0.22) !important;
+      border-radius: 2px !important;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.6) !important;
+      font-family: 'DM Sans', sans-serif !important;
+    }
+    .flatpickr-months .flatpickr-month,
+    .flatpickr-weekdays,
+    span.flatpickr-weekday {
+      background: #1a1a1a !important;
+      color: var(--gold-dim) !important;
+      fill: var(--gold-dim) !important;
+    }
+    .flatpickr-current-month .flatpickr-monthDropdown-months,
+    .flatpickr-current-month input.cur-year {
+      color: var(--white) !important;
+    }
+    .flatpickr-day { color: rgba(244,240,232,0.75) !important; border-radius: 2px !important; }
+    .flatpickr-day:hover, .flatpickr-day.prevMonthDay:hover, .flatpickr-day.nextMonthDay:hover {
+      background: rgba(201,168,76,0.12) !important;
+      border-color: transparent !important;
+      color: var(--white) !important;
+    }
+    .flatpickr-day.selected, .flatpickr-day.selected:hover {
+      background: var(--gold) !important;
+      border-color: var(--gold) !important;
+      color: #0a0a0a !important;
+      font-weight: 500 !important;
+    }
+    .flatpickr-day.today { border-color: var(--gold-dim) !important; }
+    .flatpickr-day.today:not(.selected):hover { background: rgba(201,168,76,0.15) !important; }
+    .flatpickr-day.flatpickr-disabled,
+    .flatpickr-day.prevMonthDay,
+    .flatpickr-day.nextMonthDay { color: rgba(244,240,232,0.2) !important; }
+    .flatpickr-months .flatpickr-prev-month svg,
+    .flatpickr-months .flatpickr-next-month svg { fill: var(--gold-dim) !important; }
+    .flatpickr-months .flatpickr-prev-month:hover svg,
+    .flatpickr-months .flatpickr-next-month:hover svg { fill: var(--gold-soft) !important; }
   </style>
 </head>
 <body>
@@ -968,11 +1016,37 @@
         <div class="two-col">
           <div class="field-group">
             <label class="field-label" for="b-date">Event Date <span class="optional">(optional)</span></label>
-            <input class="field-input" type="text" id="b-date" placeholder="MM / DD / YYYY" />
+            <input class="field-input" type="text" id="b-date" placeholder="Select a date" readonly style="cursor:pointer;" />
           </div>
           <div class="field-group">
-            <label class="field-label" for="b-time">Event Time <span class="optional">(optional)</span></label>
-            <input class="field-input" type="text" id="b-time" placeholder="e.g. 7:00 PM" />
+            <label class="field-label">Event Time <span class="optional">(optional)</span></label>
+            <div class="time-row">
+              <div class="select-wrap">
+                <select class="field-select" id="b-time-hour">
+                  <option value="" disabled selected>Hour</option>
+                  <option>1</option><option>2</option><option>3</option><option>4</option>
+                  <option>5</option><option>6</option><option>7</option><option>8</option>
+                  <option>9</option><option>10</option><option>11</option><option>12</option>
+                </select>
+              </div>
+              <div class="select-wrap">
+                <select class="field-select" id="b-time-min">
+                  <option value="" disabled selected>Min</option>
+                  <option value="00">00</option>
+                  <option value="15">15</option>
+                  <option value="30">30</option>
+                  <option value="45">45</option>
+                </select>
+              </div>
+              <div class="select-wrap">
+                <select class="field-select" id="b-time-ampm">
+                  <option value="" disabled selected>AM/PM</option>
+                  <option>AM</option>
+                  <option>PM</option>
+                </select>
+              </div>
+            </div>
+            <input type="hidden" id="b-time" value="" />
           </div>
         </div>
 
@@ -1172,9 +1246,31 @@
     <a href="https://instagram.com/stagebuddyai" target="_blank" rel="noopener">@stagebuddyai</a>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
   <script>
     // ── Lead token — read once from URL, never displayed or stored ──
     var _leadToken = (new URLSearchParams(window.location.search)).get('lead') || '';
+
+    // ── Date picker (flatpickr) ───────────────────────────────────
+    flatpickr('#b-date', {
+      dateFormat: 'm/d/Y',
+      minDate: 'today',
+      disableMobile: false
+    });
+
+    // ── Time picker — sync three selects into hidden input ────────
+    (function () {
+      var h = document.getElementById('b-time-hour');
+      var m = document.getElementById('b-time-min');
+      var p = document.getElementById('b-time-ampm');
+      var hidden = document.getElementById('b-time');
+      function sync() {
+        hidden.value = (h.value && m.value && p.value)
+          ? h.value + ':' + m.value + ' ' + p.value
+          : '';
+      }
+      [h, m, p].forEach(function (s) { s.addEventListener('change', sync); });
+    }());
     // ── Carousel ──────────────────────────────────────────────────
     (function () {
       var track  = document.getElementById('carousel-track');
