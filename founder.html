@@ -676,6 +676,11 @@
       background: rgba(201,168,76,0.06);
     }
 
+    /* ── DJ sub-type reveal ──────────────────────────────────────── */
+
+    .dj-subtype { display: none; margin-top: -8px; }
+    .dj-subtype.visible { display: block; }
+
     /* ── 10. FOUNDER MESSAGE ─────────────────────────────────────── */
 
     .founder-message { padding-bottom: 48px; }
@@ -1137,6 +1142,15 @@
           </div>
         </div>
 
+        <!-- DJ sub-type — revealed only when DJ Services is selected -->
+        <div class="field-group dj-subtype" id="dj-subtype-row">
+          <label class="field-label">DJ Package <span class="optional">(select one)</span></label>
+          <div class="format-toggle">
+            <button type="button" class="format-btn" id="dj-casual" data-dj="Open Mic &amp; Casual">Open Mic &amp; Casual</button>
+            <button type="button" class="format-btn" id="dj-private" data-dj="Private / Full DJ Mode">Private / Full DJ Mode</button>
+          </div>
+        </div>
+
         <div class="two-col">
           <div class="field-group">
             <label class="field-label" for="b-capacity">Attendance Capacity <span class="optional">(optional)</span></label>
@@ -1318,6 +1332,34 @@
       });
     }());
 
+    // ── DJ Services sub-type reveal ──────────────────────────────
+    (function () {
+      var typeSelect = document.getElementById('b-type');
+      var row        = document.getElementById('dj-subtype-row');
+      var djBtns     = row.querySelectorAll('.format-btn');
+      var _djType    = '';
+
+      typeSelect.addEventListener('change', function () {
+        if (typeSelect.value === 'DJ Services') {
+          row.classList.add('visible');
+        } else {
+          row.classList.remove('visible');
+          djBtns.forEach(function (b) { b.classList.remove('active'); });
+          _djType = '';
+        }
+      });
+
+      djBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          djBtns.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          _djType = btn.getAttribute('data-dj');
+        });
+      });
+
+      window._getDjSubtype = function () { return _djType; };
+    }());
+
     // ── Onsite contact — same as me ───────────────────────────────
     (function () {
       var chk   = document.getElementById('b-contact-same');
@@ -1381,6 +1423,9 @@
       }
 
       var eventType = document.getElementById('b-type').value;
+      if (eventType === 'DJ Services' && window._getDjSubtype && window._getDjSubtype()) {
+        eventType = 'DJ Services — ' + window._getDjSubtype();
+      }
       if (!eventType) {
         document.getElementById('b-type').classList.add('invalid');
         document.getElementById('err-b-type').classList.add('visible');
