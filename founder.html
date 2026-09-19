@@ -1463,6 +1463,13 @@
         } catch (e) {
           // Offline, blocked, or the service is down. Say nothing; the
           // booking still goes through and the system checks on arrival.
+          //
+          // Forget we asked, so the next blur tries again. The guard above
+          // exists to stop repeat blurs spending a credit on an answer we
+          // already have — and a failure is not an answer. Leaving it set
+          // would let a one-second hiccup switch the check off for that
+          // address for the rest of the visit.
+          lastAsked = '';
         }
       });
     })();
