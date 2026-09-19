@@ -534,6 +534,13 @@
     .field-error { font-size: 11px; color: var(--error); margin-top: 6px; display: none; }
     .field-error.visible { display: block; }
 
+    /* An address that looks wrong but might not be. Amber rather than red,
+       because this is a question and the red is for a rule that was broken:
+       the form is never blocked on it and the booking goes through either
+       way. Without the distinction "did you mean gmail.com?" reads as a
+       refusal, and somebody with an unusual address gives up on it. */
+    .field-error.query { color: #d9a441; }
+
     .two-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1398,6 +1405,68 @@
       });
     }());
 
+    /* Ask whether the address exists while they can still fix it.
+     *
+     * Runs when they leave the email box. The booking system asks the same
+     * question again on arrival and stops itself writing to a dead mailbox —
+     * but by then the person who could correct it has gone, and a typo
+     * becomes a lead nobody can answer.
+     *
+     * It NEVER blocks the form. Every failure — the endpoint being down, a
+     * slow network, an unusual address the checker is unsure about — leaves
+     * the booking submittable exactly as before. A public booking form that
+     * can refuse a real client over a false positive is worse than one that
+     * takes a bad address now and then.
+     */
+    (function () {
+      var box = document.getElementById('b-email');
+      var err = document.getElementById('err-b-email');
+      if (!box || !err) return;
+      var DEFAULT_MESSAGE = err.textContent;
+      var lastAsked = '';
+
+      function clearQuery() {
+        err.classList.remove('query');
+        err.textContent = DEFAULT_MESSAGE;
+        if (!box.classList.contains('invalid')) err.classList.remove('visible');
+      }
+
+      box.addEventListener('input', clearQuery);
+
+      box.addEventListener('blur', async function () {
+        var email = box.value.trim();
+        // Nothing to ask about: empty, or already failing the shape check
+        // the submit button does, which shows its own message.
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+        if (email === lastAsked) return;
+        lastAsked = email;
+
+        try {
+          var res = await fetch(
+            'https://stage-buddy-bookings-production.up.railway.app/public/verify-email',
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: email })
+            });
+          if (!res.ok) return;
+          var out = await res.json();
+          // Someone may have kept typing while that was in flight.
+          if (box.value.trim() !== email) return;
+          if (out && out.ok === false && out.message) {
+            err.textContent = out.message;
+            err.classList.add('query');
+            err.classList.add('visible');
+          } else {
+            clearQuery();
+          }
+        } catch (e) {
+          // Offline, blocked, or the service is down. Say nothing; the
+          // booking still goes through and the system checks on arrival.
+        }
+      });
+    })();
+
     document.getElementById('btn-booking-submit').addEventListener('click', async function () {
 
       var ok = true;
@@ -1415,11 +1484,21 @@
       var email = document.getElementById('b-email').value.trim();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         document.getElementById('b-email').classList.add('invalid');
+        // A broken shape is a rule, not a question: red, and the standard
+        // wording, even if the deliverability check left a note here.
+        document.getElementById('err-b-email').classList.remove('query');
+        document.getElementById('err-b-email').textContent =
+          'Please enter a valid email address.';
         document.getElementById('err-b-email').classList.add('visible');
         ok = false;
       } else {
         document.getElementById('b-email').classList.remove('invalid');
-        document.getElementById('err-b-email').classList.remove('visible');
+        // Leave a "did you mean...?" standing — the shape is fine, so this
+        // branch has nothing to say, and hiding the question would hide the
+        // only warning they get. It does not block the booking either way.
+        if (!document.getElementById('err-b-email').classList.contains('query')) {
+          document.getElementById('err-b-email').classList.remove('visible');
+        }
       }
 
       var eventType = document.getElementById('b-type').value;
