@@ -1366,6 +1366,13 @@
       });
 
       window._getDjSubtype = function () { return _djType; };
+
+      // Arriving from stagebuddy.app/dj (?type=dj): start on DJ Services
+      // with the package picker already showing. Any other value is ignored.
+      if ((new URLSearchParams(window.location.search)).get('type') === 'dj') {
+        typeSelect.value = 'DJ Services';
+        typeSelect.dispatchEvent(new Event('change'));
+      }
     }());
 
     // ── Onsite contact — same as me ───────────────────────────────
