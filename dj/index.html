@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DJ Tarantula | Atlanta DJ | B ROCKSTAR</title>
+  <meta name="description" content="DJ Tarantula: Atlanta DJ and touring performer, 16+ years on stage. Lounges, weddings, private events and corporate launches. Send an inquiry." />
+  <link rel="canonical" href="https://stagebuddy.app/dj" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="DJ Tarantula | Atlanta DJ | B ROCKSTAR" />
+  <meta property="og:description" content="Atlanta DJ and touring performer with 16+ years on stage. Send an inquiry." />
+  <meta property="og:url" content="https://stagebuddy.app/dj" />
+  <meta property="og:image" content="https://stagebuddy.app/dj/dj-tarantula-hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:      #0a0a0a;
+      --surface:    #161616;
+      --gold:       #c9a84c;
+      --gold-soft:  #e2c27d;
+      --gold-dim:   #7a6030;
+      --white:      #f4f0e8;
+      --muted:      #888880;
+      --border:     rgba(201,168,76,0.18);
+      --venom:      #b3262e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    a { color: var(--gold-soft); }
+    a:hover { color: var(--gold); }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 20px 72px;
+    }
+
+    /* ── Shared primitives (same as /founder) ───────────────────── */
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 7vw, 42px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.15;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .section-heading em { font-style: italic; color: var(--gold-soft); }
+    .gold-rule { width: 48px; height: 1px; background: var(--gold-dim); margin: 18px auto 26px; }
+    .section-sub { font-size: 15px; color: var(--muted); text-align: center; max-width: 540px; margin: 0 auto 28px; }
+
+    section { padding: 8px 0 8px; }
+
+    /* Web-line divider (tarantula motif) */
+    .web { display: block; width: 100%; max-width: 360px; height: 28px; margin: 40px auto 36px; color: var(--gold-dim); }
+
+    .cta-btn {
+      position: relative;
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 17px 44px 17px 40px;
+      border-radius: 2px;
+      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    }
+    .cta-btn:hover { background: var(--gold-soft); color: var(--black); transform: translateY(-2px); box-shadow: 0 8px 40px rgba(201,168,76,0.22); }
+    /* the "bite": two fang punctures on the button's edge */
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      width: 14px;
+      height: 6px;
+      margin-top: -3px;
+      background:
+        radial-gradient(circle at 3px 3px, var(--venom) 0 2px, transparent 2.5px),
+        radial-gradient(circle at 11px 3px, var(--venom) 0 2px, transparent 2.5px);
+    }
+    .bite-note { font-size: 12px; color: var(--muted); margin-top: 12px; font-style: italic; }
+
+    /* ── Hero ───────────────────────────────────────────────────── */
+
+    .hero { text-align: center; margin: 0 -20px; }
+    .hero-photo { position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: var(--surface); }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0) 40%, var(--black) 100%);
+    }
+    .hero-copy { position: relative; z-index: 1; margin-top: -72px; padding: 0 20px 8px; }
+    .hero-sub { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(46px, 13vw, 84px);
+      font-weight: 400;
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold-soft); }
+    .hero-line { font-size: 16px; color: var(--muted); max-width: 520px; margin: 0 auto 30px; }
+
+    /* ── Cards & lists ──────────────────────────────────────────── */
+
+    .feature {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--gold);
+      border-radius: 2px;
+      padding: 28px 24px;
+    }
+    .feature h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 24px; line-height: 1.25; margin-bottom: 10px; }
+    .feature p { font-size: 15px; color: var(--muted); }
+    .feature strong { color: var(--white); font-weight: 500; }
+
+    .list { list-style: none; display: grid; gap: 10px; max-width: 620px; margin: 0 auto; }
+    .list li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 14px 16px 14px 18px;
+      font-size: 15px;
+      color: var(--white);
+    }
+    .list li span { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+
+    .clip-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold-dim);
+    }
+
+    .cards { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 2px; padding: 22px 20px; }
+    .card h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 20px; line-height: 1.25; margin-bottom: 8px; }
+    .card p { font-size: 14px; color: var(--muted); }
+    .fine { text-align: center; font-size: 14px; color: var(--muted); max-width: 520px; margin: 22px auto 0; }
+    .fine strong { color: var(--gold-soft); font-weight: 500; }
+
+    /* ── Stats ──────────────────────────────────────────────────── */
+
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 2px; overflow: hidden; }
+    .stat { background: var(--surface); padding: 22px 14px; text-align: center; }
+    .stat b { display: block; font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(28px, 8vw, 40px); color: var(--gold); line-height: 1.1; }
+    .stat span { display: block; font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.45; }
+
+    /* ── As seen on ─────────────────────────────────────────────── */
+
+    .seen { text-align: center; }
+    .seen-names { font-family: 'Playfair Display', serif; font-size: clamp(18px, 5vw, 24px); line-height: 1.7; color: var(--white); }
+    .seen-names i { color: var(--gold-dim); font-style: normal; padding: 0 0.35em; }
+    .seen-brands { margin-top: 14px; font-size: 14px; color: var(--muted); }
+
+    /* ── Person ─────────────────────────────────────────────────── */
+
+    .person p { font-size: 16px; color: var(--muted); max-width: 620px; margin: 0 auto 16px; }
+    .alma {
+      margin: 26px auto 0;
+      max-width: 620px;
+      text-align: center;
+      border: 1px solid var(--gold-dim);
+      border-radius: 2px;
+      padding: 26px 20px;
+      background: rgba(201,168,76,0.05);
+    }
+    .alma .eyebrow { margin-bottom: 10px; }
+    .alma h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(22px, 6vw, 30px); line-height: 1.25; color: var(--gold-soft); margin-bottom: 10px; }
+    .alma p { font-size: 15px; color: var(--white); margin: 0; }
+
+    /* ── CTA ────────────────────────────────────────────────────── */
+
+    .cta { text-align: center; }
+    .cta .brooke { font-size: 15px; color: var(--white); max-width: 480px; margin: 0 auto 26px; }
+    .contact { margin-top: 34px; font-size: 14px; color: var(--muted); }
+    .contact a { text-decoration: none; border-bottom: 1px solid var(--border); }
+
+    /* ── Footer (same as the rest of the site) ──────────────────── */
+
+    .site-footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 32px 28px 28px; text-align: center; }
+    .site-footer p { font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.30); }
+    .site-footer a { display: inline-block; margin-top: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.10em; color: var(--gold-dim); text-decoration: none; }
+    .site-footer a:hover { color: var(--gold-soft); }
+
+    /* ── Entrance (CSS only, no JS) ─────────────────────────────── */
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    .hero-copy { animation: fadeUp 0.8s ease both 0.1s; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-copy { animation: none; }
+      .cta-btn { transition: none; }
+    }
+
+    /* ── Tablet / desktop ───────────────────────────────────────── */
+
+    @media (min-width: 640px) {
+      .page-wrap { padding: 0 28px 100px; }
+      .cards.three { grid-template-columns: repeat(3, 1fr); }
+      .cards.two { grid-template-columns: 1fr 1fr; }
+      .stats { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 860px) {
+      .page-wrap { max-width: 960px; }
+      .hero { margin: 0; display: grid; grid-template-columns: 340px 1fr; gap: 48px; align-items: center; text-align: left; padding-top: 56px; }
+      .hero-photo { aspect-ratio: 360 / 560; border: 1px solid var(--border); border-radius: 2px; }
+      .hero-photo::after { background: linear-gradient(to bottom, rgba(10,10,10,0) 60%, rgba(10,10,10,0.5) 100%); }
+      .hero-copy { margin-top: 0; padding: 0; }
+      .hero-line { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- One web-line divider, reused with <use> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="web" viewBox="0 0 360 28">
+      <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+        <path d="M0 14H146M214 14H360" opacity="0.7"/>
+        <circle cx="180" cy="14" r="12"/>
+        <circle cx="180" cy="14" r="6"/>
+        <path d="M180 2V26M169.6 8l20.8 12M169.6 20l20.8-12M168 14h24"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <main class="page-wrap">
+
+    <!-- 1. HERO -->
+    <header class="hero">
+      <div class="hero-photo">
+        <img src="/dj/dj-tarantula-hero.jpg" width="360" height="638" alt="DJ Tarantula at the decks" fetchpriority="high" decoding="async" />
+      </div>
+      <div class="hero-copy">
+        <p class="hero-sub">B ROCKSTAR &nbsp;·&nbsp; B ROCK &amp; CO &nbsp;·&nbsp; Atlanta, Georgia</p>
+        <h1>DJ <em>TARANTULA</em></h1>
+        <p class="hero-line">Atlanta DJ and nationally touring performer with 16+ years on stage, bringing a veteran host's crowd-reading to lounges, private events and corporate launches.</p>
+        <a class="cta-btn" href="/founder#booking-form">Book DJ Tarantula</a>
+        <p class="bite-note">Don't worry. He only bites the beat.</p>
+      </div>
+    </header>
+
+    <svg class="web" aria-hidden="true"><use href="#web"/></svg>
+
+    <!-- 2. THE RESIDENCY -->
+    <section>
+      <p class="eyebrow">The Residency</p>
+      <h2 class="section-heading">First Mondays at <em>Twisted Pye</em></h2>
+      <div class="gold-rule"></div>
+      <div class="feature">
+        <h3>Monthly Resident DJ</h3>
+        <p>Monthly Resident DJ with <strong>Def Poetry Jam legend Abyss</strong> at <strong>Twisted Pye</strong>, an emerging Atlanta venue owned by R&amp;B legend Keith Sweat. First Mondays, 2026 to present.</p>
+      </div>
+    </section>
+
+    <svg class="web" aria-hidden="true"><use href="#web"/></svg>
+
+    <!-- 3. WHERE HE'S SPUN -->
+    <section>
+      <p class="eyebrow">3 Years of DJing</p>
+      <h2 class="section-heading">Where He's <em>Spun</em></h2>
+      <div class="gold-rule"></div>
+      <ul class="list">
+        <li>Guest DJ at Kat's Cafe, Downtown Atlanta <span>Multiple bookings</span></li>
+        <li>Event DJ at the Marriott</li>
+        <li>Corporate DJ <span>Product launch and cocktail parties</span></li>
+        <li>Private DJ <span>Weddings, birthdays, graduations and baby showers across the southeast</span></li>
+        <li>
+          Went viral on TikTok DJing the Black Boy Joy Festival with an iconic MLK/Buddy mix
+          <!-- TODO(Brock): paste the TikTok URL into href and remove the hidden attribute. Link only, no embed script. -->
+          <a class="clip-link" id="viral-clip" href="TIKTOK_URL_HERE" target="_blank" rel="noopener" hidden>Watch the clip →</a>
+        </li>
+        <li>
+          Sells his own mixes alongside live bookings
+          <!-- TODO(Brock): paste the mix packs URL into href and remove the hidden attribute. -->
+          <a class="clip-link" id="mix-packs" href="MIX_PACKS_URL_HERE" target="_blank" rel="noopener" hidden>Get the mix packs →</a>
+        </li>
+      </ul>
+    </section>
+
+    <svg class="web" aria-hidden="true"><use href="#web"/></svg>
+
+    <!-- 4. THE SETUP -->
+    <section>
+      <p class="eyebrow">The Setup</p>
+      <h2 class="section-heading">What He <em>Plays On</em></h2>
+      <div class="gold-rule"></div>
+      <ul class="list">
+        <li>Pioneer DDJ-SX2 four-deck controller</li>
+        <li>Serato DJ Pro</li>
+        <li>Rockville Titan MIX12C column PA system</li>
+        <li>Two Shure BLX2 wireless microphones</li>
+      </ul>
+      <p class="fine">He can bring his own PA and mics as optional add-ons, or work through yours.</p>
+    </section>
+
+    <svg class="web" aria-hidden="true"><use href="#web"/></svg>
+
+    <!-- 5. PACKAGES -->
+    <section>
+      <p class="eyebrow">Packages</p>
+      <h2 class="section-heading">Pick Your <em>Mode</em></h2>
+      <div class="gold-rule"></div>
+      <div class="cards three">
+        <div class="card"><h3>Open Mic &amp; Casual</h3><p>For open mics and relaxed rooms.</p></div>
+        <div class="card"><h3>Private Event &amp; Full DJ Mode</h3><p>For parties and private events.</p></div>
+        <div class="card"><h3>Add-ons</h3><p>His own PA and wireless microphones, each optional.</p></div>
+      </div>
+      <p class="fine"><strong>Pricing comes after a quick conversation.</strong></p>
+    </section>
+
+    <svg class="web" aria-hidden="true"><use href="#web"/></svg>
+
+    <!-- 6. HE ALSO HOSTS -->
+    <section>
+      <p class="eyebrow">The Host and MC Edge</p>
+      <h2 class="section-heading">He Also <em>Hosts</em></h2>
+      <p class="section-sub">This is why he reads a room.</p>
+      <ul class="list">
+        <li>Host of the Black to Hip Hop Festival</li>
+        <li>15-month MC residency at Apache Cafe</li>
+        <li>Moderated panels and hosted human rights and gala activations at the International Civil Rights Center &amp; Museum</li>
+        <li>Hosted 1,000+ person events at North Carolina A&amp;T State University, including Homecoming Coronation, pep rallies, block parties and SGA community events</li>
+      </ul>
+    </section>
+
+    <svg class="web" aria-hidden="true"><use href="#web"/></svg>
+
+    <!-- 7. THE RESUME IN NUMBERS -->
+    <section>
+      <p class="eyebrow">The Resume in Numbers</p>
+      <h2 class="section-heading">By the <em>Numbers</em></h2>
+      <div class="gold-rule"></div>
+      <div class="stats">
+        <div class="stat"><b>16+</b><span>years performing</span></div>
+        <div class="stat"><b>22</b><span>states + Washington D.C.</span></div>
+        <div class="stat"><b>8</b><span>albums, two of them visual albums, one billed as the world's first social-media album</span></div>
+        <div class="stat"><b>3</b><span>books</span></div>
+        <div class="stat"><b>1,000+</b><span>curated events</span></div>
+        <div class="stat"><b>200+</b><span>artists coached through STARR POWER</span></div>
+      </div>
+    </section>
+
+    <svg class="web" aria-hidden="true"><use href="#web"/></svg>
+
+    <!-- 8. AS SEEN ON -->
+    <section class="seen">
+      <p class="eyebrow">As Seen On</p>
+      <div class="gold-rule"></div>
+      <p class="seen-names">CBS<i>·</i>PBS<i>·</i>V103 ATL Radio<i>·</i>Black Enterprise<i>·</i>National Black Theater Festival<i>·</i>R&amp;B Soul Picnic</p>
+      <p class="seen-brands">Brand work: Slutty Vegan, Synchrony Bank</p>
+    </section>
+
+    <svg class="web" aria-hidden="true"><use href="#web"/></svg>
+
+    <!-- 9. THE PERSON BEHIND THE DECKS -->
+    <section class="person">
+      <p class="eyebrow">The Person Behind the Decks</p>
+      <h2 class="section-heading">More Than a <em>Set</em></h2>
+      <div class="gold-rule"></div>
+      <p>Founder of B ROCK &amp; CO (2012 to present), a company that educates, entertains and empowers through the culture of poetry. Launched STARR POWER in 2021 to teach stage presence and confidence.</p>
+      <div class="alma">
+        <p class="eyebrow">Alma Mater</p>
+        <h3>Proud alumnus of North Carolina A&amp;T State University</h3>
+        <p>B.A. English Creative Writing and B.A. American Literature, with honors.</p>
+      </div>
+    </section>
+
+    <svg class="web" aria-hidden="true"><use href="#web"/></svg>
+
+    <!-- 10. CTA -->
+    <section class="cta">
+      <p class="eyebrow">Ready When You Are</p>
+      <h2 class="section-heading">Put Him on <em>Your Night</em></h2>
+      <div class="gold-rule"></div>
+      <p class="brooke">Brooke, B Rockstar's AI coordinator, takes your inquiry, and he approves every booking.</p>
+      <a class="cta-btn" href="/founder#booking-form">Book DJ Tarantula</a>
+      <p class="bite-note">Pricing comes after a quick conversation.</p>
+      <p class="contact">
+        <a href="mailto:founder@stagebuddy.app">founder@stagebuddy.app</a> &nbsp;·&nbsp;
+        Instagram: <a href="https://instagram.com/Mr_brockstar" target="_blank" rel="noopener">@Mr_brockstar</a> &nbsp;·&nbsp;
+        <a href="tel:4434751081">443-475-1081</a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 B Rock &amp; Co &nbsp;·&nbsp; Stage Buddy</p>
+    <a href="https://instagram.com/stagebuddyai" target="_blank" rel="noopener">@stagebuddyai</a>
+  </footer>
+
+</body>
+</html>
