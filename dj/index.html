@@ -11,6 +11,8 @@
   <meta property="og:description" content="Atlanta DJ and touring performer with 16+ years on stage. Send an inquiry." />
   <meta property="og:url" content="https://stagebuddy.app/dj" />
   <meta property="og:image" content="https://stagebuddy.app/dj/dj-tarantula-hero.jpg" />
+  <meta property="og:image:width" content="1082" />
+  <meta property="og:image:height" content="726" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -127,12 +129,12 @@
 
     .hero { text-align: center; margin: 0 -20px; }
     .hero-photo { position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: var(--surface); }
-    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 48% 22%; display: block; }
     .hero-photo::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0) 40%, var(--black) 100%);
+      background: linear-gradient(to bottom, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0.85) 80%, var(--black) 100%);
     }
     .hero-copy { position: relative; z-index: 1; margin-top: -72px; padding: 0 20px 8px; }
     .hero-sub { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
@@ -280,7 +282,7 @@
     <!-- 1. HERO -->
     <header class="hero">
       <div class="hero-photo">
-        <img src="/dj/dj-tarantula-hero.jpg" width="360" height="638" alt="DJ Tarantula at the decks" fetchpriority="high" decoding="async" />
+        <img src="/dj/dj-tarantula-hero.jpg" width="1082" height="726" alt="DJ Tarantula smiling in front of a red stage curtain" fetchpriority="high" decoding="async" />
       </div>
       <div class="hero-copy">
         <p class="hero-sub">B ROCKSTAR &nbsp;·&nbsp; B ROCK &amp; CO &nbsp;·&nbsp; Atlanta, Georgia</p>
@@ -318,8 +320,7 @@
         <li>Private DJ <span>Weddings, birthdays, graduations and baby showers across the southeast</span></li>
         <li>
           Went viral on TikTok DJing the Black Boy Joy Festival with an iconic MLK/Buddy mix
-          <!-- TODO(Brock): paste the TikTok URL into href and remove the hidden attribute. Link only, no embed script. -->
-          <a class="clip-link" id="viral-clip" href="TIKTOK_URL_HERE" target="_blank" rel="noopener" hidden>Watch the clip →</a>
+          <a class="clip-link" id="viral-clip" href="https://www.tiktok.com/@stagebuddyai/video/7658358639241088287" target="_blank" rel="noopener">Watch the clip →</a>
         </li>
         <li>
           Sells his own mixes alongside live bookings
